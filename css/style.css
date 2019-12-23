@@ -37,3 +37,8 @@ label {
 .modal-footer {
     border-top: 1px solid #888888;
 }
+
+.formpegawai {
+    width: 70%;
+    margin: auto;
+}
