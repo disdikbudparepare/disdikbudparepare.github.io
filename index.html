@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <title>Document</title>
     <style>
         html,
         body,
         .wrap {
             height: 100%;
+            font-family: 'Roboto'
         }
         
         .wrap,
@@ -30,10 +32,10 @@
         .form {
             /* width: 30%; */
             height: 70%;
-            border: solid black 1px;
+            /* border: solid black 1px; */
             padding: 30px;
             margin: auto;
-            border-radius: 10%;
+            border-radius: 5%;
             grid-template-rows: 2fr 2fr 1fr;
         }
         
@@ -71,6 +73,23 @@
             text-align: center;
         }
         
+        .gmd {
+            -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            -moz-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            -ms-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            -o-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        }
+        
+        .back {
+            background-image: url("./image/habibi-ainun.jpg");
+            background-size: cover;
+        }
+        
+        .backform {
+            background-color: rgba(255, 255, 255, 0.75);
+        }
+        
         @media screen and (min-width: 450px) {
             .form {
                 /* width: 30%; */
@@ -104,9 +123,9 @@
     </style>
 </head>
 
-<body>
+<body class="back">
     <div class="wrap">
-        <div class="form">
+        <div class="form gmd backform">
             <div class="form-header">
                 <img id="logo-parepare" src="./image/Lambang_Kota_Parepare.png" alt="kota parepare">
                 <h3>KENAIKAN PANGKAT DAN GAJI BERKALA SISTEM ONLINE</h3>
