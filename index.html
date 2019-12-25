@@ -9,10 +9,13 @@
     <title>Document</title>
     <style>
         html,
-        body,
-        .wrap {
-            height: 100%;
+        body {
+            height: 99%;
             font-family: 'Roboto'
+        }
+        
+        .wrap {
+            height: 95%;
         }
         
         .wrap,
@@ -31,17 +34,18 @@
         
         .form {
             /* width: 30%; */
-            height: 70%;
+            height: 65%;
             /* border: solid black 1px; */
             padding: 30px;
-            margin: auto;
-            border-radius: 5%;
+            margin: 20px auto;
+            border-radius: 10px;
             grid-template-rows: 2fr 2fr 1fr;
         }
         
         h3 {
             text-align: center;
             font-size: 5vw;
+            color: #4f4f4f;
         }
         
         #nama,
@@ -56,21 +60,31 @@
         
         input {
             width: 50vw;
-            height: 3vh;
+            height: 5vh;
+            border: none;
+            border-radius: 25px;
+            outline: none;
+            padding: 0 10px;
         }
         
         label {
             font-size: 4vw;
+            color: #4f4f4f;
         }
         
         .periksa {
             width: 30vw;
             height: 5vh;
             margin: auto;
+            background-color: #58E8A0;
+            border: none;
+            border-radius: 10px;
+            outline: none;
         }
         
         .dispenda {
             text-align: center;
+            color: #4f4f4f;
         }
         
         .gmd {
@@ -94,7 +108,7 @@
             .form {
                 /* width: 30%; */
                 width: 360px;
-                height: 437px;
+                height: 450px;
                 padding-top: 5px;
                 position: relative;
             }
@@ -139,10 +153,15 @@
             <div class="form-footer">
                 <button class="periksa">Periksa</button>
                 <p class="dispenda">Dinas Pendidikan dan Kebudayaan Daerah <br>Kota Parepare</p>
-
             </div>
         </div>
     </div>
+    <script>
+        let periksa = document.querySelector('button');
+        periksa.addEventListener('click', function() {
+            alert("Maaf, data belum ada")
+        })
+    </script>
 </body>
 
 </html>
