@@ -185,26 +185,21 @@
         let nip = document.getElementById('nip');
         let alamat = "https://script.google.com/macros/s/AKfycby1vb-zkn9HOzrgiOdQKsZLaLGj6gL4XKlgp4zp3RUVTpyira8/exec";
         periksa.addEventListener('click', function() {
-            async function antri() {
-                var request = await jQuery.ajax({
-                    crossDomain: true,
-                    url: alamat,
-                    method: "GET",
-                    dataType: "json",
-                    success: function(params) {
-                        //console.log(params);
-                        return this;
-                    }
-                });
-            }
-            console.log(antri());
+            var request = jQuery.ajax({
+                crossDomain: true,
+                url: alamat,
+                method: "GET",
+                dataType: "json",
+                success: function(params) {
+                    console.log(params);
+                }
+            });
+            alert(`Maaf ${nama.value}, data belum ada`)
         });
 
+
+
         //var myjson = response.json();
-
-
-
-        //alert(`Maaf ${nama.value}, data belum ada`)
     </script>
 </body>
 
