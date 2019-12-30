@@ -7,6 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        
         .maaf {
             display: none;
         }
@@ -14,19 +21,58 @@
         .selamat {
             display: none;
         }
+        
+        .datapns {
+            padding: 10%;
+            display: none;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td,
+        th {
+            padding: 10px;
+            text-align: left;
+        }
+        
+        .cekberkas {
+            display: none;
+        }
+        
+        .wrap {
+            display: grid;
+            height: 100%;
+            padding: 10%;
+        }
     </style>
 </head>
 
 <body>
     <div class="wrap">
         <div class="status">
-            <h5 class="ambildata">Sedang memeriksa data Anda</h5>
-            <h4 class="maaf">Maaf, belum saatnya Anda untuk naik pangkat</h4>
-            <h4 class="selamat">Selamat, Anda sudah bisa naik pangkat</h4>
+            <h5 class="ambildata">Sedang mencari data Anda</h5>
+            <h4 class="maaf">Maaf, data Anda tidak ditemukan</h4>
+            <h4 class="selamat">Data Anda sudah ditemukan</h4>
             <h5 class="selamat">Silahkan membawa dokumen pendukung Anda ke Dinas Pendidikan dan Kebudayaan Daerah Kota Parepare bidang Kepegawaian</h5>
         </div>
+        <div class="datapns">
+            <table>
+                <tr>
+                    <th style="width: 20%;">NAMA</th>
+                    <th style="width: 5%">:</th>
+                    <td style="width: 100%;"></td>
+                </tr>
+                <tr>
+                    <th>NIP</th>
+                    <th>:</th>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
         <div class="cekberkas">
-            <p class="tes"></p>
             <button>Mendaftar</button>
         </div>
     </div>
@@ -37,9 +83,14 @@
         let ambildata = document.querySelector(".ambildata");
         let selamat = document.querySelector(".selamat");
         let maaf = document.querySelector(".maaf");
+        let td = document.querySelectorAll("td");
+        let cari = window.location.search;
+        let paramUrl = new URLSearchParams(cari);
+        let paramNama = paramUrl.get("nama");
+        let paramNip = paramUrl.get("nip");
         let dataku = {
-            nama: "syuaib",
-            nip: "198612172009021002",
+            nama: paramNama,
+            nip: paramNip,
             mendaftar: 1
         }
 
@@ -67,6 +118,8 @@
                 console.log(params.length);
                 $(".selamat").show();
                 $(".ambildata").hide();
+                $(".datapns").show();
+                $(".cekberkas").show();
             } else if (data.pesan == "Data tidak ditemukan") {
                 $(".maaf").show();
             }
