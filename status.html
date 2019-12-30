@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .maaf {
+            display: none;
+        }
+        
+        .selamat {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="status">
+            <h5 class="ambildata">Sedang memeriksa data Anda</h5>
+            <h4 class="maaf">Maaf, belum saatnya Anda untuk naik pangkat</h4>
+            <h4 class="selamat">Selamat, Anda sudah bisa naik pangkat</h4>
+            <h5 class="selamat">Silahkan membawa dokumen pendukung Anda ke Dinas Pendidikan dan Kebudayaan Daerah Kota Parepare bidang Kepegawaian</h5>
+        </div>
+        <div class="cekberkas">
+            <p class="tes"></p>
+            <button>Mendaftar</button>
+        </div>
+    </div>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script>
+        let alamat = "https://script.google.com/macros/s/AKfycbwZ2wKOLBvcdWRtmDtG-NDhIxMVLwh-HnFcDOfc7AteUT5aKIZd/exec";
+
+        let ambildata = document.querySelector(".ambildata");
+        let selamat = document.querySelector(".selamat");
+        let maaf = document.querySelector(".maaf");
+        let dataku = {
+            nama: "syuaib",
+            nip: "198612172009021002",
+            mendaftar: 1
+        }
+
+
+        $.ajax({
+                crossDomain: true,
+                type: "POST",
+                url: alamat,
+                data: JSON.stringify(dataku),
+                dataType: "text/javascript"
+            })
+            .done(function(berhasil) {
+                console.log("berhasil : " + berhasil);
+            })
+            .fail(function(err) {
+                console.log("Error : " + err);
+            })
+            .always(function(selesai) {
+                tes(selesai);
+            });
+
+        function tes(params) {
+            let data = JSON.parse(params.responseText)
+            if (data.pesan == "Data ditemukan") {
+                console.log(params.length);
+                $(".selamat").show();
+                $(".ambildata").hide();
+            } else if (data.pesan == "Data tidak ditemukan") {
+                $(".maaf").show();
+            }
+        }
+    </script>
+</body>
+
+</html>

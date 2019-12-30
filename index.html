@@ -166,40 +166,31 @@
                 <img id="logo-parepare" src="./image/Lambang_Kota_Parepare.png" alt="kota parepare">
                 <h3>KENAIKAN PANGKAT DAN GAJI BERKALA SISTEM ONLINE</h3>
             </div>
-            <div class="form-body">
-                <label for="nama">Nama</label>
-                <input type="text" id="nama">
-                <label for="nip">Nomor Induk Pegawai</label>
-                <input type="number" id="nip">
-            </div>
-            <div class="form-footer">
-                <button class="periksa">Periksa</button>
-                <p class="dispenda">Dinas Pendidikan dan Kebudayaan Daerah Kota Parepare</p>
-            </div>
+            <form method="get" id="formkirim">
+                <div class="form-body">
+                    <label for="nama">Nama</label>
+                    <input name="nama" type="text" id="nama">
+                    <label for="nip">Nomor Induk Pegawai</label>
+                    <input name="nip" type="number" id="nip">
+                </div>
+                <div class="form-footer">
+                    <button type="submit" class="periksa">Periksa</button>
+                    <p class="dispenda">Dinas Pendidikan dan Kebudayaan Daerah Kota Parepare</p>
+                </div>
+            </form>
+
         </div>
     </div>
-    <script src="./js/jquery-3.4.1.min.js"></script>
+
     <script>
         let periksa = document.querySelector('button');
-        let nama = document.getElementById('nama');
-        let nip = document.getElementById('nip');
-        let alamat = "https://script.google.com/macros/s/AKfycby1vb-zkn9HOzrgiOdQKsZLaLGj6gL4XKlgp4zp3RUVTpyira8/exec";
+        // let nama = document.getElementById('nama');
+        // let nip = document.getElementById('nip');
+        let formkirim = document.getElementById('formkirim');
+
         periksa.addEventListener('click', function() {
-            var request = jQuery.ajax({
-                crossDomain: true,
-                url: alamat,
-                method: "GET",
-                dataType: "json",
-                success: function(params) {
-                    console.log(params);
-                }
-            });
-            alert(`Maaf ${nama.value}, data belum ada`)
+            formkirim.action = 'status.html';
         });
-
-
-
-        //var myjson = response.json();
     </script>
 </body>
 
