@@ -2,29 +2,27 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <title>Document</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        html {
+            background: url("./image/habibi-ainun.png");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Roboto';
+        }
+        
         html,
         body {
-            height: 99%;
-            font-family: 'Roboto'
-        }
-        
-        .wrap {
-            height: 95%;
-        }
-        
-        .wrap,
-        .form,
-        .form-header,
-        .form-body,
-        .form-footer {
-            display: grid;
-            grid-row-gap: 10px;
+            margin: 0;
+            padding: 0;
         }
         
         #logo-parepare {
@@ -33,13 +31,10 @@
         }
         
         .form {
-            /* width: 30%; */
-            height: 70%;
-            /* border: solid black 1px; */
             padding: 30px;
-            margin: 20px auto;
+            margin: 8vh auto;
             border-radius: 10px;
-            grid-template-rows: 1fr 2fr;
+            width: 300px;
         }
         
         h3 {
@@ -61,34 +56,42 @@
         .form-header {
             border-bottom: solid 1px rgba(176, 176, 176, 1);
             margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .form-footer {
+            text-align: center;
         }
         
         input {
-            width: 40vw;
-            height: 5vh;
+            width: 100%;
             border: none;
-            border-radius: 25px;
+            border-radius: 5px;
             outline: none;
-            padding: 0 10px;
+            padding: 6px 10px;
         }
         
         label {
             font-size: 4vw;
             color: #4f4f4f;
+            margin-top: 10px;
+            margin-bottom: 6px;
+            display: block;
         }
         
         .periksa {
             width: 30vw;
-            height: 5vh;
             margin-left: auto;
             margin-right: auto;
-            margin-top: 2vh;
+            margin-top: 4vh;
             background-color: rgba(248, 58, 58, 1);
             -webkit-box-shadow: -4px 10px 16px -7px #000000;
             box-shadow: -4px 10px 16px -7px #000000;
             color: rgba(255, 255, 255, 1);
             border: none;
             outline: none;
+            padding: 8px;
+            display: block;
         }
         
         .periksa:hover {
@@ -109,23 +112,24 @@
             box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
         }
         
-        .back {
-            background: url("./image/habibi-ainun.png");
-            background-size: 600px;
-            background-position-y: center;
-            background-position-x: center;
-        }
-        
         .backform {
             background-color: rgba(255, 255, 255, 0.75);
+        }
+        
+        .loading {
+            display: none;
+        }
+        
+        #userPassSalah {
+            display: none;
+            text-align: center;
         }
         
         @media screen and (min-width: 450px) {
             .form {
                 /* width: 30%; */
                 width: 360px;
-                height: 490px;
-                padding-top: 5px;
+                padding-top: 40px;
                 position: relative;
             }
             h3 {
@@ -134,13 +138,8 @@
             #logo-parepare {
                 width: 72px;
             }
-            .form-header,
-            .form-footer,
-            label {
-                width: inherit;
-            }
             input {
-                width: 90%;
+                width: 100%;
             }
             label,
             input {
@@ -148,12 +147,12 @@
             }
             .periksa {
                 width: 137px;
-                margin-top: 310px;
+                margin-top: 20px;
             }
             .form-body {
                 width: 208px;
             }
-            .back {
+            html {
                 background-size: cover;
                 background-position-x: center;
                 background-position-y: 0;
@@ -169,31 +168,51 @@
                 <img id="logo-parepare" src="./image/Lambang_Kota_Parepare.png" alt="kota parepare">
                 <h3>KENAIKAN PANGKAT DAN GAJI BERKALA SISTEM ONLINE</h3>
             </div>
-            <form method="get" id="formkirim">
+            <div id="formkirim">
                 <div class="form-body">
-                    <label for="nama">Nama</label>
-                    <input name="nama" type="text" id="nama" required>
                     <label for="nip">Nomor Induk Pegawai</label>
                     <input name="nip" type="number" id="nip" required>
+                    <label for="password">Password</label>
+                    <input name="password" type="password" id="password" required>
                 </div>
                 <div class="form-footer">
+                    <img class="loading" src="./image/spinner.svg" alt="loading">
+                    <p id="userPassSalah">NIP/Password salah</p>
                     <button type="submit" class="periksa">Periksa</button>
                     <p class="dispenda">Dinas Pendidikan dan Kebudayaan Daerah Kota Parepare</p>
                 </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <script>
-        let periksa = document.querySelector('button');
-        // let nama = document.getElementById('nama');
-        // let nip = document.getElementById('nip');
-        let formkirim = document.getElementById('formkirim');
-
-        periksa.addEventListener('click', function() {
-            formkirim.action = 'status.html';
-        });
-    </script>
+        <script src="./js/main.js"></script>
+        <script>
+            let periksa = document.querySelector('.periksa');
+            let pass = document.getElementById('password');
+            let nip = document.getElementById('nip');
+            let formkirim = document.getElementById('formkirim');
+            let loadingImg = document.querySelector(".loading");
+            let userPassSalah = document.querySelector("#userPassSalah");
+            periksa.addEventListener('click', function() {
+                let dataku = {
+                    username: nip.value,
+                    password: pass.value
+                }
+                loadingImg.setAttribute("style", "display:inline-block");
+                userPassSalah.setAttribute("style", "display:none");
+                main.kirimdata(dataku)
+                    .then((data) => {
+                        console.log(data);
+                        if (data.status == "berhasil") {
+                            main.simpanNip(dataku.username);
+                            location.assign("status.html");
+                        } else {
+                            userPassSalah.setAttribute("style", "display:block");
+                            loadingImg.setAttribute("style", "display:none");
+                        }
+                    });
+            });
+        </script>
 </body>
 
 </html>

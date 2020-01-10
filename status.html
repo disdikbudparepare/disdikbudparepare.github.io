@@ -7,57 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+        
         html,
         body {
             margin: 0;
             padding: 0;
-            height: 100%;
-        }
-        
-        .maaf {
-            display: none;
-        }
-        
-        .selamat {
-            display: none;
-        }
-        
-        .datapns {
-            padding: 10%;
-            display: none;
-        }
-        
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        
-        td,
-        th {
-            padding: 10px;
-            text-align: left;
-        }
-        
-        .cekberkas {
-            display: none;
-        }
-        
-        .wrap {
-            display: grid;
-            height: 100%;
-            padding: 10%;
         }
     </style>
 </head>
 
 <body>
     <div class="wrap">
-        <div class="status">
-            <h5 class="ambildata">Sedang mencari data Anda</h5>
-            <h4 class="maaf">Maaf, data Anda tidak ditemukan</h4>
-            <h4 class="selamat">Data Anda sudah ditemukan</h4>
-            <h5 class="selamat">Silahkan membawa dokumen pendukung Anda ke Dinas Pendidikan dan Kebudayaan Daerah Kota Parepare bidang Kepegawaian</h5>
-        </div>
         <div class="datapns">
             <table>
                 <tr>
@@ -76,54 +39,15 @@
             <button>Mendaftar</button>
         </div>
     </div>
-    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/main.js"></script>
     <script>
-        let alamat = "https://script.google.com/macros/s/AKfycbwZ2wKOLBvcdWRtmDtG-NDhIxMVLwh-HnFcDOfc7AteUT5aKIZd/exec";
-
-        let ambildata = document.querySelector(".ambildata");
-        let selamat = document.querySelector(".selamat");
-        let maaf = document.querySelector(".maaf");
-        let td = document.querySelectorAll("td");
-        let cari = window.location.search;
-        let paramUrl = new URLSearchParams(cari);
-        let paramNama = paramUrl.get("nama");
-        let paramNip = paramUrl.get("nip");
-        let dataku = {
-            nama: paramNama,
-            nip: paramNip,
-            mendaftar: 1
-        }
-
-
-        $.ajax({
-                crossDomain: true,
-                type: "POST",
-                url: alamat,
-                data: JSON.stringify(dataku),
-                dataType: "text/javascript"
+        main.cekLogin()
+            .then((data) => {
+                console.log(JSON.parse(data));
+                if (!JSON.parse(data)) {
+                    location.assign("index.html");
+                }
             })
-            .done(function(berhasil) {
-                console.log("berhasil : " + berhasil);
-            })
-            .fail(function(err) {
-                console.log("Error : " + err);
-            })
-            .always(function(selesai) {
-                tes(selesai);
-            });
-
-        function tes(params) {
-            let data = JSON.parse(params.responseText)
-            if (data.pesan == "Data ditemukan") {
-                console.log(params.length);
-                $(".selamat").show();
-                $(".ambildata").hide();
-                $(".datapns").show();
-                $(".cekberkas").show();
-            } else if (data.pesan == "Data tidak ditemukan") {
-                $(".maaf").show();
-            }
-        }
     </script>
 </body>
 
