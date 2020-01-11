@@ -17,7 +17,13 @@ let main = {
     cekLogin: function() {
         return fetch(alamat + `?nip=${this.ambilNip()}`)
             .then((data) => {
-                return data.text()
+                return data.text();
+            })
+    },
+    logout: function() {
+        return fetch(alamat + `?nip=${this.ambilNip()}&keluar=1`)
+            .then((data) => {
+                return data.text();
             })
     }
 }
