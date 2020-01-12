@@ -25,7 +25,7 @@
         
         .logoutWrap {
             text-align: right;
-            background-color: darkgrey;
+            background-color: rgb(48, 156, 214);
             position: sticky;
         }
         
@@ -39,18 +39,23 @@
             cursor: pointer;
         }
         
-        .wrap {
-            padding: 3%;
+        .wrapheader {
+            padding: 15PX;
         }
         
         .wrapbody {
             visibility: hidden;
             padding: 5%;
+            overflow: auto;
         }
         
         .wrapfooter {
+            border-top: darkgrey 3px solid;
+            background-color: rgb(48, 156, 214);
             position: relative;
-            bottom: 0;
+            top: 55vh;
+            padding: 10px;
+            color: rgb(255, 255, 255);
         }
         
         th,
@@ -86,8 +91,8 @@
     </div>
     <div class="wrap">
         <div class="wrapheader">
-            <p class="title">DINAS PENDIDIKAN DAN KEBUDAYAAN KOTA PAREPARE
-                <br>BIDANG KEPEGAWAIAN</p>
+            <span class="title">DINAS PENDIDIKAN DAN KEBUDAYAAN KOTA PAREPARE
+                <br>BIDANG KEPEGAWAIAN</span>
         </div>
         <div class="wrapbody">
             <table>
@@ -102,9 +107,9 @@
                     <td id="tblNip"></td>
                 </tr>
             </table>
-        </div>
-        <div class="cekberkas">
-            <button>Mendaftar</button>
+            <div class="cekberkas">
+                <button>Mendaftar</button>
+            </div>
         </div>
         <div class="wrapfooter">
             <p class="footer">Naik Pangkat dan Kenaikan Gaji Berkala secara online diselenggarakan untuk mempermudah setiap ASN dalam melakukan proses pendaftaran dan mempercepat proses administrasi kepegawaian di lingkup Dinas Pendidikan dan Kebudayaan Kota Parepare</p>
