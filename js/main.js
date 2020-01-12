@@ -6,24 +6,24 @@ let main = {
             body: JSON.stringify(dataku)
         }).then((response) => {
             return response.json();
-        })
+        });
     },
-    simpanNip: function(nipPegawai) {
-        return localStorage.setItem("nip", nipPegawai);
+    simpanDb: function(db) {
+        return localStorage.setItem("db", db);
     },
-    ambilNip: function() {
-        return localStorage.getItem("nip");
+    ambilDb: function(db) {
+        return localStorage.getItem(db);
     },
-    cekLogin: function() {
-        return fetch(alamat + `?nip=${this.ambilNip()}`)
+    cekLogin: function(nip) {
+        return fetch(alamat + `?nip=${nip}`)
             .then((data) => {
                 return data.text();
-            })
+            });
     },
     logout: function() {
-        return fetch(alamat + `?nip=${this.ambilNip()}&keluar=1`)
+        return fetch(alamat + `?nip=${this.ambilDb('nip')}&keluar=1`)
             .then((data) => {
                 return data.text();
-            })
+            });
     }
 }

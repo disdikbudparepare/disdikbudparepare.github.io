@@ -39,6 +39,36 @@
             cursor: pointer;
         }
         
+        .wrap {
+            padding: 3%;
+        }
+        
+        .wrapbody {
+            visibility: hidden;
+            padding: 5%;
+        }
+        
+        .wrapfooter {
+            position: relative;
+            bottom: 0;
+        }
+        
+        th,
+        td {
+            padding: 2%;
+            text-align: left;
+        }
+        
+        .title {
+            font-size: 3.5vw;
+            line-height: 150%;
+        }
+        
+        .footer {
+            font-size: small;
+            line-height: 150%;
+        }
+        
         #syuaib {
             position: fixed;
             right: 2%;
@@ -51,11 +81,15 @@
 </head>
 
 <body>
+    <div class="logoutWrap">
+        <button class="logoutButton">KELUAR</button>
+    </div>
     <div class="wrap">
-        <div class="logoutWrap">
-            <button class="logoutButton">KELUAR</button>
+        <div class="wrapheader">
+            <p class="title">DINAS PENDIDIKAN DAN KEBUDAYAAN KOTA PAREPARE
+                <br>BIDANG KEPEGAWAIAN</p>
         </div>
-        <div class="datapns">
+        <div class="wrapbody">
             <table>
                 <tr>
                     <th style="width: 20%;">NAMA</th>
@@ -72,28 +106,39 @@
         <div class="cekberkas">
             <button>Mendaftar</button>
         </div>
+        <div class="wrapfooter">
+            <p class="footer">Naik Pangkat dan Kenaikan Gaji Berkala secara online diselenggarakan untuk mempermudah setiap ASN dalam melakukan proses pendaftaran dan mempercepat proses administrasi kepegawaian di lingkup Dinas Pendidikan dan Kebudayaan Kota Parepare</p>
+        </div>
     </div>
+
     <p id="syuaib">Code/Design By syuaib</p>
     <script src="./js/main.js"></script>
     <script>
         let logoutButton = document.querySelector(".logoutButton");
-        if (main.ambilNip() !== null && main.ambilNip() !== "") {
-            main.cekLogin()
+        let wrapbody = document.querySelector(".wrapbody");
+        if (main.ambilDb('nip') == null || main.ambilDb('nip') == '') {
+            location.assign("index.html");
+        } else {
+            main.cekLogin(main.ambilDb('nip'))
                 .then((data) => {
-                    console.log(data);
                     if (JSON.parse(data) == false) {
                         location.assign("index.html");
                     } else {
-                        let dataPegawai = JSON.parse(data);
                         let tblNama = document.querySelector("#tblNama");
                         let tblNip = document.querySelector("#tblNip");
-                        tblNama.innerHTML = dataPegawai.nama;
-                        tblNip.innerHTML = dataPegawai.nip;
+                        async function simpanDb() {
+                            if (main.ambilDb('db') == null || main.ambilDb('db') == '') {
+                                await main.simpanDb(data);
+                            };
+                            let dataPegawai = JSON.parse(main.ambilDb('db'));
+                            tblNama.innerHTML = dataPegawai.nama;
+                            tblNip.innerHTML = dataPegawai.nip;
+                            wrapbody.setAttribute("style", "visibility:visible")
+                        }
+                        simpanDb();
                     }
                 });
-        } else {
-            location.assign("index.html");
-        };
+        }
 
 
         logoutButton.addEventListener('click', keluar);
@@ -102,6 +147,7 @@
             main.logout()
                 .then((data) => {
                     if (data == 'false') {
+                        localStorage.removeItem('db');
                         localStorage.removeItem('nip');
                         location.assign('index.html');
                     }

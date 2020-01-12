@@ -212,7 +212,7 @@
             let userPassSalah = document.querySelector("#userPassSalah");
             let salah = document.querySelector("#salah");
 
-            main.cekLogin()
+            main.cekLogin(nip.value)
                 .then((data) => {
                     console.log(JSON.parse(data));
                     if (JSON.parse(data) !== false) {
@@ -241,7 +241,7 @@
                     .then((data) => {
                         console.log(data);
                         if (data.status == "berhasil") {
-                            main.simpanNip(dataku.username);
+                            localStorage.setItem('nip', nip.value);
                             location.assign("status.html");
                         } else if (data.status == "salah") {
                             salah.setAttribute("style", "display:block");
