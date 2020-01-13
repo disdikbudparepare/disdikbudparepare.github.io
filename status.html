@@ -21,26 +21,31 @@
         body {
             margin: 0;
             padding: 0;
+            width: 100%;
         }
         
         .logoutWrap {
             text-align: right;
             background-color: rgb(48, 156, 214);
             position: sticky;
+            position: -webkit-sticky;
+            top: 0;
+            margin: 0;
         }
         
         .logoutButton {
-            padding: 20px;
-            border: none;
             border-left: oldlace 2px solid;
-            outline-style: none;
-            color: rgb(255, 255, 255);
             background-color: rgb(226, 81, 81);
-            cursor: pointer;
         }
         
         .wrapheader {
-            padding: 15PX;
+            padding: 15px;
+            /* background-color: #1fc8db;
+            color: floralwhite; */
+            height: 150px;
+            border-bottom: 2px solid whitesmoke;
+            display: table-cell;
+            vertical-align: middle;
         }
         
         .wrapbody {
@@ -50,7 +55,7 @@
         }
         
         .wrapfooter {
-            border-top: darkgrey 3px solid;
+            border-top: whitesmoke 3px solid;
             background-color: rgb(48, 156, 214);
             position: relative;
             top: 55vh;
@@ -58,10 +63,13 @@
             color: rgb(255, 255, 255);
         }
         
-        th,
         td {
             padding: 2%;
             text-align: left;
+        }
+        
+        td:nth-child(event) {
+            text-align: right;
         }
         
         .title {
@@ -76,6 +84,7 @@
         
         table {
             min-width: 375px;
+            max-width: 500px;
         }
         
         .loading {
@@ -110,12 +119,28 @@
             color: rgb(219, 219, 219);
             text-shadow: 1px 1px 2px #4F2215;
         }
+        
+        ul {
+            margin: 0;
+        }
+        
+        li {
+            list-style: none;
+            display: inline-block;
+            margin: 0;
+            padding: 20px;
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
     <div class="logoutWrap">
-        <button class="logoutButton">KELUAR</button>
+        <ul>
+            <li class="masukan">Masukan</li>
+            <li class="logoutButton">KELUAR</li>
+        </ul>
     </div>
     <div class="wrap">
         <div class="wrapheader">
@@ -128,18 +153,18 @@
         <div class="wrapbody">
             <table>
                 <tr>
-                    <th>NAMA</th>
-                    <th>:</th>
-                    <td id="tblNama"></td>
+                    <td style="width:40%">NAMA</td>
+                    <td style="width:2%">:</td>
+                    <td style="width:58%" id="tblNama"></td>
                 </tr>
                 <tr>
-                    <th>NIP</th>
-                    <th>:</th>
+                    <td>NIP</td>
+                    <td>:</td>
                     <td id="tblNip"></td>
                 </tr>
                 <tr>
-                    <th>TMT Pangkat Terakhir</th>
-                    <th>:</th>
+                    <td>TMT Pangkat Terakhir</td>
+                    <td>:</td>
                     <td id="tmt"></td>
                 </tr>
             </table>
