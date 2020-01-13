@@ -212,7 +212,7 @@
             let userPassSalah = document.querySelector("#userPassSalah");
             let salah = document.querySelector("#salah");
 
-            main.cekLogin(nip.value)
+            main.cekLogin(main.ambilDb('nip'))
                 .then((data) => {
                     console.log(JSON.parse(data));
                     if (JSON.parse(data) !== false) {
