@@ -132,10 +132,68 @@
             color: rgb(255, 255, 255);
             cursor: pointer;
         }
+        
+        #boxmasukan {
+            resize: none;
+            height: 30vh;
+        }
+        
+        .boxMasukan {
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            margin: auto;
+            top: 20%;
+            height: 50%;
+            display: none;
+        }
+        
+        .wrapMasukan {
+            width: 300px;
+            margin: auto;
+            text-align: center;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        
+        h3,
+        h5 {
+            color: rgb(63, 62, 62);
+        }
+        
+        .wrapMasukan button {
+            display: block;
+            padding: 15px;
+            background-color: rgb(72, 155, 33);
+            color: whitesmoke;
+            border: none;
+            margin-left: 38px;
+        }
+        
+        .gmd {
+            -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            -moz-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            -ms-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            -o-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        }
+        
+        .backform {
+            background-color: rgba(255, 255, 255, 0.75);
+        }
     </style>
 </head>
 
 <body>
+    <div class="boxMasukan">
+        <div class="wrapMasukan gmd backform">
+            <h3>Kotak Saran</h3>
+            <h5>Masukan Anda adalah evaluasi terbaik kami</h5>
+            <textarea name="boxmasukan" id="boxmasukan" cols="30" rows="10"></textarea>
+            <button id="btnMasukan" type="submit">KIRIM</button>
+        </div>
+
+    </div>
     <div class="logoutWrap">
         <ul>
             <li class="masukan">Masukan</li>
@@ -180,6 +238,16 @@
     <script>
         let logoutButton = document.querySelector(".logoutButton");
         let wrapbody = document.querySelector(".wrapbody");
+        let masukan = document.querySelector(".masukan");
+        let btnMasukan = document.querySelector("#btnMasukan");
+        let boxmasukan = document.querySelector(".boxMasukan");
+        btnMasukan.addEventListener('click', () => {
+            boxmasukan.setAttribute('style', 'display:none');
+        })
+        masukan.addEventListener('click', () => {
+
+            boxmasukan.setAttribute('style', 'display:block');
+        });
         if (main.ambilDb('nip') == null || main.ambilDb('nip') == '') {
             location.assign("index.html");
         } else {
