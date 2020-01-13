@@ -74,6 +74,34 @@
             line-height: 150%;
         }
         
+        table {
+            min-width: 375px;
+        }
+        
+        .loading {
+            text-align: center;
+            position: sticky;
+            top: 40vh;
+        }
+        
+        #mendaftar {
+            padding: 10px;
+            border: none;
+            outline-style: none;
+            color: rgb(255, 255, 255);
+            background-color: rgb(72, 155, 33);
+            margin-left: 10%;
+            cursor: pointer;
+            -webkit-box-shadow: 3px 3px 7px 1px #4F4F4F;
+            box-shadow: 3px 3px 7px 1px #4F4F4F;
+            display: none;
+        }
+        
+        #mendaftar:hover {
+            -webkit-box-shadow: 0px 10px 13px -7px #000000, 3px 3px 7px 1px rgba(79, 79, 79, 0);
+            box-shadow: 0px 10px 13px -7px #000000, 3px 3px 7px 1px rgba(79, 79, 79, 0);
+        }
+        
         #syuaib {
             position: fixed;
             right: 2%;
@@ -94,23 +122,29 @@
             <span class="title">DINAS PENDIDIKAN DAN KEBUDAYAAN KOTA PAREPARE
                 <br>BIDANG KEPEGAWAIAN</span>
         </div>
+        <div class="loading">
+            <img src="./image/Eclipse.svg" alt="loading">
+        </div>
         <div class="wrapbody">
             <table>
                 <tr>
-                    <th style="width: 20%;">NAMA</th>
-                    <th style="width: 5%">:</th>
-                    <td style="width: 100%;" id="tblNama"></td>
+                    <th>NAMA</th>
+                    <th>:</th>
+                    <td id="tblNama"></td>
                 </tr>
                 <tr>
                     <th>NIP</th>
                     <th>:</th>
                     <td id="tblNip"></td>
                 </tr>
+                <tr>
+                    <th>TMT Pangkat Terakhir</th>
+                    <th>:</th>
+                    <td id="tmt"></td>
+                </tr>
             </table>
-            <div class="cekberkas">
-                <button>Mendaftar</button>
-            </div>
         </div>
+        <button id="mendaftar">Mendaftar</button>
         <div class="wrapfooter">
             <p class="footer">Naik Pangkat dan Kenaikan Gaji Berkala secara online diselenggarakan untuk mempermudah setiap ASN dalam melakukan proses pendaftaran dan mempercepat proses administrasi kepegawaian di lingkup Dinas Pendidikan dan Kebudayaan Kota Parepare</p>
         </div>
@@ -129,6 +163,7 @@
                     if (JSON.parse(data) == false) {
                         location.assign("index.html");
                     } else {
+                        let loading = document.querySelector(".loading");
                         let tblNama = document.querySelector("#tblNama");
                         let tblNip = document.querySelector("#tblNip");
                         async function simpanDb() {
@@ -138,6 +173,7 @@
                             let dataPegawai = JSON.parse(main.ambilDb('db'));
                             tblNama.innerHTML = dataPegawai.nama;
                             tblNip.innerHTML = dataPegawai.nip;
+                            loading.setAttribute("style", "display:none");
                             wrapbody.setAttribute("style", "visibility:visible")
                         }
                         simpanDb();
