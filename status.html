@@ -289,6 +289,7 @@
         let wrapterkirim = document.querySelector(".wrapterkirim");
         let tutup = document.querySelector("#tutup");
         let textmasukanloading = document.querySelector("#textmasukanloading");
+        let loading = document.querySelector(".loading");
 
         if (main.ambilDb('nip') == null || main.ambilDb('nip') == '') {
             location.assign("index.html");
@@ -298,7 +299,6 @@
                     if (JSON.parse(data) == false) {
                         location.assign("index.html");
                     } else {
-                        let loading = document.querySelector(".loading");
                         let tblNama = document.querySelector("#tblNama");
                         let tblNip = document.querySelector("#tblNip");
                         async function simpanDb() {
@@ -320,6 +320,8 @@
         logoutButton.addEventListener('click', keluar);
 
         function keluar() {
+            loading.setAttribute("style", "display:block");
+            wrapbody.setAttribute("style", "display:none")
             main.logout()
                 .then((data) => {
                     if (data == 'false') {
@@ -340,8 +342,9 @@
                 username: JSON.parse(main.ambilDb("db")).nip,
                 masukan: textmasukan.value
             }
-            textmasukanloading.setAttribute("style", "display:inline-block");
+
             async function masukan() {
+                textmasukanloading.setAttribute("style", "display:inline-block");
                 await main.kirimdata(dataku);
                 boxmasukan.setAttribute('style', 'display:none');
                 wrapterkirim.setAttribute("style", "display:block");
