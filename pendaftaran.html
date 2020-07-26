@@ -209,10 +209,15 @@
                     <td>:</td>
                     <td id="tblNip"></td>
                 </tr>
+                   <tr>
+                    <td>SK Terakhir</td>
+                    <td>:</td>
+                    <td id="skTerakhir"><input id="fileku" type="file"></td>
+                </tr>
                 
             </table>
         </div>
-        <button class="mendaftar" id="mendaftar">Simpan</button>
+        <button class="mendaftar" id="simpan">Simpan</button>
         <div class="wrapfooter">
             <p class="footer">Naik Pangkat dan Kenaikan Gaji Berkala secara online diselenggarakan untuk mempermudah setiap ASN dalam melakukan proses pendaftaran dan mempercepat proses administrasi kepegawaian di lingkup Dinas Pendidikan dan Kebudayaan Kota Parepare</p>
         </div>
@@ -231,6 +236,7 @@
         let tutup = document.querySelector("#tutup");
         let textmasukanloading = document.querySelector("#textmasukanloading");
         let loading = document.querySelector(".loading");
+        let simpan = document.querySelector("#simpan");
         
         masukan.addEventListener('click', () => location.assign('status.html'));
         
@@ -258,7 +264,12 @@
                     }
                 });
         }
-
+/////////////////////simpan/////////////////////////////
+        simpan.addEventListener('click', simpanBerkas);
+        
+        function simpanBerkas(){
+            
+        }
 ///////////////////keluar//////////////////////////////////////////////
         logoutButton.addEventListener('click', keluar);
 
