@@ -271,8 +271,7 @@
                 </tr>
             </table>
         </div>
-        <button class="mendaftar" id="mendaftar">Mendaftar</button>
-        <button class="mendaftar" id="edit">Edit Akun</button>
+        <button class="mendaftar" id="mendaftarBtn">Mendaftar</button>
         <div class="wrapfooter">
             <p class="footer">Naik Pangkat dan Kenaikan Gaji Berkala secara online diselenggarakan untuk mempermudah setiap ASN dalam melakukan proses pendaftaran dan mempercepat proses administrasi kepegawaian di lingkup Dinas Pendidikan dan Kebudayaan Kota Parepare</p>
         </div>
@@ -281,6 +280,7 @@
     <p id="syuaib">Code/Design By syuaib</p>
     <script src="./js/main.js"></script>
     <script>
+        let mendaftarBtn = document.querySelector("#mendaftarBtn");
         let logoutButton = document.querySelector(".logoutButton");
         let wrapbody = document.querySelector(".wrapbody");
         let masukan = document.querySelector(".masukan");
@@ -352,12 +352,15 @@
             };
 
             masukan();
-        })
+        });
 
-
+       mendaftarBtn.addEventListener('click', () => {
+            location.assign('mendaftar.html');
+       });
+        
         tutup.addEventListener('click', () => {
             wrapterkirim.setAttribute('style', 'display:none');
-        })
+        });
     </script>
 </body>
 
