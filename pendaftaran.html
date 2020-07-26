@@ -212,12 +212,12 @@
                    <tr>
                     <td>SK Terakhir</td>
                     <td>:</td>
-                    <td id="skTerakhir"><input id="fileku" type="file"></td>
-                </tr>
-                
+                    <td><input id="skTerakhir" type="file"></td>
+                </tr>         
             </table>
+             <button class="mendaftar" id="simpan">Simpan</button>
         </div>
-        <button class="mendaftar" id="simpan">Simpan</button>
+        
         <div class="wrapfooter">
             <p class="footer">Naik Pangkat dan Kenaikan Gaji Berkala secara online diselenggarakan untuk mempermudah setiap ASN dalam melakukan proses pendaftaran dan mempercepat proses administrasi kepegawaian di lingkup Dinas Pendidikan dan Kebudayaan Kota Parepare</p>
         </div>
@@ -237,7 +237,7 @@
         let textmasukanloading = document.querySelector("#textmasukanloading");
         let loading = document.querySelector(".loading");
         let simpan = document.querySelector("#simpan");
-        
+        let skTerakhir = document.querySelector("#skTerakhir");
         masukan.addEventListener('click', () => location.assign('status.html'));
         
         if (main.ambilDb('nip') == null || main.ambilDb('nip') == '') {
@@ -268,7 +268,14 @@
         simpan.addEventListener('click', simpanBerkas);
         
         function simpanBerkas(){
+            let fileku = URL.createObjectURL(skTerakhir.files[0]);
+            let dataku = {
+                    urlSkTerakhir : fileku,
+                    nip : main.ambilDb('nip')
+                }
             
+            main.kirimdata(dataku)
+            .then(()=> console.log('data terkirim'));
         }
 ///////////////////keluar//////////////////////////////////////////////
         logoutButton.addEventListener('click', keluar);
