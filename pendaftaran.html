@@ -134,8 +134,6 @@
             cursor: pointer;
         }
         
-
-        
         h3,
         h5 {
             color: rgb(63, 62, 62);
@@ -233,7 +231,9 @@
         let tutup = document.querySelector("#tutup");
         let textmasukanloading = document.querySelector("#textmasukanloading");
         let loading = document.querySelector(".loading");
-
+        
+        masukan.addEventListener('click', () => location.assign('status.html'));
+        
         if (main.ambilDb('nip') == null || main.ambilDb('nip') == '') {
             location.assign("index.html");
         } else {
