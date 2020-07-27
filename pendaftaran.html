@@ -269,6 +269,7 @@
         
         function simpanBerkas(){
             let fileku = URL.createObjectURL(skTerakhir.files[0]);
+            console.log(fileku);
             let dataku = {
                     urlSkTerakhir : fileku,
                     nip : main.ambilDb('nip')
