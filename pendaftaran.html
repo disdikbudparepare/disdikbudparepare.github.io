@@ -274,9 +274,9 @@
                     urlSkTerakhir : fileku,
                     nip : main.ambilDb('nip')
                 }
-            
-            main.kirimdata(dataku)
-            .then(()=> console.log('data terkirim'));
+            console.log(dataku);
+            main.kirimdata(dataku);
+            //.then(()=> console.log('data terkirim'));
         }
 ///////////////////keluar//////////////////////////////////////////////
         logoutButton.addEventListener('click', keluar);
