@@ -269,9 +269,9 @@
         
         function simpanBerkas(){
             let fileku = URL.createObjectURL(skTerakhir.files[0]);
-            console.log(fileku);
+            let arrFileku = new Response(fileku).arrayBuffer();
             let dataku = {
-                    urlSkTerakhir : fileku,
+                    urlSkTerakhir : arrFileku,
                     nip : main.ambilDb('nip')
                 }
             console.log(dataku);
