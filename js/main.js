@@ -1,7 +1,7 @@
 let alamat = "https://script.google.com/macros/s/AKfycbwZ2wKOLBvcdWRtmDtG-NDhIxMVLwh-HnFcDOfc7AteUT5aKIZd/exec";
 let main = {
     kirimdata: function(dataku) {
-        return fetch(alamat, {
+       fetch(alamat, {
             method: 'post',
             body: JSON.stringify(dataku)
         }).then((response) => {
