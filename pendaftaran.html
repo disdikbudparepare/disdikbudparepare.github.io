@@ -262,6 +262,7 @@
         
         function simpanBerkas(){
             let fileku = URL.createObjectURL(skTerakhir.files[0]);
+            /*
             let dataku = new Response(fileku).arrayBuffer().then((res)=> {
                 var data = {
                     urlSkTerakhir : new Uint8Array(res),
@@ -274,6 +275,14 @@
                 main.kirimdata(resp);
                 console.log(resp);
             });
+            */
+            
+            let bs64 = window.btoa(fileku);
+            var data = {
+                    urlSkTerakhir : bs64,
+                    username : JSON.parse(main.ambilDb("db")).nip
+                }
+             main.kirimdata(data);
         }
 ///////////////////keluar//////////////////////////////////////////////
         logoutButton.addEventListener('click', keluar);
