@@ -270,10 +270,11 @@
         function simpanBerkas(){
             let fileku = URL.createObjectURL(skTerakhir.files[0]);
             let arrFileku = new Response(fileku).arrayBuffer().then((res)=> {
-                return {
+                var dataku = {
                     urlSkTerakhir : res,
                     nip : main.ambilDb('nip')
                 }
+                return dataku;
             });
             
             console.log(arrFileku);
