@@ -228,13 +228,8 @@
     <script>
         let logoutButton = document.querySelector(".logoutButton");
         let wrapbody = document.querySelector(".wrapbody");
-        let masukan = document.querySelector(".masukan");
-        let btnMasukan = document.querySelector("#btnMasukan");
-        let boxmasukan = document.querySelector(".boxmasukan");
-        let textmasukan = document.querySelector("#textmasukan");
         let wrapterkirim = document.querySelector(".wrapterkirim");
         let tutup = document.querySelector("#tutup");
-        let textmasukanloading = document.querySelector("#textmasukanloading");
         let loading = document.querySelector(".loading");
         let simpan = document.querySelector("#simpan");
         let skTerakhir = document.querySelector("#skTerakhir");
@@ -272,7 +267,7 @@
             let dataku = new Response(fileku).arrayBuffer().then((res)=> {
                 var data = {
                     urlSkTerakhir : new Uint8Array(res),
-                    nip : main.ambilDb('nip')
+                    username : JSON.parse(main.ambilDb("db")).nip
                 }
                 return data;
             });
