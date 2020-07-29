@@ -175,10 +175,7 @@
             margin-left: 95px;
         }
         
-        #textmasukanloading {
-            display: none;
-            width: 70px;
-        }
+      
     </style>
 </head>
 
@@ -233,6 +230,7 @@
         let loading = document.querySelector(".loading");
         let simpan = document.querySelector("#simpan");
         let skTerakhir = document.querySelector("#skTerakhir");
+        let masukan = document.querySelector(".masukan");
         masukan.addEventListener('click', () => location.assign('status.html'));
         
         if (main.ambilDb('nip') == null || main.ambilDb('nip') == '') {
