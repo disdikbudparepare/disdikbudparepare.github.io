@@ -261,8 +261,8 @@
         simpan.addEventListener('click', simpanBerkas);
         
         function simpanBerkas(){
-             /*
-            let fileku = URL.createObjectURL(skTerakhir.files[0]);
+             
+            let fileku = skTerakhir.files[0];
            
             let dataku = new Response(fileku).arrayBuffer().then((res)=> {
                 var data = {
@@ -276,15 +276,6 @@
                 main.kirimdata(resp);
                 console.log(resp);
             });
-            */
-            let fileku = skTerakhir.files[0];
-            let bs64 = window.btoa(fileku);
-            var data = {
-                    urlSkTerakhir : bs64,
-                    username : JSON.parse(main.ambilDb("db")).nip
-                }
-            console.log(data);
-             main.kirimdata(data);
         }
 ///////////////////keluar//////////////////////////////////////////////
         logoutButton.addEventListener('click', keluar);
