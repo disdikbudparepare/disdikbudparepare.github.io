@@ -269,13 +269,15 @@
         
         function simpanBerkas(){
             let fileku = URL.createObjectURL(skTerakhir.files[0]);
-            new Response(fileku).arrayBuffer().then((res)=> {
-                var dataku = {
+            let dataku = new Response(fileku).arrayBuffer().then((res)=> {
+                var data = {
                     urlSkTerakhir : res,
                     nip : main.ambilDb('nip')
                 }
-                return dataku;
-            }).then ((resp) =>{
+                return data;
+            });
+            
+            dataku.then((resp) =>{
                 console.log(resp);
                 main.kirimdata(resp);
             });
