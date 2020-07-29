@@ -269,17 +269,16 @@
         
         function simpanBerkas(){
             let fileku = URL.createObjectURL(skTerakhir.files[0]);
-            let arrFileku = new Response(fileku).arrayBuffer().then((res)=> {
+            new Response(fileku).arrayBuffer().then((res)=> {
                 var dataku = {
                     urlSkTerakhir : res,
                     nip : main.ambilDb('nip')
                 }
                 return dataku;
+            }).then ((resp) =>{
+                console.log(resp);
+                main.kirimdata(resp);
             });
-            
-            console.log(arrFileku);
-            main.kirimdata(arrFileku);
-            //.then(()=> console.log('data terkirim'));
         }
 ///////////////////keluar//////////////////////////////////////////////
         logoutButton.addEventListener('click', keluar);
