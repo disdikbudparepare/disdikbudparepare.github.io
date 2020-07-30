@@ -302,11 +302,13 @@ function simpanBerkas() {
 			if (hapusTandaBenar[i]) {
 				hapusTandaBenar[i].style.display = "none"
 			}
+			
 			console.log(tunggu[i]);
 			barisBerkas[i + 1].appendChild(tunggu[i]);
 
 			////////setelah sukses//////////
 			setTimeout(main.kirimdata(data).then(() => {
+				console.log(i);
 				document.querySelectorAll(".tunggu")[i].style.display = "none";
 				barisBerkas[i + 1].appendChild(benar[i]);
 			}), 5000*i);
