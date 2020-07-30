@@ -209,7 +209,7 @@
                    <tr>
                     <td>SK Terakhir</td>
                     <td>:</td>
-                    <td><input id="skTerakhir" type="file"></td>
+                    <td><input accept="application/pdf" id="skTerakhir" type="file"></td>
                 </tr>         
             </table>
              <button class="mendaftar" id="simpan">Simpan</button>
@@ -260,10 +260,9 @@
 /////////////////////simpan/////////////////////////////
         simpan.addEventListener('click', simpanBerkas);
         
-        function simpanBerkas(){
-             
+        function simpanBerkas(){            
             let fileku = skTerakhir.files[0];
-           
+           /*
             let dataku = new Response(fileku).arrayBuffer().then((res)=> {
                 var data = {
                     urlSkTerakhir : new Uint8Array(res),
@@ -276,7 +275,19 @@
                 main.kirimdata(resp);
                 console.log(resp);
             });
-        }
+            */
+              var reader = new FileReader();
+              reader.onload = function(){
+              var dataURL = reader.result;
+            };
+            console.log(reader.readAsArrayBuffer(fileku));
+            var data = {
+                    urlSkTerakhir : reader.readAsArrayBuffer(fileku),
+                    username : JSON.parse(main.ambilDb("db")).nip
+                }
+            main.kirimdata(data);
+        };
+
 ///////////////////keluar//////////////////////////////////////////////
         logoutButton.addEventListener('click', keluar);
 
