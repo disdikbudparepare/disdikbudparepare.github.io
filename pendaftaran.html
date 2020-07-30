@@ -271,39 +271,44 @@
 /////////////////////simpan/////////////////////////////
         simpan.addEventListener('click', simpanBerkas);
         
-        function simpanBerkas(){            
-            let fileku = berkas[0].files[0];
-          
-                let loading = new Image(20,20);
+        function simpanBerkas(){     
+            var i;
+                for (i = 0; i < berkas.length; i++) {
+                    let fileku = berkas[i].files[i];
+                    let nmBerkas = document.querySelectorAll("tr")[i+2].cells[0].innerText;
+                    let loading = new Image(20,20);
                       loading.src = "./image/Eclipse.svg";
                       loading.className = "tunggu";
-                let benar = new Image(20,20)
+                    let benar = new Image(20,20)
                       benar.src = "./image/benar.png";
                       benar.className = "benar";
-                var reader = new FileReader();
+                    var reader = new FileReader();
             
-                reader.onload = function(){
-                  var dataArr = reader.result.replace(/^data:.+;base64,/, '');
-              
-                  var data = {
-                    urlSkTerakhir : dataArr,
-                    username : JSON.parse(main.ambilDb("db")).nip
-                    }
-                  /////////sebelum sukses//////////
-                  let hapusTandaBenar = document.querySelectorAll(".benar");
-                    if(hapusTandaBenar[0]){
-                        hapusTandaBenar[0].style.display = "none"
-                    }
-                  let barisBerkas = document.querySelectorAll("tr");
-                      barisBerkas[2].appendChild(loading);
-                  
-                  ////////setelah sukses//////////
-                  main.kirimdata(data).then(()=>{
-                  document.querySelectorAll(".tunggu")[0].style.display = "none";
-                      barisBerkas[2].appendChild(benar);
-                  });
-            };
-            reader.readAsDataURL(fileku);
+                    reader.onload = function(){
+                      var dataArr = reader.result.replace(/^data:.+;base64,/, '');
+
+                      var data = {
+                        urlSkTerakhir : dataArr,
+                        username : JSON.parse(main.ambilDb("db")).nip,
+                        namaBerkas : nmBerkas
+                        }
+                      /////////sebelum sukses//////////
+                      let hapusTandaBenar = document.querySelectorAll(".benar");
+                        if(hapusTandaBenar[i]){
+                            hapusTandaBenar[i].style.display = "none"
+                        }
+                      let barisBerkas = document.querySelectorAll("tr");
+                          barisBerkas[i+2].appendChild(loading);
+
+                      ////////setelah sukses//////////
+                      main.kirimdata(data).then(()=>{
+                      document.querySelectorAll(".tunggu")[i].style.display = "none";
+                          barisBerkas[i+2].appendChild(benar);
+                      });
+                    
+                    };
+                reader.readAsDataURL(fileku);
+               };
         };
 
 ///////////////////keluar//////////////////////////////////////////////
