@@ -274,13 +274,15 @@
         
 function simpanBerkas() {
 	var i;
+	var tunggu = [];
+	var benar = [];
 	for (i = 0; i < berkas.length; i++) {
-		var tunggu = new Image(20, 20);
-			tunggu.src = "./image/Eclipse.svg";
-			tunggu.className = "tunggu";
-		var benar = new Image(20, 20)
-			benar.src = "./image/benar.png";
-			benar.className = "benar";
+		var tunggu[i] = new Image(20, 20);
+			tunggu[i].src = "./image/Eclipse.svg";
+			tunggu[i].className = "tunggu";
+		var benar[i] = new Image(20, 20)
+			benar[i].src = "./image/benar.png";
+			benar[i].className = "benar";
 		var fileku = berkas[i].files[0];
 		var nmBerkas = document.querySelectorAll("tr")[i + 1].cells[0].innerText;
 
@@ -300,16 +302,13 @@ function simpanBerkas() {
 			if (hapusTandaBenar[i]) {
 				hapusTandaBenar[i].style.display = "none"
 			}
-			console.log(barisBerkas);
-			console.log(i);
-			console.log(barisBerkas[i + 1]);
-			console.log(tunggu);
-			barisBerkas[i + 1].appendChild(tunggu);
+			console.log(tunggu[i]);
+			barisBerkas[i + 1].appendChild(tunggu[i]);
 
 			////////setelah sukses//////////
 			main.kirimdata(data).then(() => {
 				document.querySelectorAll(".tunggu")[i].style.display = "none";
-				barisBerkas[i + 1].appendChild(benar);
+				barisBerkas[i + 1].appendChild(benar[i]);
 			});
 
 		};
