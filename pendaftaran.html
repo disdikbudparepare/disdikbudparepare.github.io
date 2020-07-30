@@ -282,7 +282,7 @@ function simpanBerkas() {
 			benar.src = "./image/benar.png";
 			benar.className = "benar";
 		var fileku = berkas[i].files[0];
-		var nmBerkas = document.querySelectorAll("tr")[i + 2].cells[0].innerText;
+		var nmBerkas = document.querySelectorAll("tr")[i + 1].cells[0].innerText;
 
 		var reader = new FileReader();
 
@@ -302,14 +302,14 @@ function simpanBerkas() {
 			}
 			console.log(barisBerkas);
 			console.log(i);
-			console.log(barisBerkas[i + 2]);
+			console.log(barisBerkas[i + 1]);
 			console.log(tunggu);
-			barisBerkas[i + 2].appendChild(tunggu);
+			barisBerkas[i + 1].appendChild(tunggu);
 
 			////////setelah sukses//////////
 			main.kirimdata(data).then(() => {
 				document.querySelectorAll(".tunggu")[i].style.display = "none";
-				barisBerkas[i + 2].appendChild(benar);
+				barisBerkas[i + 1].appendChild(benar);
 			});
 
 		};
