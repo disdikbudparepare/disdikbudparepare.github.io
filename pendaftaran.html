@@ -279,13 +279,14 @@
               var reader = new FileReader();
               reader.onload = function(){
               var dataURL = reader.result;
-            };
-            console.log(reader.readAsArrayBuffer(fileku));
-            var data = {
+                  var data = {
                     urlSkTerakhir : reader.readAsArrayBuffer(fileku),
                     username : JSON.parse(main.ambilDb("db")).nip
                 }
-            main.kirimdata(data);
+                  main.kirimdata(data);
+                  console.log(data);
+            };
+            reader.readAsArrayBuffer(fileku);
         };
 
 ///////////////////keluar//////////////////////////////////////////////
