@@ -1,344 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <title>Pendaftaran</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
-        
-        html {
-            font-family: 'Roboto';
-        }
-        
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-        }
-        
-        .logoutWrap {
-            text-align: right;
-            background-color: rgb(48, 156, 214);
-            position: sticky;
-            position: -webkit-sticky;
-            top: 0;
-            margin: 0;
-            z-index: 1;
-        }
-        
-        .logoutButton {
-            border-left: oldlace 2px solid;
-            background-color: rgb(226, 81, 81);
-        }
-        
-        .wrapheader {
-            padding: 15px;
-            /* background-color: #1fc8db;
-            color: floralwhite; */
-            height: 150px;
-            border-bottom: 2px solid whitesmoke;
-            display: table-cell;
-            vertical-align: middle;
-        }
-        
-        .wrapbody {
-            visibility: hidden;
-            padding: 5%;
-            overflow: auto;
-        }
-        
-        .wrapfooter {
-            border-top: whitesmoke 3px solid;
-            background-color: rgb(48, 156, 214);
-            position: relative;
-            top: 55vh;
-            padding: 10px;
-            color: rgb(255, 255, 255);
-            z-index: -1;
-        }
-        
-        td {
-            padding: 2%;
-            text-align: left;
-        }
-        
-        td:nth-child(event) {
-            text-align: right;
-        }
-        
-        .title {
-            font-size: 3.5vw;
-            line-height: 150%;
-        }
-        
-        .footer {
-            font-size: small;
-            line-height: 150%;
-        }
-        
-        table {
-            min-width: 375px;
-            max-width: 500px;
-        }
-        
-        .loading {
-            text-align: center;
-            position: sticky;
-            top: 40vh;
-        }
-        
-        .mendaftar {
-            padding: 10px;
-            border: none;
-            outline-style: none;
-            color: rgb(255, 255, 255);
-            background-color: rgb(72, 155, 33);
-            margin-left: 10%;
-            cursor: pointer;
-            -webkit-box-shadow: 3px 3px 7px 1px #4F4F4F;
-            box-shadow: 3px 3px 7px 1px #4F4F4F;
-        }
-        
-        .mendaftar:hover {
-            -webkit-box-shadow: 0px 10px 13px -7px #000000, 3px 3px 7px 1px rgba(79, 79, 79, 0);
-            box-shadow: 0px 10px 13px -7px #000000, 3px 3px 7px 1px rgba(79, 79, 79, 0);
-        }
-        
-        #syuaib {
-            position: fixed;
-            right: 2%;
-            bottom: 0;
-            font-size: smaller;
-            color: rgb(219, 219, 219);
-            text-shadow: 1px 1px 2px #4F2215;
-        }
-        
-        ul {
-            margin: 0;
-        }
-        
-        li {
-            list-style: none;
-            display: inline-block;
-            margin: 0;
-            padding: 20px;
-            color: rgb(255, 255, 255);
-            cursor: pointer;
-        }
-        
-        h3,
-        h5 {
-            color: rgb(63, 62, 62);
-        }
-        
-        .gmd {
-            -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-            -moz-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-            -ms-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-            -o-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-        }
-        
-        .backform {
-            background-color: rgba(255, 255, 255, 0.75);
-        }
-        
-        .wrapterkirim {
-            width: 100%;
-            height: 100%;
-            /* background-color: grey; */
-            position: fixed;
-            z-index: 2;
-            /* text-align: center; */
-            display: none;
-        }
-        
-        .terkirim {
-            top: 40%;
-            position: relative;
-        }
-        
-        .terkirim button {
-            display: block;
-            padding: 15px;
-            background-color: rgb(72, 155, 33);
-            color: whitesmoke;
-            border: none;
-            margin-left: 95px;
-        }
-        
-      
-    </style>
-</head>
+      * {
+        box-sizing: border-box;
+      }
 
-<body>
+      html {
+        font-family: "Roboto";
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+
+      .logoutWrap {
+        text-align: right;
+        background-color: rgb(48, 156, 214);
+        position: sticky;
+        position: -webkit-sticky;
+        top: 0;
+        margin: 0;
+        z-index: 1;
+      }
+
+      .logoutButton {
+        border-left: oldlace 2px solid;
+        background-color: rgb(226, 81, 81);
+      }
+
+      .wrapheader {
+        padding: 15px;
+        /* background-color: #1fc8db;
+            color: floralwhite; */
+        height: 150px;
+        border-bottom: 2px solid whitesmoke;
+        display: table-cell;
+        vertical-align: middle;
+      }
+
+      .wrapbody {
+        visibility: hidden;
+        padding: 5%;
+        overflow: auto;
+      }
+
+      .wrapfooter {
+        border-top: whitesmoke 3px solid;
+        background-color: rgb(48, 156, 214);
+        position: relative;
+        top: 55vh;
+        padding: 10px;
+        color: rgb(255, 255, 255);
+        z-index: -1;
+      }
+
+      td {
+        padding: 2%;
+        text-align: left;
+        vertical-align: middle;
+      }
+
+      td:nth-child(event) {
+        text-align: right;
+      }
+
+      .title {
+        font-size: 3.5vw;
+        line-height: 150%;
+      }
+
+      .footer {
+        font-size: small;
+        line-height: 150%;
+      }
+
+      table {
+        min-width: 475px;
+        max-width: 550px;
+      }
+
+      .loading {
+        text-align: center;
+        position: sticky;
+        top: 40vh;
+      }
+
+      .mendaftar {
+        padding: 10px;
+        border: none;
+        outline-style: none;
+        color: rgb(255, 255, 255);
+        background-color: rgb(72, 155, 33);
+        margin-left: 1%;
+        margin-top: 5%;
+        cursor: pointer;
+        -webkit-box-shadow: 3px 3px 7px 1px #4f4f4f;
+        box-shadow: 3px 3px 7px 1px #4f4f4f;
+      }
+
+      .mendaftar:hover {
+        -webkit-box-shadow: 0px 10px 13px -7px #000000,
+          3px 3px 7px 1px rgba(79, 79, 79, 0);
+        box-shadow: 0px 10px 13px -7px #000000,
+          3px 3px 7px 1px rgba(79, 79, 79, 0);
+      }
+
+      #syuaib {
+        position: fixed;
+        right: 2%;
+        bottom: 0;
+        font-size: smaller;
+        color: rgb(219, 219, 219);
+        text-shadow: 1px 1px 2px #4f2215;
+      }
+
+      ul {
+        margin: 0;
+      }
+
+      li {
+        list-style: none;
+        display: inline-block;
+        margin: 0;
+        padding: 20px;
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+      }
+
+      h3,
+      h5 {
+        color: rgb(63, 62, 62);
+      }
+
+      .gmd {
+        -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+          0 10px 10px rgba(0, 0, 0, 0.22);
+        -moz-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+          0 10px 10px rgba(0, 0, 0, 0.22);
+        -ms-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+          0 10px 10px rgba(0, 0, 0, 0.22);
+        -o-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+          0 10px 10px rgba(0, 0, 0, 0.22);
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+          0 10px 10px rgba(0, 0, 0, 0.22);
+      }
+
+      .backform {
+        background-color: rgba(255, 255, 255, 0.75);
+      }
+
+      .wrapterkirim {
+        width: 100%;
+        height: 100%;
+        /* background-color: grey; */
+        position: fixed;
+        z-index: 2;
+        /* text-align: center; */
+        display: none;
+      }
+
+      .terkirim {
+        top: 40%;
+        position: relative;
+      }
+
+      .terkirim button {
+        display: block;
+        padding: 15px;
+        background-color: rgb(72, 155, 33);
+        color: whitesmoke;
+        border: none;
+        margin-left: 95px;
+      }
+
+      #tdnama{
+          width:50%;
+      }
+      @media screen and (max-width: 437px) {
+        table {
+          min-width: 390px;
+          max-width: 500px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
     <div class="logoutWrap">
-        <ul>
-            <li class="masukan">Beranda</li>
-            <li class="logoutButton">KELUAR</li>
-        </ul>
+      <ul>
+        <li class="masukan">Beranda</li>
+        <li class="logoutButton">KELUAR</li>
+      </ul>
     </div>
     <div class="wrap">
-        <div class="wrapheader">
-            <span class="title">DINAS PENDIDIKAN DAN KEBUDAYAAN KOTA PAREPARE
-                <br>BIDANG KEPEGAWAIAN</span>
-        </div>
-        <div class="loading">
-            <img src="./image/Eclipse.svg" alt="loading">
-        </div>
-        <div class="wrapbody">
-            <table id="nama_nip">
-                <tr>
-                    <td style="width:40%">NAMA</td>
-                    <td style="width:2%">:</td>
-                    <td style="width:58%" id="tblNama"></td>
-                </tr>
-                <tr>
-                    <td>NIP</td>
-                    <td>:</td>
-                    <td id="tblNip"></td>
-                </tr>
-                <tr>
-                    <td>SK Terakhir</td>
-                    <td>:</td>
-                    <td><input accept="application/pdf" id="skTerakhir" type="file"></td>
-                </tr>  
-                <tr>
-                    <td>PAK Terakhir</td>
-                    <td>:</td>
-                    <td><input accept="application/pdf" id="pakTerakhir" type="file"></td>
-                </tr>  
-                <tr>
-                    <td>SKP dua tahun terakhir</td>
-                    <td>:</td>
-                    <td><input accept="application/pdf" id="skpTerakhir" type="file"></td>
-                </tr>  
-            </table>
-             <button class="mendaftar" id="simpan">Simpan</button>
-        </div>
-        
-        <div class="wrapfooter">
-            <p class="footer">Naik Pangkat dan Kenaikan Gaji Berkala secara online diselenggarakan untuk mempermudah setiap ASN dalam melakukan proses pendaftaran dan mempercepat proses administrasi kepegawaian di lingkup Dinas Pendidikan dan Kebudayaan Kota Parepare</p>
-        </div>
+      <div class="wrapheader">
+        <span class="title"
+          >DINAS PENDIDIKAN DAN KEBUDAYAAN KOTA PAREPARE <br />BIDANG
+          KEPEGAWAIAN</span
+        >
+      </div>
+      <div class="loading">
+        <img src="./image/Eclipse.svg" alt="loading" />
+      </div>
+      <div class="wrapbody">
+        <table id="nama_nip">
+          <tr>
+            <td style="width: 40%;">NAMA</td>
+            <td style="width: 2%;">:</td>
+            <td style="width: 58%;" id="tblNama"></td>
+          </tr>
+          <tr>
+            <td>NIP</td>
+            <td>:</td>
+            <td id="tblNip"></td>
+          </tr>
+          <tr>
+            <td>SK Terakhir</td>
+            <td>:</td>
+            <td>
+              <input accept="application/pdf" id="skTerakhir" type="file" />
+            </td>
+          </tr>
+          <tr>
+            <td>PAK Terakhir</td>
+            <td>:</td>
+            <td>
+              <input accept="application/pdf" id="pakTerakhir" type="file" />
+            </td>
+          </tr>
+          <tr>
+            <td>SKP dua tahun terakhir</td>
+            <td>:</td>
+            <td>
+              <input accept="application/pdf" id="skpTerakhir" type="file" />
+            </td>
+          </tr>
+        </table>
+        <button class="mendaftar" id="simpan">Simpan</button>
+      </div>
+
+      <div class="wrapfooter">
+        <p class="footer">
+          Naik Pangkat dan Kenaikan Gaji Berkala secara online diselenggarakan
+          untuk mempermudah setiap ASN dalam melakukan proses pendaftaran dan
+          mempercepat proses administrasi kepegawaian di lingkup Dinas
+          Pendidikan dan Kebudayaan Kota Parepare
+        </p>
+      </div>
     </div>
 
     <p id="syuaib">Code/Design By syuaib</p>
     <script src="./js/main.js"></script>
     <script>
-        let logoutButton = document.querySelector(".logoutButton");
-        let wrapbody = document.querySelector(".wrapbody");
-        let wrapterkirim = document.querySelector(".wrapterkirim");
-        let tutup = document.querySelector("#tutup");
-        let loading = document.querySelector(".loading");
-        let simpan = document.querySelector("#simpan");
-        let skTerakhir = document.querySelector("#skTerakhir");
-	let barisBerkas = document.querySelectorAll("tr");
-        let berkas = document.querySelectorAll("input");
-        let masukan = document.querySelector(".masukan");
-        masukan.addEventListener('click', () => location.assign('status.html'));
-        
-        if (main.ambilDb('nip') == null || main.ambilDb('nip') == '') {
+      let logoutButton = document.querySelector(".logoutButton");
+      let wrapbody = document.querySelector(".wrapbody");
+      let wrapterkirim = document.querySelector(".wrapterkirim");
+      let tutup = document.querySelector("#tutup");
+      let loading = document.querySelector(".loading");
+      let simpan = document.querySelector("#simpan");
+      let skTerakhir = document.querySelector("#skTerakhir");
+      let barisBerkas = document.querySelectorAll("tr");
+      let berkas = document.querySelectorAll("input");
+      let masukan = document.querySelector(".masukan");
+      masukan.addEventListener("click", () => location.assign("status.html"));
+
+      if (main.ambilDb("nip") == null || main.ambilDb("nip") == "") {
+        location.assign("index.html");
+      } else {
+        main.cekLogin(main.ambilDb("nip")).then((data) => {
+          if (JSON.parse(data) == false) {
             location.assign("index.html");
-        } else {
-            main.cekLogin(main.ambilDb('nip'))
-                .then((data) => {
-                    if (JSON.parse(data) == false) {
-                        location.assign("index.html");
-                    } else {
-                        let tblNama = document.querySelector("#tblNama");
-                        let tblNip = document.querySelector("#tblNip");
-                        async function simpanDb() {
-                            if (main.ambilDb('db') == null || main.ambilDb('db') == '') {
-                                await main.simpanDb(data);
-                            };
-                            let dataPegawai = JSON.parse(main.ambilDb('db'));
-                            tblNama.innerHTML = dataPegawai.nama;
-                            tblNip.innerHTML = dataPegawai.nip;
-                            loading.setAttribute("style", "display:none");
-                            wrapbody.setAttribute("style", "visibility:visible")
-                        }
-                        simpanDb();
-                    }
-                });
-        }
-/////////////////////simpan/////////////////////////////
-        simpan.addEventListener('click', simpanBerkas);
-        
-function simpanBerkas() {
-	var i;
-	var tunggu = [];
-	var benar = [];
-	for (i = 0; i < berkas.length; i++) {
-		setTimeout(()=>{
-		tunggu[i] = new Image(20, 20);
-			tunggu[i].src = "./image/Eclipse.svg";
-			tunggu[i].className = "tunggu";
-		benar[i] = new Image(20, 20)
-			benar[i].src = "./image/benar.png";
-			benar[i].className = "benar";
-		var fileku = berkas[i].files[0];
-		var nmBerkas = document.querySelectorAll("tr")[i + 1].cells[0].innerText;
+          } else {
+            let tblNama = document.querySelector("#tblNama");
+            let tblNip = document.querySelector("#tblNip");
+            async function simpanDb() {
+              if (main.ambilDb("db") == null || main.ambilDb("db") == "") {
+                await main.simpanDb(data);
+              }
+              let dataPegawai = JSON.parse(main.ambilDb("db"));
+              tblNama.innerHTML = dataPegawai.nama;
+              tblNip.innerHTML = dataPegawai.nip;
+              loading.setAttribute("style", "display:none");
+              wrapbody.setAttribute("style", "visibility:visible");
+            }
+            simpanDb();
+          }
+        });
+      }
+      /////////////////////simpan/////////////////////////////
+      simpan.addEventListener("click", simpanBerkas);
+      var i;
+      var tunggu = [];
+      var benar = [];
+      function simpanBerkas() {
+        kirim(0)
+          .then(kirim(1))
+          .then(kirim(2))
+          .then(() => {
+            let hapusTunggu = document.querySelectorAll(".tunggu");
+            if (hapusTunggu.length != 0) {
+              for (i = 0; i < hapusTunggu.length; i++) {
+                hapusTunggu[i].remove();
+              }
+            }
+          });
+      }
 
-		var reader = new FileReader();
+      let kirim = async (nmr) => {
+        tunggu[nmr] = new Image(30, 30);
+        tunggu[nmr].src = "./image/Eclipse.svg";
+        tunggu[nmr].className = "tunggu";
+        tunggu[nmr].style.marginTop = "40%";
+        tunggu[nmr].style.marginBottom = "40%";
+        benar[nmr] = new Image(30, 30);
+        benar[nmr].src = "./image/benar.png";
+        benar[nmr].className = "benar";
+        benar[nmr].style.marginTop = "40%";
+        benar[nmr].style.marginBottom = "40%";
 
-		reader.onload = function () {
-			
-			var dataArr = reader.result.replace(/^data:.+;base64,/, '');
+        var fileku = berkas[nmr].files[0];
+        var reader = new FileReader();
+        var nmBerkas = barisBerkas[nmr + 2].cells[0].innerText;
+        reader.onload = () => {
+          var hapusBenar = document.querySelectorAll(".benar");
+          if (hapusBenar) {
+            for (i = 0; i < hapusBenar.length; i++) {
+              hapusBenar[i].remove();
+            }
+          }
+          barisBerkas[nmr + 2].appendChild(tunggu[nmr]);
+          var dataArr = reader.result.replace(/^data:.+;base64,/, "");
+          var data = {
+            urlSkTerakhir: dataArr,
+            username: JSON.parse(main.ambilDb("db")).nip,
+            namaBerkas: nmBerkas,
+          };
+          main.kirimdata(data).then(() => {
+            document.querySelectorAll(".tunggu")[nmr].style.display = "none";
+            barisBerkas[nmr + 2].appendChild(benar[nmr]);
+          });
+        };
+        reader.readAsDataURL(fileku);
+      };
+      /**********************
+      function simpanBerkas() {
+        var i;
+        var tunggu = [];
+        var benar = [];
+        tunggu[i] = new Image(20, 20);
+        tunggu[i].src = "./image/Eclipse.svg";
+        tunggu[i].className = "tunggu";
+        benar[i] = new Image(20, 20);
+        benar[i].src = "./image/benar.png";
+        benar[i].className = "benar";
+        console.log(i);
+        var fileku = berkas[i].files[0];
+        var nmBerkas = document.querySelectorAll("tr")[i + 1].cells[0]
+          .innerText;
 
-			var data = {
-				urlSkTerakhir: dataArr,
-				username: JSON.parse(main.ambilDb("db")).nip,
-				namaBerkas: nmBerkas
-			}
-			/////////sebelum sukses//////////
-			var hapusTandaBenar = document.querySelectorAll(".benar");
-			if (hapusTandaBenar[i]) {
-				hapusTandaBenar[i].style.display = "none"
-			}
-			console.log(i);
-			console.log(tunggu);
-			console.log(tunggu[i-1]);
-			barisBerkas[i + 1].appendChild(tunggu[i-1]);
+        var reader = new FileReader();
 
-			////////setelah sukses//////////
-			main.kirimdata(data).then(() => {
-				console.log(i);
-				document.querySelectorAll(".tunggu")[i].style.display = "none";
-				barisBerkas[i + 1].appendChild(benar[i]);
-			)};
-			
-		};
-		reader.readAsDataURL(fileku);
-		}), 5000*i);
-	};
-};
+        reader.onload = function () {
+          var dataArr = reader.result.replace(/^data:.+;base64,/, "");
 
-///////////////////keluar//////////////////////////////////////////////
-logoutButton.addEventListener('click', keluar);
+          var data = {
+            urlSkTerakhir: dataArr,
+            username: JSON.parse(main.ambilDb("db")).nip,
+            namaBerkas: nmBerkas,
+          };
+          /////////sebelum sukses//////////
+          var hapusTandaBenar = document.querySelectorAll(".benar");
+          if (hapusTandaBenar[i]) {
+            hapusTandaBenar[i].style.display = "none";
+          }
+          console.log(i);
+          console.log(tunggu);
+          console.log(tunggu[i - 1]);
+          barisBerkas[i + 1].appendChild(tunggu[i - 1]);
 
-function keluar() {
-	loading.setAttribute("style", "display:block");
-	wrapbody.setAttribute("style", "display:none")
-	main.logout()
-		.then((data) => {
-			if (data == 'false') {
-				localStorage.removeItem('db');
-				localStorage.removeItem('nip');
-				location.assign('index.html');
-			}
-		});
-};
+          ////////setelah sukses//////////
+          main.kirimdata(data).then(() => {
+            console.log(i);
+            document.querySelectorAll(".tunggu")[i].style.display = "none";
+            barisBerkas[i + 1].appendChild(benar[i]);
+          });
+        };
+        reader.readAsDataURL(fileku);
+      }
+      ************************************/
+      ///////////////////keluar//////////////////////////////////////////////
+      logoutButton.addEventListener("click", keluar);
 
-       
+      function keluar() {
+        loading.setAttribute("style", "display:block");
+        wrapbody.setAttribute("style", "display:none");
+        main.logout().then((data) => {
+          if (data == "false") {
+            localStorage.removeItem("db");
+            localStorage.removeItem("nip");
+            location.assign("index.html");
+          }
+        });
+      }
     </script>
-</body>
-
+  </body>
 </html>
