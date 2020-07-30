@@ -272,15 +272,11 @@
         simpan.addEventListener('click', simpanBerkas);
         
 function simpanBerkas() {
-	var tunggu = new Image(20, 20);
-		tunggu.src = "./image/Eclipse.svg";
-		tunggu.className = "tunggu";
+	
 	let barisBerkas = document.querySelectorAll("tr");
 	var i;
 	for (i = 0; i < berkas.length; i++) {
-		var benar = new Image(20, 20)
-		benar.src = "./image/benar.png";
-		benar.className = "benar";
+		
 		
 		var fileku = berkas[i].files[0];
 		var nmBerkas = document.querySelectorAll("tr")[i + 2].cells[0].innerText;
@@ -288,6 +284,12 @@ function simpanBerkas() {
 		var reader = new FileReader();
 
 		reader.onload = function () {
+			var tunggu = new Image(20, 20);
+			tunggu.src = "./image/Eclipse.svg";
+			tunggu.className = "tunggu";
+			var benar = new Image(20, 20)
+			benar.src = "./image/benar.png";
+			benar.className = "benar";
 			var dataArr = reader.result.replace(/^data:.+;base64,/, '');
 
 			var data = {
