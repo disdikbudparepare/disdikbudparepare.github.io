@@ -290,7 +290,10 @@
                     username : JSON.parse(main.ambilDb("db")).nip
                     }
                   /////////sebelum sukses//////////
-                  document.querySelectorAll(".benar")[0].style.display = "none";
+                  let hapusTandaBenar = document.querySelectorAll(".benar");
+                    if(hapusTandaBenar){
+                        hapusTandaBenar[0].style.display = "none"
+                    }
                   let barisBerkas = document.querySelectorAll("tr");
                       barisBerkas[2].appendChild(loading);
                   
