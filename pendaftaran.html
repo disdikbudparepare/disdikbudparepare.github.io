@@ -272,14 +272,17 @@
         simpan.addEventListener('click', simpanBerkas);
         
 function simpanBerkas() {
-	let loading = new Image(20, 20);
-	loading.src = "./image/Eclipse.svg";
-	loading.className = "tunggu";
-	let benar = new Image(20, 20)
-	benar.src = "./image/benar.png";
-	benar.className = "benar";
+	
+	let barisBerkas = document.querySelectorAll("tr");
 	var i;
 	for (i = 0; i < berkas.length; i++) {
+		var loading = new Image(20, 20);
+		loading.src = "./image/Eclipse.svg";
+		loading.className = "tunggu";
+		var benar = new Image(20, 20)
+		benar.src = "./image/benar.png";
+		benar.className = "benar";
+		
 		var fileku = berkas[i].files[0];
 		var nmBerkas = document.querySelectorAll("tr")[i + 2].cells[0].innerText;
 
@@ -298,7 +301,7 @@ function simpanBerkas() {
 			if (hapusTandaBenar[i]) {
 				hapusTandaBenar[i].style.display = "none"
 			}
-			var barisBerkas = document.querySelectorAll("tr");
+			
 			barisBerkas[i + 2].appendChild(loading);
 
 			////////setelah sukses//////////
