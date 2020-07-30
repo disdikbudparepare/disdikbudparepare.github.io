@@ -271,61 +271,62 @@
 /////////////////////simpan/////////////////////////////
         simpan.addEventListener('click', simpanBerkas);
         
-        function simpanBerkas(){     
-            var i;
-                for (i = 0; i < berkas.length; i++) {
-                    let fileku = berkas[i].files[i];
-                    let nmBerkas = document.querySelectorAll("tr")[i+2].cells[0].innerText;
-                    let loading = new Image(20,20);
-                      loading.src = "./image/Eclipse.svg";
-                      loading.className = "tunggu";
-                    let benar = new Image(20,20)
-                      benar.src = "./image/benar.png";
-                      benar.className = "benar";
-                    var reader = new FileReader();
-            
-                    reader.onload = function(){
-                      var dataArr = reader.result.replace(/^data:.+;base64,/, '');
+function simpanBerkas() {
+	let loading = new Image(20, 20);
+	loading.src = "./image/Eclipse.svg";
+	loading.className = "tunggu";
+	let benar = new Image(20, 20)
+	benar.src = "./image/benar.png";
+	benar.className = "benar";
+	var i;
+	for (i = 0; i < berkas.length; i++) {
+		var fileku = berkas[i].files[0];
+		var nmBerkas = document.querySelectorAll("tr")[i + 2].cells[0].innerText;
 
-                      var data = {
-                        urlSkTerakhir : dataArr,
-                        username : JSON.parse(main.ambilDb("db")).nip,
-                        namaBerkas : nmBerkas
-                        }
-                      /////////sebelum sukses//////////
-                      let hapusTandaBenar = document.querySelectorAll(".benar");
-                        if(hapusTandaBenar[i]){
-                            hapusTandaBenar[i].style.display = "none"
-                        }
-                      let barisBerkas = document.querySelectorAll("tr");
-                          barisBerkas[i+2].appendChild(loading);
+		var reader = new FileReader();
 
-                      ////////setelah sukses//////////
-                      main.kirimdata(data).then(()=>{
-                      document.querySelectorAll(".tunggu")[i].style.display = "none";
-                          barisBerkas[i+2].appendChild(benar);
-                      });
-                    
-                    };
-                reader.readAsDataURL(fileku);
-               };
-        };
+		reader.onload = function () {
+			var dataArr = reader.result.replace(/^data:.+;base64,/, '');
+
+			var data = {
+				urlSkTerakhir: dataArr,
+				username: JSON.parse(main.ambilDb("db")).nip,
+				namaBerkas: nmBerkas
+			}
+			/////////sebelum sukses//////////
+			var hapusTandaBenar = document.querySelectorAll(".benar");
+			if (hapusTandaBenar[i]) {
+				hapusTandaBenar[i].style.display = "none"
+			}
+			var barisBerkas = document.querySelectorAll("tr");
+			barisBerkas[i + 2].appendChild(loading);
+
+			////////setelah sukses//////////
+			main.kirimdata(data).then(() => {
+				document.querySelectorAll(".tunggu")[i].style.display = "none";
+				barisBerkas[i + 2].appendChild(benar);
+			});
+
+		};
+		reader.readAsDataURL(fileku);
+	};
+};
 
 ///////////////////keluar//////////////////////////////////////////////
-        logoutButton.addEventListener('click', keluar);
+logoutButton.addEventListener('click', keluar);
 
-        function keluar() {
-            loading.setAttribute("style", "display:block");
-            wrapbody.setAttribute("style", "display:none")
-            main.logout()
-                .then((data) => {
-                    if (data == 'false') {
-                        localStorage.removeItem('db');
-                        localStorage.removeItem('nip');
-                        location.assign('index.html');
-                    }
-                });
-        };
+function keluar() {
+	loading.setAttribute("style", "display:block");
+	wrapbody.setAttribute("style", "display:none")
+	main.logout()
+		.then((data) => {
+			if (data == 'false') {
+				localStorage.removeItem('db');
+				localStorage.removeItem('nip');
+				location.assign('index.html');
+			}
+		});
+};
 
        
     </script>
