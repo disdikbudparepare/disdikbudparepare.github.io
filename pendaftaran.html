@@ -272,13 +272,12 @@
         simpan.addEventListener('click', simpanBerkas);
         
 function simpanBerkas() {
-	
+	var tunggu = new Image(20, 20);
+		tunggu.src = "./image/Eclipse.svg";
+		tunggu.className = "tunggu";
 	let barisBerkas = document.querySelectorAll("tr");
 	var i;
 	for (i = 0; i < berkas.length; i++) {
-		var loading = new Image(20, 20);
-		loading.src = "./image/Eclipse.svg";
-		loading.className = "tunggu";
 		var benar = new Image(20, 20)
 		benar.src = "./image/benar.png";
 		benar.className = "benar";
@@ -302,7 +301,7 @@ function simpanBerkas() {
 				hapusTandaBenar[i].style.display = "none"
 			}
 			
-			barisBerkas[i + 2].appendChild(loading);
+			barisBerkas[i + 2].appendChild(tunggu);
 
 			////////setelah sukses//////////
 			main.kirimdata(data).then(() => {
