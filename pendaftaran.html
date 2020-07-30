@@ -210,7 +210,19 @@
                     <td>SK Terakhir</td>
                     <td>:</td>
                     <td><input accept="application/pdf" id="skTerakhir" type="file"></td>
-                </tr>         
+                </tr>  
+                 </tr>
+                   <tr>
+                    <td>PAK Terakhir</td>
+                    <td>:</td>
+                    <td><input accept="application/pdf" id="pakTerakhir" type="file"></td>
+                </tr>  
+                </tr>
+                   <tr>
+                    <td>SKP dua tahun terakhir</td>
+                    <td>:</td>
+                    <td><input accept="application/pdf" id="skpTerakhir" type="file"></td>
+                </tr>  
             </table>
              <button class="mendaftar" id="simpan">Simpan</button>
         </div>
@@ -230,6 +242,7 @@
         let loading = document.querySelector(".loading");
         let simpan = document.querySelector("#simpan");
         let skTerakhir = document.querySelector("#skTerakhir");
+        let berkas = document.querySelectorAll("input");
         let masukan = document.querySelector(".masukan");
         masukan.addEventListener('click', () => location.assign('status.html'));
         
@@ -261,42 +274,32 @@
         simpan.addEventListener('click', simpanBerkas);
         
         function simpanBerkas(){            
-            let fileku = skTerakhir.files[0];
-           /*
-            let dataku = new Response(fileku).arrayBuffer().then((res)=> {
-                var data = {
-                    urlSkTerakhir : new Uint8Array(res),
-                    username : JSON.parse(main.ambilDb("db")).nip
-                }
-                return data;
-            });
+            let fileku = berkas[0].files[0];
+          
+                let loading = new Image(20,20);
+                      loading.src = "./image/Eclipse.svg";
+                      loading.className = "tunggu";
+                let benar = new Image(20,20)
+                      benar.src = "./image/benar.png";
+                      benar.className = "benar";
+                var reader = new FileReader();
             
-            dataku.then((resp) =>{
-                main.kirimdata(resp);
-                console.log(resp);
-            });
-            */
-              var reader = new FileReader();
-            
-              reader.onload = function(){
+                reader.onload = function(){
                   var dataArr = reader.result.replace(/^data:.+;base64,/, '');
               
                   var data = {
                     urlSkTerakhir : dataArr,
                     username : JSON.parse(main.ambilDb("db")).nip
-                 }
-                  let loading = new Image(20,20);
-                      loading.src = "./image/Eclipse.svg";
-                      loading.id = "loading";
-                  let namaNipTbl = document.querySelector("#nama_nip");
-                      namaNipTbl.rows[2].appendChild(loading);
+                    }
+                  /////////sebelum sukses//////////
+                  document.querySelectorAll(".benar")[0].style.display = "none";
+                  let barisBerkas = document.querySelectorAll("tr");
+                      barisBerkas[2].appendChild(loading);
                   
+                  ////////setelah sukses//////////
                   main.kirimdata(data).then(()=>{
-                  let benar = new Image(20,20)
-                      benar.src = "./image/benar.png";
-                      benar.id = "benar";
-                  document.querySelector("#loading").style.display = "none";
-                      namaNipTbl.rows[2].appendChild(benar);
+                  document.querySelector(".tunggu")[0].style.display = "none";
+                      barisBerkas[2].appendChild(benar);
                   });
             };
             reader.readAsDataURL(fileku);
