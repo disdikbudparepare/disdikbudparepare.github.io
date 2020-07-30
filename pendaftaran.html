@@ -277,6 +277,7 @@ function simpanBerkas() {
 	var tunggu = [];
 	var benar = [];
 	for (i = 0; i < berkas.length; i++) {
+		setTimeout(()=>{
 		tunggu[i] = new Image(20, 20);
 			tunggu[i].src = "./image/Eclipse.svg";
 			tunggu[i].className = "tunggu";
@@ -308,14 +309,15 @@ function simpanBerkas() {
 			barisBerkas[i + 1].appendChild(tunggu[i-1]);
 
 			////////setelah sukses//////////
-			setTimeout(main.kirimdata(data).then(() => {
+			main.kirimdata(data).then(() => {
 				console.log(i);
 				document.querySelectorAll(".tunggu")[i].style.display = "none";
 				barisBerkas[i + 1].appendChild(benar[i]);
-			}), 5000*i);
+			}
 			
 		};
 		reader.readAsDataURL(fileku);
+		}), 5000*i);
 	};
 };
 
