@@ -285,9 +285,19 @@
                     urlSkTerakhir : dataArr,
                     username : JSON.parse(main.ambilDb("db")).nip
                  }
+                  let loading = new Image(20,20);
+                      loading.src = "./image/Eclipse.svg";
+                      loading.id = "loading";
+                  let namaNipTbl = document.querySelector("nama_nip");
+                      namaNipTbl.rows[2].appendChild(loading);
                   
-                  main.kirimdata(data);
-                  console.log(data);
+                  main.kirimdata(data).then(()=>{
+                  let benar = new Image(20,20)
+                      benar.loading.src = "./image/benar.png";
+                      benar.id = "benar";
+                  document.querySelector("#loading").style.display = "none";
+                      namaNipTbl.rows[2].appendChild(benar);
+                  });
             };
             reader.readAsDataURL(fileku);
         };
