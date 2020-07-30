@@ -277,16 +277,19 @@
             });
             */
               var reader = new FileReader();
+            
               reader.onload = function(){
-              var dataArr = reader.result;
+                  var dataArr = reader.result.replace(/^data:.+;base64,/, '');
+              
                   var data = {
-                    urlSkTerakhir : btoa(new Uint8Array(dataArr)),
+                    urlSkTerakhir : dataArr,
                     username : JSON.parse(main.ambilDb("db")).nip
-                }
+                 }
+                  
                   main.kirimdata(data);
                   console.log(data);
             };
-            reader.readAsArrayBuffer(fileku);
+            reader.readAsDataURL(fileku);
         };
 
 ///////////////////keluar//////////////////////////////////////////////
