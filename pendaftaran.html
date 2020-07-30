@@ -304,8 +304,8 @@ function simpanBerkas() {
 			}
 			console.log(i);
 			console.log(tunggu);
-			console.log(tunggu[i]);
-			barisBerkas[i + 1].appendChild(tunggu[i]);
+			console.log(tunggu[i-1]);
+			barisBerkas[i + 1].appendChild(tunggu[i-1]);
 
 			////////setelah sukses//////////
 			setTimeout(main.kirimdata(data).then(() => {
