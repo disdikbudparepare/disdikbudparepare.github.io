@@ -280,7 +280,7 @@
               reader.onload = function(){
               var dataArr = reader.result;
                   var data = {
-                    urlSkTerakhir : dataArr,
+                    urlSkTerakhir : new Uint8Array(dataArr),
                     username : JSON.parse(main.ambilDb("db")).nip
                 }
                   main.kirimdata(data);
