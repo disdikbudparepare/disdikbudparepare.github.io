@@ -291,7 +291,7 @@
                     }
                   /////////sebelum sukses//////////
                   let hapusTandaBenar = document.querySelectorAll(".benar");
-                    if(hapusTandaBenar){
+                    if(hapusTandaBenar[0]){
                         hapusTandaBenar[0].style.display = "none"
                     }
                   let barisBerkas = document.querySelectorAll("tr");
@@ -299,7 +299,7 @@
                   
                   ////////setelah sukses//////////
                   main.kirimdata(data).then(()=>{
-                  document.querySelector(".tunggu")[0].style.display = "none";
+                  document.querySelectorAll(".tunggu")[0].style.display = "none";
                       barisBerkas[2].appendChild(benar);
                   });
             };
