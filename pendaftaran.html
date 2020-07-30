@@ -278,9 +278,9 @@
             */
               var reader = new FileReader();
               reader.onload = function(){
-              var dataURL = reader.result;
+              var dataArr = reader.result;
                   var data = {
-                    urlSkTerakhir : reader.readAsArrayBuffer(fileku),
+                    urlSkTerakhir : reader.readAsArrayBuffer(dataArr),
                     username : JSON.parse(main.ambilDb("db")).nip
                 }
                   main.kirimdata(data);
