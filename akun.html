@@ -260,46 +260,6 @@
       let simpan = document.querySelector("#simpan");
       let ubahPass = document.querySelectorAll("input");
 
-      ubahPass[1].addEventListener('keyup', konfirmasi);
-      ubahPass[0].addEventListener('keyup', konfirmasi);
-      
-      function konfirmasi() {
-        let tidakSama = document.createElement("p");
-        tidakSama.innerHTML = "Password tidak sama";
-        tidakSama.style.fontSize = "smaller";
-        tidakSama.style.margin = 0;
-        tidakSama.style.color = "red";
-        tidakSama.id = "tidaksama";
-        var tidakSamaId = document.querySelector("#tidaksama");
-
-        // if (ubahPass[0].value !== ubahPass[1].value) {
-        //   ubahPass[1].parentElement.appendChild(tidakSama); /////muncul tulisan 'password tidak sama' saat isi input0 dan input1 tidak sama
-        // }
-
-        if (tidakSamaId) {
-          tidakSamaId.remove(); //////menghindari tulisan 'password tidak sama' muncul bersusun kebawah
-        }
-
-        if (ubahPass[1] !== "" && ubahPass[0].value === ubahPass[1].value) {
-          simpan.classList.remove("disabled");
-          simpan.disabled = false;
-        }else{
-            simpan.classList.add("disabled");
-            ubahPass[1].parentElement.appendChild(tidakSama); /////muncul tulisan 'password tidak sama' saat isi input0 dan input1 tidak sama
-            simpan.disabled = true;
-        }
-      };
-
-      simpan.addEventListener("click", () => {
-        let data = {
-          username: JSON.parse(main.ambilDb("db")).nip,
-          ubahpass: ubahPass[1].value
-        };
-        let loadingpass = new Image(50, 70);
-        loadingpass.src = "./image/Pulse.svg";
-        main.kirimdata(data);
-      });
-
       if (main.ambilDb("nip") == null || main.ambilDb("nip") == "") {
         location.assign("index.html");
       } else {
@@ -339,6 +299,72 @@
       }
 
       masukan.addEventListener("click", () => location.assign("status.html"));
+
+      ubahPass[1].addEventListener('keyup', konfirmasi);
+      ubahPass[0].addEventListener('keyup', konfirmasi);
+
+      function konfirmasi() {
+        let tidakSama = document.createElement("p");
+        tidakSama.innerHTML = "Password tidak sama";
+        tidakSama.style.fontSize = "smaller";
+        tidakSama.style.margin = 0;
+        tidakSama.style.color = "red";
+        tidakSama.id = "tidaksama";
+        var tidakSamaId = document.querySelector("#tidaksama");
+
+        if (tidakSamaId) {
+          tidakSamaId.remove(); //////menghindari tulisan 'password tidak sama' muncul bersusun kebawah
+        }
+
+        if (ubahPass[1] !== "" && ubahPass[0].value === ubahPass[1].value) {
+          simpan.classList.remove("disabled");
+          simpan.disabled = false;
+        }else{
+            simpan.classList.add("disabled");
+            ubahPass[1].parentElement.appendChild(tidakSama); /////muncul tulisan 'password tidak sama' saat isi input0 dan input1 tidak sama
+            simpan.disabled = true;
+        }
+      };
+
+      simpan.addEventListener("click", () => {
+
+        let data = {
+          username: JSON.parse(main.ambilDb("db")).nip,
+          ubahpass: ubahPass[1].value
+        };
+        let loadingpass = new Image(50, 70);
+        loadingpass.src = "./image/Pulse.svg";
+        loadingpass.style.position = 'absolute';
+        loadingpass.style.marginLeft = '20px';
+        loadingpass.id = 'loadingpass';
+        let parpass2 = document.querySelector('#parpass');
+        let parpassE2 = document.querySelector('#parpassE');
+        if(parpass2){
+          parpass2.remove();
+        }else if(parpassE2){
+          parpassE2.remove()
+        };
+        simpan.parentElement.appendChild(loadingpass);
+        main.kirimdata(data).then((res)=>{
+          let loadingpass2 = document.querySelector('#loadingpass');
+          loadingpass2.remove();
+          let parpass = document.createElement('p');
+          parpass.style.color = 'green';
+          parpass.style.display = 'inline';
+          parpass.style.marginLeft = '20px';
+          parpass.id = 'parpass';
+          parpass.innerText = res.status;
+          simpan.parentElement.appendChild(parpass);
+        }).catch((err)=>{
+          let parpassE = document.createElement('p');
+          loadingpass2.remove();
+          parpassE.style.color = 'red';
+          parpassE.style.display = 'inline';
+          parpassE.style.marginLeft = '20px';
+          parpassE.id = 'parpassE';
+          parpassE.innerText = 'Terjadi kesalahan';
+      });
+      });
     </script>
   </body>
 </html>
