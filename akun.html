@@ -1,364 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <title>Akun</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
-        
-        html {
-            font-family: 'Roboto';
-        }
-        
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-        }
-        
-        .logoutWrap {
-            text-align: right;
-            background-color: rgb(48, 156, 214);
-            position: sticky;
-            position: -webkit-sticky;
-            top: 0;
-            margin: 0;
-            z-index: 1;
-        }
-        
-        .logoutButton {
-            border-left: oldlace 2px solid;
-            background-color: rgb(226, 81, 81);
-        }
-        
-        .wrapheader {
-            padding: 15px;
-            /* background-color: #1fc8db;
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        font-family: "Roboto";
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+
+      .logoutWrap {
+        text-align: right;
+        background-color: rgb(48, 156, 214);
+        position: sticky;
+        position: -webkit-sticky;
+        top: 0;
+        margin: 0;
+        z-index: 1;
+      }
+
+      .logoutButton {
+        border-left: oldlace 2px solid;
+        background-color: rgb(226, 81, 81);
+      }
+
+      .wrapheader {
+        padding: 15px;
+        /* background-color: #1fc8db;
             color: floralwhite; */
-            height: 150px;
-            border-bottom: 2px solid whitesmoke;
-            display: table-cell;
-            vertical-align: middle;
-        }
-        
-        .wrapbody {
-            visibility: hidden;
-            padding: 5%;
-            overflow: auto;
-        }
-        
-        .wrapfooter {
-            border-top: whitesmoke 3px solid;
-            background-color: rgb(48, 156, 214);
-            position: relative;
-            top: 55vh;
-            padding: 10px;
-            color: rgb(255, 255, 255);
-            z-index: -1;
-        }
-        
-        td {
-            padding: 2%;
-            text-align: left;
-        }
-        
-        td:nth-child(event) {
-            text-align: right;
-        }
-        
-        .title {
-            font-size: 3.5vw;
-            line-height: 150%;
-        }
-        
-        .footer {
-            font-size: small;
-            line-height: 150%;
-        }
-        
-        table {
-            min-width: 375px;
-            max-width: 500px;
-        }
-        
-        .loading {
-            text-align: center;
-            position: sticky;
-            top: 40vh;
-        }
-        
-        .mendaftar {
-            padding: 10px;
-            border: none;
-            outline-style: none;
-            color: rgb(255, 255, 255);
-            background-color: rgb(72, 155, 33);
-            margin-left: 10%;
-            cursor: pointer;
-            -webkit-box-shadow: 3px 3px 7px 1px #4F4F4F;
-            box-shadow: 3px 3px 7px 1px #4F4F4F;
-            display: none;
-        }
-        
-        .mendaftar:hover {
-            -webkit-box-shadow: 0px 10px 13px -7px #000000, 3px 3px 7px 1px rgba(79, 79, 79, 0);
-            box-shadow: 0px 10px 13px -7px #000000, 3px 3px 7px 1px rgba(79, 79, 79, 0);
-        }
-        
-        #syuaib {
-            position: fixed;
-            right: 2%;
-            bottom: 0;
-            font-size: smaller;
-            color: rgb(219, 219, 219);
-            text-shadow: 1px 1px 2px #4F2215;
-        }
-        
-        ul {
-            margin: 0;
-        }
-        
-        li {
-            list-style: none;
-            display: inline-block;
-            margin: 0;
-            padding: 20px;
-            color: rgb(255, 255, 255);
-            cursor: pointer;
-        }
-        
-        #boxmasukan {
-            resize: none;
-            height: 30vh;
-        }
-        
-        .boxmasukan {
-            width: 100%;
-            text-align: center;
-            position: fixed;
-            margin: auto;
-            top: 20%;
-            height: 50%;
-            display: none;
-        }
-        
-        .wrapMasukan {
-            width: 300px;
-            margin: auto;
-            text-align: center;
-            padding: 20px;
-            border-radius: 5px;
-            background-color: rgb(253, 253, 253);
-            border: rgb(189, 189, 189) solid 1px;
-        }
-        
-        h3,
-        h5 {
-            color: rgb(63, 62, 62);
-        }
-        
-        .wrapMasukan button {
-            display: block;
-            padding: 15px;
-            background-color: rgb(72, 155, 33);
-            color: whitesmoke;
-            border: none;
-            margin-left: 13px;
-        }
-        
-        #textmasukan {
-            resize: none;
-        }
-        
-        .gmd {
-            -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-            -moz-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-            -ms-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-            -o-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-        }
-        
-        .backform {
-            background-color: rgba(255, 255, 255, 0.75);
-        }
-        
-        .wrapterkirim {
-            width: 100%;
-            height: 100%;
-            /* background-color: grey; */
-            position: fixed;
-            z-index: 2;
-            /* text-align: center; */
-            display: none;
-        }
-        
-        .terkirim {
-            top: 40%;
-            position: relative;
-        }
-        
-        .terkirim button {
-            display: block;
-            padding: 15px;
-            background-color: rgb(72, 155, 33);
-            color: whitesmoke;
-            border: none;
-            margin-left: 95px;
-        }
-        
-        #textmasukanloading {
-            display: none;
-            width: 70px;
-        }
+        height: 150px;
+        border-bottom: 2px solid whitesmoke;
+        display: table-cell;
+        vertical-align: middle;
+      }
+
+      .wrapbody {
+        visibility: hidden;
+        padding: 5%;
+        overflow: auto;
+      }
+
+      .wrapfooter {
+        border-top: whitesmoke 3px solid;
+        background-color: rgb(48, 156, 214);
+        position: relative;
+        top: 55vh;
+        padding: 10px;
+        color: rgb(255, 255, 255);
+        z-index: -1;
+      }
+
+      td {
+        padding: 2%;
+        text-align: left;
+      }
+
+      td:nth-child(event) {
+        text-align: right;
+      }
+
+      .title {
+        font-size: 3.5vw;
+        line-height: 150%;
+      }
+
+      .footer {
+        font-size: small;
+        line-height: 150%;
+      }
+
+      table {
+        min-width: 375px;
+        max-width: 500px;
+      }
+
+      .loading {
+        text-align: center;
+        position: sticky;
+        top: 40vh;
+      }
+
+      .mendaftar {
+        padding: 10px;
+        border: none;
+        outline-style: none;
+        color: rgb(255, 255, 255);
+        background-color: rgb(72, 155, 33);
+        margin-left: 1%;
+        margin-top: 20px;
+        cursor: pointer;
+        -webkit-box-shadow: 3px 3px 7px 1px #4f4f4f;
+        box-shadow: 3px 3px 7px 1px #4f4f4f;
+      }
+
+      .mendaftar:hover {
+        -webkit-box-shadow: 0px 10px 13px -7px #000000,
+          3px 3px 7px 1px rgba(79, 79, 79, 0);
+        box-shadow: 0px 10px 13px -7px #000000,
+          3px 3px 7px 1px rgba(79, 79, 79, 0);
+      }
+
+      #syuaib {
+        position: fixed;
+        right: 2%;
+        bottom: 0;
+        font-size: smaller;
+        color: rgb(219, 219, 219);
+        text-shadow: 1px 1px 2px #4f2215;
+      }
+
+      ul {
+        margin: 0;
+      }
+
+      li {
+        list-style: none;
+        display: inline-block;
+        margin: 0;
+        padding: 20px;
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+      }
+
+      h3,
+      h5 {
+        color: rgb(63, 62, 62);
+      }
+
+      #textmasukan {
+        resize: none;
+      }
+
+      .gmd {
+        -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+          0 10px 10px rgba(0, 0, 0, 0.22);
+        -moz-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+          0 10px 10px rgba(0, 0, 0, 0.22);
+        -ms-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+          0 10px 10px rgba(0, 0, 0, 0.22);
+        -o-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+          0 10px 10px rgba(0, 0, 0, 0.22);
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+          0 10px 10px rgba(0, 0, 0, 0.22);
+      }
+
+      .backform {
+        background-color: rgba(255, 255, 255, 0.75);
+      }
+
+      .terkirim {
+        top: 40%;
+        position: relative;
+      }
+
+      .terkirim button {
+        display: block;
+        padding: 15px;
+        background-color: rgb(72, 155, 33);
+        color: whitesmoke;
+        border: none;
+        margin-left: 95px;
+      }
+
+      .disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        box-shadow: none;
+      }
+
+      .disabled:hover {
+        box-shadow: none;
+      }
+
+      .pass input[type="password"] {
+        font: large Verdana, sans-serif;
+        letter-spacing: 1px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
-    <div class="boxmasukan">
-        <div class="wrapMasukan">
-            <h3>Kotak Saran</h3>
-            <h5>Masukan Anda adalah evaluasi terbaik kami</h5>
-            <textarea name="textmasukan" id="textmasukan" cols="30" rows="10"></textarea>
-            <img id="textmasukanloading" src="./image/Pulse.svg" alt="loading">
-            <button id="btnMasukan" type="submit">KIRIM</button>
-        </div>
-    </div>
-    <div class="wrapterkirim gmd backform">
-        <div class="terkirim wrapMasukan">
-            <h5>Masukan Anda telah terkirim<br><br>Terima kasih</h5>
-            <button id="tutup">Tutup</button>
-        </div>
-    </div>
+  <body>
     <div class="logoutWrap">
-        <ul>
-            <li class="beranda">Beranda</li> //////////////////beranda
-            <li class="masukan">Masukan</li>
-            <li class="logoutButton">KELUAR</li>
-        </ul>
+      <ul>
+        <li class="masukan">Beranda</li>
+        <li class="logoutButton">KELUAR</li>
+      </ul>
     </div>
     <div class="wrap">
-        <div class="wrapheader">
-            <span class="title">DINAS PENDIDIKAN DAN KEBUDAYAAN KOTA PAREPARE
-                <br>BIDANG KEPEGAWAIAN</span>
-        </div>
-        <div class="loading">
-            <img src="./image/Eclipse.svg" alt="loading">
-        </div>
-        <div class="wrapbody">
-            <table>
-                <tr>
-                    <td style="width:40%">NAMA</td>
-                    <td style="width:2%">:</td>
-                    <td style="width:58%" id="tblNama"><input type="text" id="editnama"></input></td>  ////////////////////////edit nama
-                </tr>
-                <tr>
-                    <td>NIP</td>
-                    <td>:</td>
-                    <td id="tblNip"><input type="text" id="editnip"></input></td> /////////////////////////////edit nip
-                </tr>
-                <tr>
-                    <td>TMT Pangkat Terakhir</td>
-                    <td>:</td>
-                    <td id="tmt"></td>
-                </tr>
-            </table>
-        </div>
-        <button class="mendaftar" id="simpan">Simpan</button>
-        <div class="wrapfooter">
-            <p class="footer">Naik Pangkat dan Kenaikan Gaji Berkala secara online diselenggarakan untuk mempermudah setiap ASN dalam melakukan proses pendaftaran dan mempercepat proses administrasi kepegawaian di lingkup Dinas Pendidikan dan Kebudayaan Kota Parepare</p>
-        </div>
+      <div class="wrapheader">
+        <span class="title"
+          >DINAS PENDIDIKAN DAN KEBUDAYAAN KOTA PAREPARE <br />BIDANG
+          KEPEGAWAIAN</span
+        >
+      </div>
+      <div class="loading">
+        <img src="./image/Eclipse.svg" alt="loading" />
+      </div>
+      <div class="wrapbody">
+        <table>
+          <tr>
+            <td style="width: 50%;">NAMA</td>
+            <td style="width: 2%;">:</td>
+            <td style="width: 48%;" id="tblNama"></td>
+          </tr>
+          <tr>
+            <td>NIP</td>
+            <td>:</td>
+            <td id="tblNip"></td>
+          </tr>
+          <tr>
+            <td>Ubah Password</td>
+            <td>:</td>
+            <td><input class="pass" type="password" /></td>
+          </tr>
+          <tr>
+            <td>Konfirmasi Password</td>
+            <td>:</td>
+            <td><input class="pass" type="password" /></td>
+          </tr>
+        </table>
+        <button class="mendaftar disabled" id="simpan" disabled>Simpan</button>
+      </div>
+      <div class="wrapfooter">
+        <p class="footer">
+          Naik Pangkat dan Kenaikan Gaji Berkala secara online diselenggarakan
+          untuk mempermudah setiap ASN dalam melakukan proses pendaftaran dan
+          mempercepat proses administrasi kepegawaian di lingkup Dinas
+          Pendidikan dan Kebudayaan Kota Parepare
+        </p>
+      </div>
     </div>
 
     <p id="syuaib">Code/Design By syuaib</p>
     <script src="./js/main.js"></script>
     <script>
-        let logoutButton = document.querySelector(".logoutButton");
-        let wrapbody = document.querySelector(".wrapbody");
-        let masukan = document.querySelector(".masukan");
-        let btnMasukan = document.querySelector("#btnMasukan");
-        let boxmasukan = document.querySelector(".boxmasukan");
-        let textmasukan = document.querySelector("#textmasukan");
-        let wrapterkirim = document.querySelector(".wrapterkirim");
-        let tutup = document.querySelector("#tutup");
-        let textmasukanloading = document.querySelector("#textmasukanloading");
-        let loading = document.querySelector(".loading");
+      let logoutButton = document.querySelector(".logoutButton");
+      let wrapbody = document.querySelector(".wrapbody");
+      let masukan = document.querySelector(".masukan");
+      let btnMasukan = document.querySelector("#btnMasukan");
+      let tutup = document.querySelector("#tutup");
+      let loading = document.querySelector(".loading");
+      let simpan = document.querySelector("#simpan");
+      let ubahPass = document.querySelectorAll("input");
 
-        if (main.ambilDb('nip') == null || main.ambilDb('nip') == '') {
-            location.assign("index.html");
-        } else {
-            main.cekLogin(main.ambilDb('nip'))
-                .then((data) => {
-                    if (JSON.parse(data) == false) {
-                        location.assign("index.html");
-                    } else {
-                        let tblNama = document.querySelector("#tblNama");
-                        let tblNip = document.querySelector("#tblNip");
-                        async function simpanDb() {
-                            if (main.ambilDb('db') == null || main.ambilDb('db') == '') {
-                                await main.simpanDb(data);
-                            };
-                            let dataPegawai = JSON.parse(main.ambilDb('db'));
-                            tblNama.innerHTML = dataPegawai.nama;
-                            tblNip.innerHTML = dataPegawai.nip;
-                            loading.setAttribute("style", "display:none");
-                            wrapbody.setAttribute("style", "visibility:visible")
-                        }
-                        simpanDb();
-                    }
-                });
+      ubahPass[1].addEventListener('keyup', konfirmasi);
+      ubahPass[0].addEventListener('keyup', konfirmasi);
+      
+      function konfirmasi() {
+        let tidakSama = document.createElement("p");
+        tidakSama.innerHTML = "Password tidak sama";
+        tidakSama.style.fontSize = "smaller";
+        tidakSama.style.margin = 0;
+        tidakSama.style.color = "red";
+        tidakSama.id = "tidaksama";
+        var tidakSamaId = document.querySelector("#tidaksama");
+
+        // if (ubahPass[0].value !== ubahPass[1].value) {
+        //   ubahPass[1].parentElement.appendChild(tidakSama); /////muncul tulisan 'password tidak sama' saat isi input0 dan input1 tidak sama
+        // }
+
+        if (tidakSamaId) {
+          tidakSamaId.remove(); //////menghindari tulisan 'password tidak sama' muncul bersusun kebawah
         }
 
+        if (ubahPass[1] !== "" && ubahPass[0].value === ubahPass[1].value) {
+          simpan.classList.remove("disabled");
+          simpan.disabled = false;
+        }else{
+            simpan.classList.add("disabled");
+            ubahPass[1].parentElement.appendChild(tidakSama); /////muncul tulisan 'password tidak sama' saat isi input0 dan input1 tidak sama
+            simpan.disabled = true;
+        }
+      };
 
-        logoutButton.addEventListener('click', keluar);
-
-        function keluar() {
-            loading.setAttribute("style", "display:block");
-            wrapbody.setAttribute("style", "display:none")
-            main.logout()
-                .then((data) => {
-                    if (data == 'false') {
-                        localStorage.removeItem('db');
-                        localStorage.removeItem('nip');
-                        location.assign('index.html');
-                    }
-                });
+      simpan.addEventListener("click", () => {
+        let data = {
+          username: JSON.parse(main.ambilDb("db")).nip,
+          ubahpass: ubahPass[1].value
         };
+        let loadingpass = new Image(50, 70);
+        loadingpass.src = "./image/Pulse.svg";
+        main.kirimdata(data);
+      });
 
-        masukan.addEventListener('click', () => {
-            boxmasukan.setAttribute('style', 'display:block');
-        });
-
-        btnMasukan.addEventListener('click', () => {
-
-            let dataku = {
-                username: JSON.parse(main.ambilDb("db")).nip,
-                masukan: textmasukan.value
+      if (main.ambilDb("nip") == null || main.ambilDb("nip") == "") {
+        location.assign("index.html");
+      } else {
+        main.cekLogin(main.ambilDb("nip")).then((data) => {
+          if (JSON.parse(data) == false) {
+            location.assign("index.html");
+          } else {
+            let tblNama = document.querySelector("#tblNama");
+            let tblNip = document.querySelector("#tblNip");
+            async function simpanDb() {
+              if (main.ambilDb("db") == null || main.ambilDb("db") == "") {
+                await main.simpanDb(data);
+              }
+              let dataPegawai = JSON.parse(main.ambilDb("db"));
+              tblNama.innerHTML = dataPegawai.nama;
+              tblNip.innerHTML = dataPegawai.nip;
+              loading.setAttribute("style", "display:none");
+              wrapbody.setAttribute("style", "visibility:visible");
             }
+            simpanDb();
+          }
+        });
+      }
 
-            async function masukan() {
-                textmasukanloading.setAttribute("style", "display:inline-block");
-                await main.kirimdata(dataku);
-                boxmasukan.setAttribute('style', 'display:none');
-                wrapterkirim.setAttribute("style", "display:block");
-            };
+      logoutButton.addEventListener("click", keluar);
 
-            masukan();
-        })
+      function keluar() {
+        loading.setAttribute("style", "display:block");
+        wrapbody.setAttribute("style", "display:none");
+        main.logout().then((data) => {
+          if (data == "false") {
+            localStorage.removeItem("db");
+            localStorage.removeItem("nip");
+            location.assign("index.html");
+          }
+        });
+      }
 
-
-        tutup.addEventListener('click', () => {
-            wrapterkirim.setAttribute('style', 'display:none');
-        })
+      masukan.addEventListener("click", () => location.assign("status.html"));
     </script>
-</body>
-
+  </body>
 </html>

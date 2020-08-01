@@ -240,6 +240,7 @@
     </div>
     <div class="logoutWrap">
         <ul>
+            <li class="akun">Akun</li>
             <li class="masukan">Masukan</li>
             <li class="logoutButton">KELUAR</li>
         </ul>
@@ -291,6 +292,9 @@
         let tutup = document.querySelector("#tutup");
         let textmasukanloading = document.querySelector("#textmasukanloading");
         let loading = document.querySelector(".loading");
+        let akun = document.querySelector('.akun');
+
+        akun.addEventListener('click', ()=> location.assign('akun.html'));
 
         if (main.ambilDb('nip') == null || main.ambilDb('nip') == '') {
             location.assign("index.html");
