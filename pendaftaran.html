@@ -9,7 +9,7 @@
       href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
       rel="stylesheet"
     />
-    <title>Pendaftaran</title>
+    <title>DISDIKBUD PAREPARE Pendaftaran</title>
     <style>
       * {
         box-sizing: border-box;
@@ -89,7 +89,7 @@
 
       table {
         min-width: 475px;
-        max-width: 550px;
+        /* max-width: 550px; */
       }
 
       .loading {
@@ -186,15 +186,51 @@
         margin-left: 95px;
       }
 
-      #tdnama{
-          width:50%;
+      #tdnama {
+        width: 50%;
       }
-      @media screen and (max-width: 437px) {
+
+      input[type="file"] {
+        height: 32px;
+        width: 100px;
+        cursor: pointer;
+      }
+
+      input[type="file"]::-webkit-file-upload-button {
+        height: 32px;
+        width: 100px;
+        cursor: pointer;
+      }
+
+      .uploadInp {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+      }
+      .upload {
+        width: 100px;
+        border: none;
+        background-color: rgb(0, 141, 7);
+        color: aliceblue;
+        padding: 9px;
+      }
+
+      .namaBerkas {
+        font-size: 8px;
+        margin-left: 5px;
+      }
+
+      #idAsn {
+        max-width: 500px;
+        border-bottom: #4f4f4f 1px solid;
+      }
+
+      /* @media screen and (max-width: 437px) {
         table {
           min-width: 390px;
           max-width: 500px;
         }
-      }
+      } */
     </style>
   </head>
 
@@ -216,7 +252,14 @@
         <img src="./image/Eclipse.svg" alt="loading" />
       </div>
       <div class="wrapbody">
-        <table id="nama_nip">
+        <label for="jenisDaftar">Jenis Pendaftaran</label>
+        <select id="jenisDaftar" name="jenisDaftar">
+          <option value="reguler">Reguler</option>
+          <option value="saab">Pilihan Jabatan Fungsional Tertentu</option>
+          <option value="fiat">Pilihan Jabatan Struktur</option>
+          <option value="audi">Penyesuaian Ijasah</option>
+        </select>
+        <table id="idAsn">
           <tr>
             <td style="width: 40%;">NAMA</td>
             <td style="width: 2%;">:</td>
@@ -228,24 +271,312 @@
             <td id="tblNip"></td>
           </tr>
           <tr>
-            <td>SK Terakhir</td>
+            <td>TMT Pangkat Terakhir</td>
             <td>:</td>
-            <td>
-              <input accept="application/pdf" id="skTerakhir" type="file" />
+            <td id="tblTmt"></td>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td style="width: 40%;">SK Pangkat Terakhir</td>
+            <td style="width: 1%;">:</td>
+            <td style="width: fit-content;">
+              <input
+                accept="application/pdf"
+                class="uploadInp"
+                id="skTerakhir"
+                type="file"
+              /><button class="upload">Pilih Berkas</button><br /><span
+                class="namaBerkas"
+                >Berkas berformat PDF</span
+              >
             </td>
           </tr>
           <tr>
-            <td>PAK Terakhir</td>
+            <td>SKP dan PPK 2 Tahun Terakhir</td>
             <td>:</td>
             <td>
-              <input accept="application/pdf" id="pakTerakhir" type="file" />
+              <input
+                accept="application/pdf"
+                class="uploadInp"
+                id="skpPpk"
+                type="file"
+              /><button class="upload">Pilih Berkas</button><br /><span
+                class="namaBerkas"
+                >Berkas berformat PDF</span
+              >
             </td>
           </tr>
           <tr>
             <td>SKP dua tahun terakhir</td>
             <td>:</td>
             <td>
-              <input accept="application/pdf" id="skpTerakhir" type="file" />
+              <input
+                accept="application/pdf"
+                class="uploadInp"
+                id="skp"
+                type="file"
+              /><button class="upload">Pilih Berkas</button><br /><span
+                class="namaBerkas"
+                >Berkas berformat PDF</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>Tanda Lulus Ujian Dinas Tingkat I/II</td>
+            <td>:</td>
+            <td>
+              <input
+                accept="application/pdf"
+                class="uploadInp"
+                id="tlud"
+                type="file"
+              /><button class="upload">Pilih Berkas</button><br /><span
+                class="namaBerkas"
+                >Berkas berformat PDF</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>STTB/Ijasah/Diploma</td>
+            <td>:</td>
+            <td>
+              <input
+                accept="application/pdf"
+                class="uploadInp"
+                id="ijasah"
+                type="file"
+              /><button class="upload">Pilih Berkas</button><br /><span
+                class="namaBerkas"
+                >Berkas berformat PDF</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>Surat Perintah Tugas Belajar</td>
+            <td>:</td>
+            <td>
+              <input
+                accept="application/pdf"
+                class="uploadInp"
+                id="sptb"
+                type="file"
+              /><button class="upload">Pilih Berkas</button><br /><span
+                class="namaBerkas"
+                >Berkas berformat PDF</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>Surat Izin Belajar</td>
+            <td>:</td>
+            <td>
+              <input
+                accept="application/pdf"
+                class="uploadInp"
+                id="izinBelajar"
+                type="file"
+              /><button class="upload">Pilih Berkas</button><br /><span
+                class="namaBerkas"
+                >Berkas berformat PDF</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Surat Tanda Lulus Kenaikan Pangkat Penyesuaian Ijasah (STLKPPI)
+            </td>
+            <td>:</td>
+            <td>
+              <input
+                accept="application/pdf"
+                class="uploadInp"
+                id="stlkppi"
+                type="file"
+              /><button class="upload">Pilih Berkas</button><br /><span
+                class="namaBerkas"
+                >Berkas berformat PDF</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>SK Pembagian Tugas 2 Tahun Terakhir</td>
+            <td>:</td>
+            <td>
+              <input
+                accept="application/pdf"
+                class="uploadInp"
+                id="skPembagianTugas"
+                type="file"
+              /><button class="upload">Pilih Berkas</button><br /><span
+                class="namaBerkas"
+                >Berkas berformat PDF</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>SK CPNS dan PNS</td>
+            <td>:</td>
+            <td>
+              <input
+                accept="application/pdf"
+                class="uploadInp"
+                id="skCpnsPns"
+                type="file"
+              /><button class="upload">Pilih Berkas</button><br /><span
+                class="namaBerkas"
+                >Berkas berformat PDF</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>SK Jabatan Terakhir</td>
+            <td>:</td>
+            <td>
+              <input
+                accept="application/pdf"
+                class="uploadInp"
+                id="skJab"
+                type="file"
+              /><button class="upload">Pilih Berkas</button><br /><span
+                class="namaBerkas"
+                >Berkas berformat PDF</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>Penilaian Angkat Kredit (PAK) lama</td>
+            <td>:</td>
+            <td>
+              <input
+                accept="application/pdf"
+                class="uploadInp"
+                id="pakLama"
+                type="file"
+              /><button class="upload">Pilih Berkas</button><br /><span
+                class="namaBerkas"
+                >Berkas berformat PDF</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>Klarifikasi PAK lama</td>
+            <td>:</td>
+            <td>
+              <input
+                accept="application/pdf"
+                class="uploadInp"
+                id="klarifikasiPak"
+                type="file"
+              /><button class="upload">Pilih Berkas</button><br /><span
+                class="namaBerkas"
+                >Berkas berformat PDF</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>Berita Acara Sumpah/Janji/Pelantikan jabatan</td>
+            <td>:</td>
+            <td>
+              <input
+                accept="application/pdf"
+                class="uploadInp"
+                id="klarifikasiPak"
+                type="file"
+              /><button class="upload">Pilih Berkas</button><br /><span
+                class="namaBerkas"
+                >Berkas berformat PDF</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>Surat Perintah Melaksanakan Tugas (SPMT)</td>
+            <td>:</td>
+            <td>
+              <input
+                accept="application/pdf"
+                class="uploadInp"
+                id="spmt"
+                type="file"
+              /><button class="upload">Pilih Berkas</button><br /><span
+                class="namaBerkas"
+                >Berkas berformat PDF</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>Surat Pernyataan Pelantikan</td>
+            <td>:</td>
+            <td>
+              <input
+                accept="application/pdf"
+                class="uploadInp"
+                id="pernyataanPelantikan"
+                type="file"
+              /><button class="upload">Pilih Berkas</button><br /><span
+                class="namaBerkas"
+                >Berkas berformat PDF</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>SK pemberhentikan dari jabatan organik</td>
+            <td>:</td>
+            <td>
+              <input
+                accept="application/pdf"
+                class="uploadInp"
+                id="berhentiOrganik"
+                type="file"
+              /><button class="upload">Pilih Berkas</button><br /><span
+                class="namaBerkas"
+                >Berkas berformat PDF</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>SK penetapan prestasi kerja luar biasa</td>
+            <td>:</td>
+            <td>
+              <input
+                accept="application/pdf"
+                class="uploadInp"
+                id="skpLuarBiasa"
+                type="file"
+              /><button class="upload">Pilih Berkas</button><br /><span
+                class="namaBerkas"
+                >Berkas berformat PDF</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>Kepres tentang penemuan baru</td>
+            <td>:</td>
+            <td>
+              <input
+                accept="application/pdf"
+                class="uploadInp"
+                id="kepresPenemuanBaru"
+                type="file"
+              /><button class="upload">Pilih Berkas</button><br /><span
+                class="namaBerkas"
+                >Berkas berformat PDF</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>Keputusan penugasan di luar instansi induk</td>
+            <td>:</td>
+            <td>
+              <input
+                accept="application/pdf"
+                class="uploadInp"
+                id="penugasanLuarInduk"
+                type="file"
+              /><button class="upload">Pilih Berkas</button><br /><span
+                class="namaBerkas"
+                >Berkas berformat PDF</span
+              >
             </td>
           </tr>
         </table>
@@ -275,8 +606,12 @@
       let barisBerkas = document.querySelectorAll("tr");
       let berkas = document.querySelectorAll("input");
       let masukan = document.querySelector(".masukan");
+      let btnUpload = document.querySelectorAll(".upload");
+      let namaBerkas = document.querySelectorAll(".namaBerkas");
       masukan.addEventListener("click", () => location.assign("status.html"));
+      var i;
 
+      //////////////////////////cek login/////////////////////
       if (main.ambilDb("nip") == null || main.ambilDb("nip") == "") {
         location.assign("index.html");
       } else {
@@ -300,40 +635,68 @@
           }
         });
       }
-      /////////////////////simpan/////////////////////////////
+
+      //////////////////////get index input button //////////////////////
+      for (i = 0; i < berkas.length; i++) {
+        (function (index) {
+          berkas[i].onchange = function () {
+            console.log(index);
+            namaBerkas[index].innerHTML = berkas[index].files[0].name;
+          };
+        })(i);
+      }
+
+      //////////////////upload process/////////////////
       simpan.addEventListener("click", simpanBerkas);
-      var i;
       var tunggu = [];
       var benar = [];
+
       function simpanBerkas() {
-        kirim(0)
-          .then(kirim(1))
-          .then(kirim(2))
-          .then(() => {
-            let hapusTunggu = document.querySelectorAll(".tunggu");
-            if (hapusTunggu.length != 0) {
-              for (i = 0; i < hapusTunggu.length; i++) {
-                hapusTunggu[i].remove();
-              }
+        let uploadInp = document.querySelectorAll(".uploadInp");
+
+        function hitungTerisi() {
+          var x = 0;
+          for (i = 0; i < berkas.length; i++) {
+            if (berkas[i].value) {
+              x++;
             }
-          });
+          }
+          return x;
+        }
+
+        for (i = 0; i < berkas.length; i++) {
+          (function (index) {
+            if (berkas[i].value) {
+              kirim(index).then(() => {
+                var ulang = setTimeout(
+                  () => console.log("tunggu deng"),
+                  3000 * ulang
+                );
+
+                if (tunggu.length != 0) {
+                  tunggu[index].remove();
+                }
+              });
+            } else {
+              console.log("input kosong");
+            }
+          })(i);
+        }
       }
 
       let kirim = async (nmr) => {
         tunggu[nmr] = new Image(30, 30);
         tunggu[nmr].src = "./image/Eclipse.svg";
         tunggu[nmr].className = "tunggu";
-        tunggu[nmr].style.marginTop = "40%";
-        tunggu[nmr].style.marginBottom = "40%";
+        tunggu[nmr].style.marginLeft = "1%";
         benar[nmr] = new Image(30, 30);
         benar[nmr].src = "./image/benar.png";
         benar[nmr].className = "benar";
-        benar[nmr].style.marginTop = "40%";
-        benar[nmr].style.marginBottom = "40%";
+        benar[nmr].style.marginLeft = "1%";
 
         var fileku = berkas[nmr].files[0];
         var reader = new FileReader();
-        var nmBerkas = barisBerkas[nmr + 2].cells[0].innerText;
+        var nmBerkas = barisBerkas[nmr + 3].cells[0].innerText;
         reader.onload = () => {
           var hapusBenar = document.querySelectorAll(".benar");
           if (hapusBenar) {
@@ -341,67 +704,25 @@
               hapusBenar[i].remove();
             }
           }
-          barisBerkas[nmr + 2].appendChild(tunggu[nmr]);
+          var posisigambar = barisBerkas[nmr + 3].childNodes[5];
+          posisigambar.insertBefore(tunggu[nmr], posisigambar.childNodes[3]);
+          //barisBerkas[nmr + 3].appendChild(tunggu[nmr]);
           var dataArr = reader.result.replace(/^data:.+;base64,/, "");
           var data = {
             urlSkTerakhir: dataArr,
             username: JSON.parse(main.ambilDb("db")).nip,
             namaBerkas: nmBerkas,
           };
-          main.kirimdata(data).then(() => {
-            document.querySelectorAll(".tunggu")[nmr].style.display = "none";
-            barisBerkas[nmr + 2].appendChild(benar[nmr]);
+          main.kirimdata(data).then((res) => {
+            tunggu[nmr].remove();
+            posisigambar.insertBefore(benar[nmr], posisigambar.childNodes[3]);
+            // barisBerkas[nmr + 3].appendChild(benar[nmr]);
           });
         };
         reader.readAsDataURL(fileku);
       };
-      /**********************
-      function simpanBerkas() {
-        var i;
-        var tunggu = [];
-        var benar = [];
-        tunggu[i] = new Image(20, 20);
-        tunggu[i].src = "./image/Eclipse.svg";
-        tunggu[i].className = "tunggu";
-        benar[i] = new Image(20, 20);
-        benar[i].src = "./image/benar.png";
-        benar[i].className = "benar";
-        console.log(i);
-        var fileku = berkas[i].files[0];
-        var nmBerkas = document.querySelectorAll("tr")[i + 1].cells[0]
-          .innerText;
 
-        var reader = new FileReader();
-
-        reader.onload = function () {
-          var dataArr = reader.result.replace(/^data:.+;base64,/, "");
-
-          var data = {
-            urlSkTerakhir: dataArr,
-            username: JSON.parse(main.ambilDb("db")).nip,
-            namaBerkas: nmBerkas,
-          };
-          /////////sebelum sukses//////////
-          var hapusTandaBenar = document.querySelectorAll(".benar");
-          if (hapusTandaBenar[i]) {
-            hapusTandaBenar[i].style.display = "none";
-          }
-          console.log(i);
-          console.log(tunggu);
-          console.log(tunggu[i - 1]);
-          barisBerkas[i + 1].appendChild(tunggu[i - 1]);
-
-          ////////setelah sukses//////////
-          main.kirimdata(data).then(() => {
-            console.log(i);
-            document.querySelectorAll(".tunggu")[i].style.display = "none";
-            barisBerkas[i + 1].appendChild(benar[i]);
-          });
-        };
-        reader.readAsDataURL(fileku);
-      }
-      ************************************/
-      ///////////////////keluar//////////////////////////////////////////////
+      ///////////////////sign out//////////////////////////////////////////////
       logoutButton.addEventListener("click", keluar);
 
       function keluar() {
