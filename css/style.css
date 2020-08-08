@@ -7,3 +7,7 @@
     z-index: 2;
     bottom: 0;
 }
+
+.wrap{
+    position: relative;
+}
