@@ -1,8 +1,8 @@
 .wrapfooter{
     border-top: whitesmoke 3px solid;
     background-color: rgb(48, 156, 214);
-    position: relative;
-    top: 15vh;
+    position: fixed;
+    bottom: 0;
     padding: 10px;
     color: rgb(255, 255, 255);
     z-index: -1;
