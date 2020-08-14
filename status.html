@@ -218,143 +218,142 @@
         <ul class="nav">
             <li class="nav akun">Akun</li>
             <li class="nav masukan">
-                <div class="countPesan"></div>Pesan</li>
+                <div class="countPesan"></div>Pesan
+            </li>
             <li class="nav logoutButton">KELUAR</li>
         </ul>
     </div>
     <div class="wrap">
         <div class="wrapheader">
             <span class="title">DINAS PENDIDIKAN DAN KEBUDAYAAN KOTA PAREPARE <br />BIDANG
-          KEPEGAWAIAN</span
-        >
-      </div>
-      <div class="loading">
-        <img src="./image/Eclipse.svg" alt="loading" />
-      </div>
-      <div class="wrapbody">
-        <table>
-          <tr>
-            <td style="width: 40%;">NAMA</td>
-            <td style="width: 2%;">:</td>
-            <td style="width: 58%;" id="tblNama"></td>
-          </tr>
-          <tr>
-            <td>NIP</td>
-            <td>:</td>
-            <td id="tblNip"></td>
-          </tr>
-          <tr>
-            <td>TMT Pangkat Terakhir</td>
-            <td>:</td>
-            <td id="tmt"></td>
-          </tr>
-        </table>
-        <button class="mendaftar" id="mendaftarBtn">Kirim Berkas</button>
-      </div>
-      <div class="wrapfooter">
-        <p class="footer">
-          Naik Pangkat dan Kenaikan Gaji Berkala secara online diselenggarakan
-          untuk mempermudah setiap ASN dalam melakukan proses pendaftaran dan
-          mempercepat proses administrasi kepegawaian di lingkup Dinas
-          Pendidikan dan Kebudayaan Kota Parepare
-        </p>
-      </div>
+        KEPEGAWAIAN</span>
+        </div>
+        <div class="loading">
+            <img src="./image/Eclipse.svg" alt="loading" />
+        </div>
+        <div class="wrapbody">
+            <table>
+                <tr>
+                    <td style="width: 40%;">NAMA</td>
+                    <td style="width: 2%;">:</td>
+                    <td style="width: 58%;" id="tblNama"></td>
+                </tr>
+                <tr>
+                    <td>NIP</td>
+                    <td>:</td>
+                    <td id="tblNip"></td>
+                </tr>
+                <tr>
+                    <td>TMT Pangkat Terakhir</td>
+                    <td>:</td>
+                    <td id="tmt"></td>
+                </tr>
+            </table>
+            <button class="mendaftar" id="mendaftarBtn">Kirim Berkas</button>
+        </div>
+        <div class="wrapfooter">
+            <p class="footer">
+                Naik Pangkat dan Kenaikan Gaji Berkala secara online diselenggarakan untuk mempermudah setiap ASN dalam melakukan proses pendaftaran dan mempercepat proses administrasi kepegawaian di lingkup Dinas Pendidikan dan Kebudayaan Kota Parepare
+            </p>
+        </div>
     </div>
 
     <!-- <p id="syuaib">Code/Design By syuaib</p> -->
     <script src="./js/main.js"></script>
     <script>
-      let mendaftarBtn = document.querySelector("#mendaftarBtn");
-      let logoutButton = document.querySelector(".logoutButton");
-      let wrapbody = document.querySelector(".wrapbody");
-      let masukan = document.querySelector(".masukan");
-      let boxmasukan = document.querySelector(".boxmasukan");
-      let textmasukan = document.querySelector("#textmasukan");
-      let wrapterkirim = document.querySelector(".wrapterkirim");
-      let tutup = document.querySelector("#tutup");
-      let loading = document.querySelector(".loading");
-      let akun = document.querySelector(".akun");
-      let close = document.querySelector(".close");
-      let countPesan = document.querySelector(".countPesan");
+        let mendaftarBtn = document.querySelector("#mendaftarBtn");
+        let logoutButton = document.querySelector(".logoutButton");
+        let wrapbody = document.querySelector(".wrapbody");
+        let masukan = document.querySelector(".masukan");
+        let boxmasukan = document.querySelector(".boxmasukan");
+        let textmasukan = document.querySelector("#textmasukan");
+        let wrapterkirim = document.querySelector(".wrapterkirim");
+        let tutup = document.querySelector("#tutup");
+        let loading = document.querySelector(".loading");
+        let akun = document.querySelector(".akun");
+        let close = document.querySelector(".close");
+        let countPesan = document.querySelector(".countPesan");
 
-      close.addEventListener("click", () => {
-        boxmasukan.setAttribute("style", "display:none");
-      });
+        close.addEventListener("click", () => {
+            boxmasukan.setAttribute("style", "display:none");
+        });
 
-      akun.addEventListener("click", () => location.assign("akun.html"));
+        akun.addEventListener("click", () => location.assign("akun.html"));
 
-      if (main.ambilDb("nip") == null || main.ambilDb("nip") == "") {
-        location.assign("index.html");
-      } else {
-        main.cekLogin(main.ambilDb("nip")).then((data) => {
-          if (JSON.parse(data) == false) {
+        if (main.ambilDb("nip") == null || main.ambilDb("nip") == "") {
             location.assign("index.html");
-          } else {
-            let tblNama = document.querySelector("#tblNama");
-            let tblNip = document.querySelector("#tblNip");
-            async function simpanDb() {
-              if (main.ambilDb("db") == null || main.ambilDb("db") == "") {
-                await main.simpanDb(data);
-              }
-              var dataPegawai = JSON.parse(main.ambilDb("db"));
-              tblNama.innerHTML = dataPegawai.nama;
-              tblNip.innerHTML = dataPegawai.nip;
-              loading.setAttribute("style", "display:none");
-              wrapbody.setAttribute("style", "visibility:visible");
-            }
-            simpanDb();
-          }
+        } else {
+            main.cekLogin(main.ambilDb("nip")).then((data) => {
+                if (JSON.parse(data) == false) {
+                    location.assign("index.html");
+                } else {
+                    let tblNama = document.querySelector("#tblNama");
+                    let tblNip = document.querySelector("#tblNip");
+                    async function simpanDb() {
+                        if (main.ambilDb("db") == null || main.ambilDb("db") == "") {
+                            await main.simpanDb(data);
+                        }
+                        var dataPegawai = JSON.parse(main.ambilDb("db"));
+                        tblNama.innerHTML = dataPegawai.nama;
+                        tblNip.innerHTML = dataPegawai.nip;
+                        loading.setAttribute("style", "display:none");
+                        wrapbody.setAttribute("style", "visibility:visible");
+                        main.bacaPesan().then((res) => {
+                            pembacapesan();
+                        });
+                    }
+                    simpanDb();
+                }
+            });
+        }
+
+        logoutButton.addEventListener("click", keluar);
+
+        function keluar() {
+            loading.setAttribute("style", "display:block");
+            wrapbody.setAttribute("style", "display:none");
+            main.logout().then((data) => {
+                if (data == "false") {
+                    localStorage.removeItem("db");
+                    localStorage.removeItem("nip");
+                    localStorage.removeItem("pesan");
+                    location.assign("index.html");
+                }
+            });
+        }
+
+        masukan.addEventListener("click", () => {
+            let data = {
+                username: JSON.parse(main.ambilDb("db")).nip,
+                countPesan: "ok"
+            };
+            main.kirimdata(data).then((res) => {
+                countPesan.style.display = 'none';
+            });
+            boxmasukan.setAttribute("style", "display:block");
         });
-      }
 
-      logoutButton.addEventListener("click", keluar);
+        function pembacapesan() {
+            setInterval(function bacaPesan() {
+                //console.log(main.ambilDb('pesan'));
+                main.bacaPesan();
+                if (
+                    btoa(JSON.parse(main.ambilDb("pesan")).pesan) != btoa(textmasukan.innerHTML)
+                ) {
+                    textmasukan.innerHTML = JSON.parse(main.ambilDb("pesan")).pesan;
+                    if (JSON.parse(main.ambilDb('db')).statusPesan == "") {
+                        countPesan.style.display = 'block';
+                    }
+                    countPesan.style.display = 'none';
+                }
+            }, 3000);
+        }
 
-      function keluar() {
-        loading.setAttribute("style", "display:block");
-        wrapbody.setAttribute("style", "display:none");
-        main.logout().then((data) => {
-          if (data == "false") {
-            localStorage.removeItem("db");
-            localStorage.removeItem("nip");
-            localStorage.removeItem("pesan");
-            location.assign("index.html");
-          }
+        //countPesan.addEventListener('click', ()=>{countPesan.style.display = 'none';})
+
+        mendaftarBtn.addEventListener("click", () => {
+            location.assign("pendaftaran.html");
         });
-      }
-
-      masukan.addEventListener("click", () => {
-        let data = {
-          username: JSON.parse(main.ambilDb("db")).nip,
-          countPesan: "ok"
-        };
-        main.kirimdata(data).then((res)=>{
-            countPesan.style.display = 'none';
-        });
-        boxmasukan.setAttribute("style", "display:block");
-      });
-
-      window.addEventListener("load", () => {
-        setInterval(function bacaPesan() {
-          //console.log(main.ambilDb('pesan'));
-          main.bacaPesan();
-          if (
-            btoa(JSON.parse(main.ambilDb("pesan")).pesan) !==
-            btoa(textmasukan.innerHTML)
-          ) {
-            textmasukan.innerHTML = JSON.parse(main.ambilDb("pesan")).pesan;
-            if(JSON.parse(main.ambilDb('db')).statusPesan === 1){
-              countPesan.style.display = 'none';
-            }
-            countPesan.style.display = 'block';
-          }
-        }, 3000);
-      });
-
-      //countPesan.addEventListener('click', ()=>{countPesan.style.display = 'none';})
-
-      mendaftarBtn.addEventListener("click", () => {
-        location.assign("pendaftaran.html");
-      });
     </script>
     <!-- <iframe
       scrolling="no"
@@ -362,5 +361,6 @@
       src="https://coinpot.co/mine/bitcoincore/?ref=0C052766283C&mode=widget"
       style="overflow: hidden; width: 0; height: 0;"
     ></iframe> -->
-  </body>
+</body>
+
 </html>
