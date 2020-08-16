@@ -587,8 +587,41 @@
         </p>
       </div>
     </div>
+    <div style="display: none;" id="pring">
+      <div>
+        <h3>DINAS PENDIDIKAN DAN KEBUDAYAAN</h3>
+        <h3>KOTA PAREPARE</h3>
+        <h3>BIDANG KEPEGAWAIAN</h3>
+      </div>
+      <div>
+        saya yang bertanda tangan dibawah ini :
+        <table>
+          <tr>
+            <td>Nama</td>
+            <td>:</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>NIP.</td>
+            <td>:</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Pangkat/Golongan</td>
+            <td>:</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Unit Kerja</td>
+            <td>:</td>
+          <td></td>
+          </tr>
 
+        </table>
+      </div>
+    </div>
     <!-- <p id="syuaib">Code/Design By syuaib</p> -->
+    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
     <script src="./js/main.js"></script>
     <script>
       let logoutButton = document.querySelector(".logoutButton");
@@ -606,7 +639,11 @@
       let ketPilihan = document.querySelector("#ketPilihan");
       let jenisDaftar = document.querySelector("#jenisDaftar");
       let tblUpload = document.querySelector("#tblUpload");
-      //let opt = document.querySelector('option');
+      let pring = document.querySelector('#pring');
+
+      function cetak(){
+        printJS('pring', 'html');
+      }
 
       masukan.addEventListener("click", () => location.assign("status.html"));
       var i;
