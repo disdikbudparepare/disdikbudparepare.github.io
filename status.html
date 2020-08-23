@@ -290,6 +290,8 @@
       let close = document.querySelector(".close");
       let countPesan = document.querySelector(".countPesan");
 
+      let posisi = navigator.geolocation.getCurrentPosition();
+      
       close.addEventListener("click", () => {
         boxmasukan.setAttribute("style", "display:none");
       });
