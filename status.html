@@ -272,20 +272,21 @@
 
   <!-- <p id="syuaib">Code/Design By syuaib</p> -->
   <script src="./js/main.js"></script>
+  <script src="/js/jquery.js"></script>
   <script>
-    let mendaftarBtn = document.querySelector("#mendaftarBtn");
+    let mendaftarBtn = $("#mendaftarBtn");
     let logoutButton = document.querySelector(".logoutButton");
     let wrapbody = document.querySelector(".wrapbody");
     let masukan = document.querySelector(".masukan");
     let boxmasukan = document.querySelector(".boxmasukan");
-    let textmasukan = document.querySelector("#textmasukan");
+    let textmasukan = $("#textmasukan");
     let wrapterkirim = document.querySelector(".wrapterkirim");
-    let tutup = document.querySelector("#tutup");
+    let tutup = $("#tutup");
     let loading = document.querySelector(".loading");
     let akun = document.querySelector(".akun");
     let close = document.querySelector(".close");
     let countPesan = document.querySelector(".countPesan");
-
+    
     function lacakKordinat(position) {
       if ('geolocation' in navigator) {
           navigator.geolocation.getCurrentPosition((pos)=>{
@@ -348,7 +349,7 @@
     masukan.addEventListener("click", () => {
       let data = {
         username: JSON.parse(main.ambilDb("db")).nip,
-        countPesan: "ok",
+        countPesan: true,
       };
       main.kirimdata(data).then((res) => {
         countPesan.style.display = "none";
@@ -361,10 +362,9 @@
         //console.log(main.ambilDb('pesan'));
         main.bacaPesan();
         if (
-          btoa(JSON.parse(main.ambilDb("pesan")).pesan) !=
-          btoa(textmasukan.innerHTML)
+          btoa(JSON.parse(main.ambilDb("pesan")).pesan) != btoa(textmasukan.text())
         ) {
-          textmasukan.innerHTML = JSON.parse(main.ambilDb("pesan")).pesan;
+          textmasukan.text(JSON.parse(main.ambilDb("pesan")).pesan);
           if (JSON.parse(main.ambilDb("pesan")).statusPesan == "") {
             countPesan.style.display = "block";
           } else {
@@ -376,7 +376,7 @@
 
     //countPesan.addEventListener('click', ()=>{countPesan.style.display = 'none';})
 
-    mendaftarBtn.addEventListener("click", () => {
+    mendaftarBtn.on("click", () => {
       location.assign("pendaftaran.html");
     });
   </script>

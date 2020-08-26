@@ -1,4 +1,5 @@
 let alamat = "https://script.google.com/macros/s/AKfycbwZ2wKOLBvcdWRtmDtG-NDhIxMVLwh-HnFcDOfc7AteUT5aKIZd/exec";
+
 let main = {
     kirimdata: function(dataku) {
         return fetch(alamat, {
@@ -27,7 +28,7 @@ let main = {
             });
     },
     bacaPesan: function() {
-        return fetch(alamat + `?nip=${main.ambilDb('nip')}&pesan=ok`)
+        return fetch(alamat + `?nip=${main.ambilDb('nip')}&pesan=true`)
             .then(res => {
                 return res.json();
             })
