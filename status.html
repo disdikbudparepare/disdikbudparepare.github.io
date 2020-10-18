@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="./css/style.css" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
   <title>DISDIKBUD PAREPARE status</title>
   <style>
     .logoutWrap {
@@ -257,6 +257,11 @@
           <td>:</td>
           <td id="tmt"></td>
         </tr>
+        <tr>
+          <td>Status Pendaftaran</td>
+          <td>:</td>
+          <td id="statusDaftar"></td>
+        </tr>
       </table>
       <button class="mendaftar" id="mendaftarBtn">Kirim Berkas</button>
     </div>
@@ -271,7 +276,7 @@
   </div>
 
   <!-- <p id="syuaib">Code/Design By syuaib</p> -->
-  <script src="./js/main.js"></script>
+  <script src="/js/main.js"></script>
   <script src="/js/jquery.js"></script>
   <script>
     let mendaftarBtn = $("#mendaftarBtn");
@@ -286,13 +291,13 @@
     let akun = document.querySelector(".akun");
     let close = document.querySelector(".close");
     let countPesan = document.querySelector(".countPesan");
-    
+
     function lacakKordinat(position) {
       if ('geolocation' in navigator) {
-          navigator.geolocation.getCurrentPosition((pos)=>{
-            console.log('lat = ' + pos.coords.latitude);
-            console.log('log = ' + pos.coords.longitude)
-          })
+        navigator.geolocation.getCurrentPosition((pos) => {
+          console.log('lat = ' + pos.coords.latitude);
+          console.log('log = ' + pos.coords.longitude)
+        })
       } else {
         console.log('browser tidak mendukung geolocation')
       }
@@ -304,81 +309,84 @@
 
     akun.addEventListener("click", () => location.assign("akun.html"));
 
-    if (main.ambilDb("nip") == null || main.ambilDb("nip") == "") {
-      location.assign("index.html");
-    } else {
-      main.cekLogin(main.ambilDb("nip")).then((data) => {
-        if (JSON.parse(data) == false) {
-          location.assign("index.html");
-        } else {
-          let tblNama = document.querySelector("#tblNama");
-          let tblNip = document.querySelector("#tblNip");
-          async function simpanDb() {
-            if (main.ambilDb("db") == null || main.ambilDb("db") == "") {
-              await main.simpanDb(data);
-            }
-            var dataPegawai = JSON.parse(main.ambilDb("db"));
-            tblNama.innerHTML = dataPegawai.nama;
-            tblNip.innerHTML = dataPegawai.nip;
-            loading.setAttribute("style", "display:none");
-            wrapbody.setAttribute("style", "visibility:visible");
-            main.bacaPesan().then((res) => {
-              pembacapesan();
-            });
-          }
-          simpanDb();
-        }
-      });
-    }
+    main.cekLogin();
+
+    let dataPegawai = JSON.parse(localStorage.getItem("db"));
+    $('#tblNama').html(dataPegawai.NAMA);
+    $('#tblNip').html(dataPegawai.NIP);
+    $('#tmt').html(dataPegawai.TMT_PANGKAT_TERAKHIR);
+    // $('#statusDaftar').html("Belum saatnya")
+    loading.setAttribute("style", "display:none");
+    wrapbody.setAttribute("style", "visibility:visible");
 
     logoutButton.addEventListener("click", keluar);
 
     function keluar() {
       loading.setAttribute("style", "display:block");
       wrapbody.setAttribute("style", "display:none");
-      main.logout().then((data) => {
-        if (data == "false") {
-          localStorage.removeItem("db");
-          localStorage.removeItem("nip");
-          localStorage.removeItem("pesan");
-          location.assign("index.html");
-        }
-      });
+      main.logout()
+      location.assign('index.html');
     }
 
     masukan.addEventListener("click", () => {
-      let data = {
-        username: JSON.parse(main.ambilDb("db")).nip,
-        countPesan: true,
-      };
-      main.kirimdata(data).then((res) => {
-        countPesan.style.display = "none";
-      });
+      main.pesanTerbaca()
+        .then((res) => {
+          countPesan.style.display = "none";
+        });
       boxmasukan.setAttribute("style", "display:block");
     });
 
     function pembacapesan() {
-      setInterval(function bacaPesan() {
-        //console.log(main.ambilDb('pesan'));
-        main.bacaPesan();
-        if (
-          btoa(JSON.parse(main.ambilDb("pesan")).pesan) != btoa(textmasukan.text())
-        ) {
-          textmasukan.text(JSON.parse(main.ambilDb("pesan")).pesan);
-          if (JSON.parse(main.ambilDb("pesan")).statusPesan == "") {
+      setInterval(() => {
+        main.bacaPesan().then(res => {
+          localStorage.setItem('pesan', JSON.stringify(res));
+          if (JSON.parse(localStorage.getItem("pesan")).statusPesan == "") {
             countPesan.style.display = "block";
+            textmasukan.text(JSON.parse(localStorage.getItem("pesan")).pesan);
           } else {
+            textmasukan.text(JSON.parse(localStorage.getItem("pesan")).pesan);
             countPesan.style.display = "none";
           }
-        }
+        })
       }, 3000);
     }
 
+
+
     //countPesan.addEventListener('click', ()=>{countPesan.style.display = 'none';})
 
-    mendaftarBtn.on("click", () => {
-      location.assign("pendaftaran.html");
-    });
+    // $('#mendaftarBtn').on("click", () => {
+    //   location.assign("pendaftaran.html");
+    //   console.log('tes assign pendaftaran')
+    // });
+
+    $(document).ready(() => {
+      let db = JSON.parse(localStorage.getItem('db'));
+      let dataTmt = db.TMT_PANGKAT_TERAKHIR;
+      if (db.TMT_PANGKAT_TERAKHIR) {
+        let tmtSplit = dataTmt.split('/');
+        let tglTmt = tmtSplit[0];
+        let blnTmt = tmtSplit[1];
+        let thnTmt = tmtSplit[2];
+        let DateTmt = new Date(thnTmt + "/" + blnTmt + "/" + tglTmt);
+        let Dateskrg = new Date();
+        let selisihTahun = Dateskrg - DateTmt;
+        //let selisihBulan = Dateskrg.getMonth() - DateTmt.getMonth();
+        if (selisihTahun >= 63113904000) {
+          $('#statusDaftar').html('Sudah bisa naik pangkat');
+          $('#mendaftarBtn').on('click', () => {
+            location.assign('pendaftaran.html');
+          })
+          // $('#mendaftarBtn').addClass('matikan')
+          // $('#mendaftarBtn').attr('disabled',true);
+        } else {
+          $('#statusDaftar').html('Belum bisa naik pangkat');
+          $('#mendaftarBtn').addClass('matikan');
+          $('#mendaftarBtn').disable = true;
+        }
+      }
+      pembacapesan();
+    })
   </script>
   <!-- <iframe scrolling="no" frameborder="0" src="https://coinpot.co/mine/bitcoincore/?ref=0C052766283C&mode=widget" style="overflow: hidden; width: 0; height: 0;"></iframe> -->
 </body>

