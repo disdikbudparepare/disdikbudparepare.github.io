@@ -660,9 +660,7 @@
           console.log(res);
         });
         })
-        
-        
-       
+           
       };
       reader.readAsDataURL(fileku);
     };
@@ -673,9 +671,8 @@
     function keluar() {
       loading.setAttribute("style", "display:block");
       wrapbody.setAttribute("style", "display:none");
-      main.logout().then((data) => {
-        location.assign('index.html')
-      });
+      main.logout()
+      location.assign('index.html');
     }
   </script>
   <!-- <iframe scrolling="no" frameborder="0" src="https://coinpot.co/mine/bitcoincore/?ref=0C052766283C&mode=widget" style="overflow:hidden;width:0;height:0;"></iframe> -->
