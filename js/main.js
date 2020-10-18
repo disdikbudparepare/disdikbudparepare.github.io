@@ -23,9 +23,9 @@ let main = {
           }
     },
     logout: () => {
-        let keluar = new dataCek();
-        keluar.opsi = { keluar: true };
-        return main.kirimdata(keluar);
+        let out = new dataCek();
+        out.keluar = true;
+        return main.kirimdata(out);
     },
     bacaPesan: () => {
         let pesanBaca = new dataCek();

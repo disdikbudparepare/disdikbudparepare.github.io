@@ -391,7 +391,7 @@ $('#tblJabatanAtasan').html(dataPegawai.JABATAN_ATASAN_LANGSUNG)
       loading.setAttribute("style", "display:block");
       wrapbody.setAttribute("style", "display:none");
       main.logout().then((data) => {
-        if (data == "false") {
+        if (data) {
           localStorage.removeItem("db");
           localStorage.removeItem("nip");
           location.assign("index.html");
