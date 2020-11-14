@@ -25,16 +25,6 @@
       background-color: rgb(226, 81, 81);
     }
 
-    .wrapheader {
-      padding: 15px;
-      /* background-color: #1fc8db;
-            color: floralwhite; */
-      height: 150px;
-      border-bottom: 2px solid whitesmoke;
-      display: table-cell;
-      vertical-align: middle;
-    }
-
     .wrapbody {
       visibility: hidden;
       padding: 5%;
@@ -212,6 +202,7 @@
       <img src="./image/Eclipse.svg" alt="loading" />
     </div>
     <div class="wrapbody">
+      <h3>Pilih jenis kenaikan pangkat Anda lalu unggah/kirim berkas hasil pemindaian (berkas asli atau fotocopy legalisir) dalam bentuk format PDF lalu tekan tombol <i>Mendaftar</i> !</h3>
       <label style="margin-left: 15px;" for="jenisDaftar">Jenis Pendaftaran</label>
       <select style="margin-left: 15px; margin-bottom: 20px; height: 30px;" id="jenisDaftar" name="jenisDaftar">
         <option value="Reguler"></option>
@@ -406,8 +397,8 @@
           </td>
         </tr>
       </table>
-      <button class="mendaftar" id="simpan">Simpan</button><button style="margin-left: 20vw;display: none;"
-        class="mendaftar">Mendaftar</button>
+      <button class="mendaftar" id="simpan" style="width: 90px;">Kirim</button>
+      <button class="mendaftar" id="cetak" style="display: none;">Mendaftar</button>
     </div>
 
     <div class="wrapfooter">
@@ -419,64 +410,67 @@
       </p>
     </div>
   </div>
-  <div style="display: none;padding:50px" id="pring">
-    <div style="text-align: center;border-bottom: black 1px solid;">
-      <img src="image/Lambang_Kota_Parepare.png" style="position: absolute;transform:translate(-250px,5px);width: 50px;"
-        alt="">
-      <h3>DINAS PENDIDIKAN DAN KEBUDAYAAN <br>KOTA PAREPARE <br>BIDANG KEPEGAWAIAN</h3>
+  
+  <div class="outerprint"  id="pring" style="display: none;">
+    <div class="headerprint" style="border-bottom: 1px solid black;">
+      <table class="tableprint" style="height: 100px !important; margin-left: 100px;">
+        <tr>
+          <td style="width: 100px;text-align: right;"><img class="headerlogoprint" style="height: 60px;" src="image/Lambang_Kota_Parepare.png" alt=""></td>
+          <td style="width: 400px;"><b style="font-size: 14pt !important;">DINAS PENDIDIKAN DAN KEBUDAYAAN <br>KOTA PAREPARE <br>BIDANG KEPEGAWAIAN</b></td>
+        </tr>
+      </table>
     </div>
     <br>
-    <div style="padding:10px">
-      <p style="text-align: justify;">Aparatur Sipil Negara (ASN) dengan data sebagai berikut :</p>
+    <div class="bodyprint">
+      <p class="ratakirikananprint">Aparatur Sipil Negara (ASN) dengan data sebagai berikut :</p>
       <table>
         <tr>
           <td style="width: 40%;">Nama</td>
           <td style="width: 2px;">:</td>
-          <td></td>
+          <td id="namaprint"></td>
         </tr>
         <tr>
           <td>NIP.</td>
           <td>:</td>
-          <td></td>
+          <td id="nipprint"></td>
         </tr>
         <tr>
           <td>Pangkat/Golongan</td>
           <td>:</td>
-          <td></td>
+          <td id="pangkatgolprint"></td>
         </tr>
         <tr>
           <td>TMT.</td>
           <td>:</td>
-          <td></td>
+          <td id="tmtprint"></td>
         </tr>
         <tr>
           <td>Unit Kerja</td>
           <td>:</td>
-          <td></td>
+          <td id="unitprint"></td>
         </tr>
         <tr>
           <td>Jenis Pendaftaran</td>
           <td>:</td>
-          <td></td>
+          <td id="jenisprint"></td>
         </tr>
       </table>
-      <p style="text-align: justify;">telah menyetujui persyaratan pendaftaran dan pengunggahan dokumen hasil pemindaian
-        dokumen asli, maka ASN yang bertanda tangan dibawah ini dinyatakan terdaftar dengan nomor urut pendaftaran <span
-          class="kodePendaftaran">123456</span> pada tanggal <span class="tglDaftar">17 Agustus 2020</span>.</p>
+      <p class="ratakirikananprint">telah menyetujui persyaratan pendaftaran dan pengunggahan dokumen hasil pemindaian
+        dokumen asli, maka ASN yang bertanda tangan dibawah ini dinyatakan terdaftar dengan nomor pendaftaran <span
+          id="kodePendaftaran"></span> pada tanggal <span id="tglDaftar">17 Agustus 2020</span>.</p>
 
       <img id="qr"
-        style="position: absolute;transform: translate(6vw,40px);width:100px;height:100px;border:black 1px solid">
-      <div style="position: absolute;transform: translate(400px,20px)">
-        <p>Parepare, <span class="tglCetak"></span></p>
+        style="display:inline-block; width:100px;height:100px">
+      <div class="ttdprint" style="display: inline-block;">
+        <p>Parepare, <span id="tglCetak"></span></p>
         <p>ASN Terdaftar</p>
-        <img id="ttd">
-        <p class="namaPendaftar">SYUAIB</p>
+        <p id="namaPendaftar"></p>
       </div>
 
     </div>
   </div>
   <!-- <p id="syuaib">Code/Design By syuaib</p> -->
-  <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+  <script src="/js/print.min.js"></script>
   <script src="/js/main.js"></script>
   <script src="/js/jquery.js"></script>
   <script>
@@ -487,7 +481,7 @@
     let loading = document.querySelector(".loading");
     let simpan = document.querySelector("#simpan");
     let skTerakhir = document.querySelector("#skTerakhir");
-    let barisBerkas = document.querySelectorAll("tr");
+    let barisBerkas = document.querySelectorAll("#tblUpload")[0].rows;
     let berkas = document.querySelectorAll("input");
     let masukan = document.querySelector(".masukan");
     let btnUpload = document.querySelectorAll(".upload");
@@ -495,20 +489,26 @@
     let ketPilihan = document.querySelector("#ketPilihan");
     let jenisDaftar = document.querySelector("#jenisDaftar");
     let tblUpload = document.querySelector("#tblUpload");
-    let pring = document.querySelector('#pring');
-    
-    function cetak() {
-      pring.style.display = 'block';
-      printJS('pring', 'html');
-      pring.style.display = 'none';
-    }
-
+    //let pring = document.querySelector('#pring');
+    let db = JSON.parse(localStorage.getItem('db'));
+    let tgl = new Date();
+    let bln = tgl.getMonth();
+    let arrbulan = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+    $('#namaprint').html(db.NAMA);
+    $('#nipprint').html(db.NIP);
+    $('#pangkatgolprint').html(db.PANGKAT + '/' + db.GOLONGAN);
+    $('#tmtprint').html(db.TMT_PANGKAT_TERAKHIR);
+    $('#unitprint').html(db.UNIT_KERJA);
+    $('#tglCetak').html(tgl.getDate() + " " + arrbulan[bln] + " " + tgl.getFullYear());
+    $('#tglDaftar').html(tgl.getDate() + " " + arrbulan[bln] + " " + tgl.getFullYear());
+    $('#namaPendaftar').html(db.NAMA.toUpperCase());
     masukan.addEventListener("click", () => location.assign("status.html"));
     var i;
     var j;
 
     jenisDaftar.addEventListener("change", (e) => {
       let indexpilihan = e.target.selectedIndex;
+      $('#jenisprint').html(e.target.options[e.target.selectedIndex].text);
       tentukan[indexpilihan]();
     });
 
@@ -657,10 +657,21 @@
           main.kirimdata(res).then((respon) => {
           tunggu[nmr].remove();
           posisigambar.insertBefore(benar[nmr], posisigambar.childNodes[3]);
-          console.log(res);
+         // console.log(res);
+        }).then((hasil)=>{
+          $('#cetak').toggle();
+          $('#cetak').on('click', ()=>{
+            main.daftar(true).then((res)=>{
+              $('#qr').attr('src', `data:image/png;base64,${res.qr}`);
+              $('#kodePendaftaran').html(res.register);
+            }).then((respon)=>{
+              $('#pring').toggle();
+              printJS({printable:'pring', type:'html', style:'.tableprint {text-align:center; margin-left:90px; padding:0} .namadinasprint {font-size:14pt !important} .headerprint{border-bottom: 1px solid black} .outerprint{padding:40px} .ratakirikananprint{text-align:justify} .ttdprint{margin-left: 400px}'});
+              $('#pring').toggle();
+            })
+          });
         });
-        })
-           
+        }) 
       };
       reader.readAsDataURL(fileku);
     };

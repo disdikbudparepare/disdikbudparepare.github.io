@@ -51,11 +51,16 @@ let main = {
         let gantipass = new dataCek();
         gantipass.ubahpass = isipass;
         return main.kirimdata(gantipass);
+    },
+    daftar:(ok)=>{
+        let mintakode = new dataCek();
+        mintakode.mendaftar = ok;
+        return main.kirimdata(mintakode);
     }
 }
 
 class dataCek {
-    constructor(namaBerkas, terbaca, urlSkTerakhir, ubahpass, countPesan, pesan, keluar) {
+    constructor(namaBerkas, terbaca, urlSkTerakhir, ubahpass, countPesan, pesan, keluar, mendaftar) {
         this.token = localStorage.getItem('token'),
         this.username = localStorage.getItem('nip'),
         this.urlSkTerakhir = false,
@@ -63,6 +68,7 @@ class dataCek {
         this.countPesan = false,
         this.pesan = false,
         this.keluar = false,
-        this.namaBerkas = false
+        this.namaBerkas = false,
+        this.mendaftar = false
     }
 }

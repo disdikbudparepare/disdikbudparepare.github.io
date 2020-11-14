@@ -25,16 +25,6 @@
       background-color: rgb(226, 81, 81);
     }
 
-    .wrapheader {
-      padding: 15px;
-      /* background-color: #1fc8db;
-            color: floralwhite; */
-      height: 150px;
-      border-bottom: 2px solid whitesmoke;
-      display: table-cell;
-      vertical-align: middle;
-    }
-
     .wrapbody {
       visibility: hidden;
       padding: 5%;
@@ -263,7 +253,7 @@
           <td id="statusDaftar"></td>
         </tr>
       </table>
-      <button class="mendaftar" id="mendaftarBtn">Kirim Berkas</button>
+      <button class="mendaftar" id="mendaftarBtn">Mendaftar</button>
     </div>
     <div class="wrapfooter">
       <p class="footer">
@@ -279,7 +269,7 @@
   <script src="/js/main.js"></script>
   <script src="/js/jquery.js"></script>
   <script>
-    let mendaftarBtn = $("#mendaftarBtn");
+    // let mendaftarBtn = $("#mendaftarBtn");
     let logoutButton = document.querySelector(".logoutButton");
     let wrapbody = document.querySelector(".wrapbody");
     let masukan = document.querySelector(".masukan");
@@ -362,31 +352,20 @@
 
     $(document).ready(() => {
       let db = JSON.parse(localStorage.getItem('db'));
-      let dataTmt = db.TMT_PANGKAT_TERAKHIR;
-      if (db.TMT_PANGKAT_TERAKHIR) {
-        let tmtSplit = dataTmt.split('/');
-        let tglTmt = tmtSplit[0];
-        let blnTmt = tmtSplit[1];
-        let thnTmt = tmtSplit[2];
-        let DateTmt = new Date(thnTmt + "/" + blnTmt + "/" + tglTmt);
-        let Dateskrg = new Date();
-        let selisihTahun = Dateskrg - DateTmt;
-        //let selisihBulan = Dateskrg.getMonth() - DateTmt.getMonth();
-        if (selisihTahun >= 63113904000) {
-          $('#statusDaftar').html('Sudah bisa naik pangkat');
-          $('#mendaftarBtn').on('click', () => {
-            location.assign('pendaftaran.html');
-          })
-          // $('#mendaftarBtn').addClass('matikan')
-          // $('#mendaftarBtn').attr('disabled',true);
+      if (db.MENDAFTAR >= 2) {
+        $('#statusDaftar').html('Sudah bisa naik pangkat');
+        $('#mendaftarBtn').on('click', ()=>{
+          location.assign("pendaftaran.html");
+        });
         } else {
           $('#statusDaftar').html('Belum bisa naik pangkat');
           $('#mendaftarBtn').addClass('matikan');
-          $('#mendaftarBtn').disable = true;
+          $('#mendaftarBtn').attr('disabled', true);
         }
-      }
-      pembacapesan();
-    })
+        pembacapesan();
+      })
+      
+
   </script>
   <!-- <iframe scrolling="no" frameborder="0" src="https://coinpot.co/mine/bitcoincore/?ref=0C052766283C&mode=widget" style="overflow: hidden; width: 0; height: 0;"></iframe> -->
 </body>

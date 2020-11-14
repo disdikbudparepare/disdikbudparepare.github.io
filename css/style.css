@@ -13,6 +13,16 @@ body {
     width: 100%;
 }
 
+.wrapheader {
+    padding: 15px;
+    /* background-color: #1fc8db;
+          color: floralwhite; */
+    height: 150px;
+    border-bottom: 2px solid rgb(78, 136, 223);
+    display: table-cell;
+    vertical-align: middle;
+  }
+
 .wrapfooter {
     border-top: whitesmoke 3px solid;
     background-color: rgb(48, 156, 214);
@@ -42,13 +52,12 @@ li.nav {
 }
 
 .matikan:disabled {
-    background-color: rgb(238, 178, 178);
+    background-color: rgb(238, 178, 178) !important;
 }
 
 .matikan:hover {
-    box-shadow:none;
+    box-shadow:none !important;
 }
 .matikan {
-    box-shadow:none;
-    cursor: none;
+    box-shadow:none !important;
 }
