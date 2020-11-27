@@ -195,7 +195,8 @@
       <img src="./image/Eclipse.svg" alt="loading" />
     </div>
     <div class="wrapbody">
-      <h3>Pastikan data Anda berikut ini sudah benar, lalu tekan tombol <i>selanjutnya</i> !. Jika ada data Anda yang salah, silahkan ke kantor, dengan membawa dokumen penunjang asli.</h3>
+      <h3>Pastikan data Anda berikut ini sudah benar, lalu tekan tombol <i>selanjutnya</i> !. Jika ada data Anda yang
+        salah, silahkan ke kantor, dengan membawa dokumen penunjang asli.</h3>
       <table id="idAsn">
         <tr>
           <td style="width: 50%;">NAMA</td>
@@ -243,7 +244,7 @@
           <td id="tblPangkat"></td>
         </tr>
         <tr>
-          <td>GOLONGAN</td>
+          <td>GOLONGAN/RUANG</td>
           <td>:</td>
           <td id="tblGolongan"></td>
         </tr>
@@ -268,7 +269,7 @@
           <td id="tblUnit"></td>
         </tr>
         <tr>
-          <td colspan="3">ATASAN LANGSUNG</td>
+          <td colspan="3"><b>Atasan Langsung<b></td>
         </tr>
         <tr>
           <td>NAMA</td>
@@ -286,7 +287,7 @@
           <td id="tblPangkatAtasan"></td>
         </tr>
         <tr>
-          <td>GOLONGAN</td>
+          <td>GOLONGAN/RUANG</td>
           <td>:</td>
           <td id="tblGolonganAtasan"></td>
         </tr>
@@ -334,46 +335,63 @@
     var i;
 
     main.cekLogin();
-    //////////////////////////cek login/////////////////////
+    main.cekDua().then(function (res) {
+      if (res.status) {
+        mulai();
+      } else {
+        location.assign("status.html");
+      }
+    }).catch(err => {
+      console.log(err);
+    });
 
-            let dataPegawai = JSON.parse(localStorage.getItem("db"));
-            $('#tblNama').html(dataPegawai.NAMA);
-            $('#tblNip').html(dataPegawai.NIP);
-            $('#tblNuptk').html(dataPegawai.NUPTK);
-            $('#tblKarpeg').html(dataPegawai.NO_KARPEG);
-            $('#tblTempatLahir').html(dataPegawai.TEMPAT_LAHIR);
-$('#tblTglLahir').html(dataPegawai.TANGGAL_LAHIR)
-$('#tblJk').html(dataPegawai.JENIS_KELAMIN)
-$('#tblPendidikan').html(dataPegawai.PENDIDIKAN_TERAKHIR)
-$('#tblPangkat').html(dataPegawai.PANGKAT)
-$('#tblGolongan').html(dataPegawai.GOLONGAN)
-$('#tblTmtPangkat').html(dataPegawai.TMT_PANGKAT_TERAKHIR)
-$('#tblTmtJabatan').html(dataPegawai.TMT_JABATAN_GURU)
-$('#tblMkg').html(dataPegawai.MASA_KERJA_GOLONGAN)
-$('#tblUnit').html(dataPegawai.UNIT_KERJA)
-$('#tblNamaAtasan').html(dataPegawai.NAMA_ATASAN_LANGSUNG)
-$('#tblNipAtasan').html(dataPegawai.NIP_ATASAN_LANGSUNG)
-$('#tblPangkatAtasan').html(dataPegawai.PANGKAT_ATASAN_LANGSUNG)
-$('#tblGolonganAtasan').html(dataPegawai.GOLONGAN_ATASAN_LANGSUNG)
-$('#tblTmtPangkatAtasan').html(dataPegawai.TMT_PANGKAT_TERAKHIR_ATASAN_LANGSUNG)
-$('#tblJabatanAtasan').html(dataPegawai.JABATAN_ATASAN_LANGSUNG)
+    function mulai() {
+      let dataPegawai = JSON.parse(localStorage.getItem("db"));
+      let tmtji = dataPegawai.TMT_PANGKAT_TERAKHIR;
+      let tmt = tmtji.split("/");
+      let tmtJabji = dataPegawai.TMT_JABATAN_GURU;
+      let tmtJab = tmtJabji.split("/");
+      let lahir = dataPegawai.TANGGAL_LAHIR;
+      let tglLahir = lahir.split("/");
+      $('#tblNama').html(dataPegawai.NAMA);
+      $('#tblNip').html(dataPegawai.NIP);
+      $('#tblNuptk').html(dataPegawai.NUPTK);
+      $('#tblKarpeg').html(dataPegawai.NO_KARPEG);
+      $('#tblTempatLahir').html(dataPegawai.TEMPAT_LAHIR);
+      $('#tblTglLahir').html(tglLahir[0] + " " + arrbulan[tglLahir[1]-1] + " " + tglLahir[2]);
+      $('#tblJk').html(dataPegawai.JENIS_KELAMIN);
+      $('#tblPendidikan').html(dataPegawai.PENDIDIKAN_TERAKHIR);
+      $('#tblPangkat').html(dataPegawai.PANGKAT);
+      $('#tblGolongan').html(dataPegawai.GOLONGAN_RUANG);
+      $('#tblTmtPangkat').html(tmt[0]+" "+arrbulan[tmt[1]-1]+" "+tmt[2]);
+      $('#tblTmtJabatan').html(tmtJab[0] +" "+ arrbulan[tmtJab[1]-1] +" "+ tmtJab[2]);
+      $('#tblMkg').html(dataPegawai.MASA_KERJA_GOLONGAN);
+      $('#tblUnit').html(main.lastArr(dataPegawai.UNIT_KERJA));
+      $('#tblNamaAtasan').html(main.lastArr(dataPegawai.NAMA_ATASAN_LANGSUNG));
+      $('#tblNipAtasan').html(dataPegawai.NIP_ATASAN_LANGSUNG);
+      $('#tblPangkatAtasan').html(dataPegawai.PANGKAT_ATASAN_LANGSUNG);
+      $('#tblGolonganAtasan').html(dataPegawai.GOLONGAN_ATASAN_LANGSUNG);
+      $('#tblTmtPangkatAtasan').html(dataPegawai.TMT_PANGKAT_TERAKHIR_ATASAN_LANGSUNG);
+      $('#tblJabatanAtasan').html(main.lastArr(dataPegawai.JABATAN_ATASAN_LANGSUNG));
 
-            loading.setAttribute("style", "display:none");
-            wrapbody.setAttribute("style", "visibility:visible");
-         
+      loading.setAttribute("style", "display:none");
+      wrapbody.setAttribute("style", "visibility:visible");
 
-    //////////////////////get index input button //////////////////////
-    for (i = 0; i < berkas.length; i++) {
-      (function (index) {
-        berkas[i].onchange = function () {
-          console.log(index);
-          namaBerkas[index].innerHTML = berkas[index].files[0].name;
-        };
-      })(i);
+
+      //////////////////////get index input button //////////////////////
+      for (i = 0; i < berkas.length; i++) {
+        (function (index) {
+          berkas[i].onchange = function () {
+            console.log(index);
+            namaBerkas[index].innerHTML = berkas[index].files[0].name;
+          };
+        })(i);
+      }
+
+      //////////////////upload process/////////////////
+      simpan.addEventListener("click", () => location.assign('upload.html'));
     }
 
-    //////////////////upload process/////////////////
-    simpan.addEventListener("click", () => location.assign('upload.html'));
 
     ///////////////////sign out//////////////////////////////////////////////
     logoutButton.addEventListener("click", keluar);

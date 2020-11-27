@@ -304,7 +304,8 @@
     let dataPegawai = JSON.parse(localStorage.getItem("db"));
     $('#tblNama').html(dataPegawai.NAMA);
     $('#tblNip').html(dataPegawai.NIP);
-    $('#tmt').html(dataPegawai.TMT_PANGKAT_TERAKHIR);
+    let tmt = new Date(dataPegawai.TMT_PANGKAT_TERAKHIR); 
+    $('#tmt').html(tmt.getDate() + " " + arrbulan[tmt.getMonth()] + " " + tmt.getFullYear());
     // $('#statusDaftar').html("Belum saatnya")
     loading.setAttribute("style", "display:none");
     wrapbody.setAttribute("style", "visibility:visible");

@@ -1,4 +1,5 @@
 const alamat = "https://script.google.com/macros/s/AKfycbwZ2wKOLBvcdWRtmDtG-NDhIxMVLwh-HnFcDOfc7AteUT5aKIZd/exec";
+let arrbulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
 
 let main = {
     kirimdata:
@@ -10,17 +11,20 @@ let main = {
             return response.json();
         },
     cekLogin: () => {
-        if(localStorage.getItem('token')){
-            main.kirimdata(new dataCek()).then(res=>{
-              if(!res){
-                return location.assign('index.html')
-              }else{
-                console.log(res);
-              }
-            }).catch(err=>{
-              console.log(err)
+        if (localStorage.getItem('token')) {
+            main.kirimdata(new dataCek()).then(res => {
+                if (!res) {
+                    return location.assign('index.html');
+                } else {
+                    return res;
+                }
+            }).catch(err => {
+                console.log(err);
+                return location.assign('index.html');
             })
-          }
+        } else {
+            return location.assign('index.html');
+        }
     },
     logout: () => {
         let out = new dataCek();
@@ -32,7 +36,7 @@ let main = {
         pesanBaca.pesan = true;
         return main.kirimdata(pesanBaca);
     },
-    pesanTerbaca : ()=>{
+    pesanTerbaca: () => {
         let terbaca = new dataCek();
         terbaca.countPesan = true;
         return main.kirimdata(terbaca);
@@ -45,30 +49,40 @@ let main = {
         } else {
             alert("Mohon gunakan browser terbaru");
         }
-
     },
-    ubahpass:(isipass)=>{
+    lastArr: (parm) => {
+        let data = parm.split('#');
+        let panjangData = data.length;
+        return data[panjangData - 1];
+    },
+    ubahpass: (isipass) => {
         let gantipass = new dataCek();
         gantipass.ubahpass = isipass;
         return main.kirimdata(gantipass);
     },
-    daftar:(ok)=>{
+    daftar: (ok) => {
         let mintakode = new dataCek();
         mintakode.mendaftar = ok;
         return main.kirimdata(mintakode);
+    },
+    cekDua: () => {
+        let cek = new dataCek();
+        cek.cekDua = true;
+        return main.kirimdata(cek);
     }
 }
 
 class dataCek {
-    constructor(namaBerkas, terbaca, urlSkTerakhir, ubahpass, countPesan, pesan, keluar, mendaftar) {
+    constructor(cekDua, namaBerkas, terbaca, urlSkTerakhir, ubahpass, countPesan, pesan, keluar, mendaftar) {
         this.token = localStorage.getItem('token'),
-        this.username = localStorage.getItem('nip'),
-        this.urlSkTerakhir = false,
-        this.ubahpass = false,
-        this.countPesan = false,
-        this.pesan = false,
-        this.keluar = false,
-        this.namaBerkas = false,
-        this.mendaftar = false
+            this.username = localStorage.getItem('nip'),
+            this.urlSkTerakhir = false,
+            this.ubahpass = false,
+            this.countPesan = false,
+            this.pesan = false,
+            this.keluar = false,
+            this.namaBerkas = false,
+            this.mendaftar = false,
+            this.cekDua = false
     }
 }
