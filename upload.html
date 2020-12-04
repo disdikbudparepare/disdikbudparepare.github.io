@@ -38,19 +38,8 @@
       overflow: auto;
     }
 
-    td {
-      padding: 2%;
-      text-align: left;
-      vertical-align: middle;
-    }
-
     td:nth-child(event) {
       text-align: right;
-    }
-
-    .title {
-      font-size: 3.5vw;
-      line-height: 150%;
     }
 
     .footer {
@@ -738,7 +727,7 @@
                   $('#kodePendaftaran').html(res.register);
                 }).then((respon) => {
                   $('#pring').toggle();
-                  printJS({ printable: 'pring', type: 'html', style: '.tableprint {text-align:center; margin-left:90px; padding:0} .namadinasprint {font-size:14pt !important} .headerprint{border-bottom: 1px solid black} .outerprint{padding:40px} .ratakirikananprint{text-align:justify} .ttdprint{float:right} .tbodyprint{vertical-align:top !important; padding:0 !important} .tablebodyprint{vertical-align:top; height:fit-content; padding:0} .hapuspadding{padding:0 !important; margin:0 !important} #qr{float:left} #telahuploadprint{margin-left: 20px !important;padding-inline-start: 0; margin-block-end: 0; margin-block-start: 0;margin-inline-end: 0;margin-inline-start: 0}' });
+                  printJS({ printable: 'pring', type: 'html', style: 'html {width:fit-content} .tableprint {text-align:center; margin-left:90px; padding:0} .namadinasprint {font-size:14pt !important} .headerprint{border-bottom: 1px solid black; width:auto !important} .outerprint{padding:40px; width:auto !important} .ratakirikananprint{text-align:justify; width:auto !important} .ttdprint{float:right} .tbodyprint{vertical-align:top !important; padding:0 !important} .tablebodyprint{vertical-align:top; height:fit-content; padding:0; width:auto} .hapuspadding{padding:0 !important; margin:0 !important} #qr{float:left} #telahuploadprint{margin-left: 20px !important;padding-inline-start: 0; margin-block-end: 0; margin-block-start: 0;margin-inline-end: 0;margin-inline-start: 0} .bodyprint{width:auto !important}' });
                   $('#pring').toggle();
                 })
               });

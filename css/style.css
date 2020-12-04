@@ -21,6 +21,13 @@ body {
     border-bottom: 2px solid rgb(78, 136, 223);
     display: table-cell;
     vertical-align: middle;
+    text-align: center;
+    width: 100vw;
+  }
+
+  .title{
+      font-size: 1.2em;
+      line-height: 150%;
   }
 
 .wrapfooter {
@@ -60,4 +67,9 @@ li.nav {
 }
 .matikan {
     box-shadow:none !important;
+}
+td{
+    padding: 2% 0;
+    text-align: left;
+    vertical-align: middle;
 }
