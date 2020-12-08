@@ -51,9 +51,12 @@ let main = {
         }
     },
     lastArr: (parm) => {
-        let data = parm.split('#');
-        let panjangData = data.length;
-        return data[panjangData - 1];
+        if (parm.toString().includes('#')) {
+            let data = parm.split('#');
+            let panjangData = data.length;
+            return data[panjangData - 1];
+        }
+        return parm;
     },
     ubahpass: (isipass) => {
         let gantipass = new dataCek();
