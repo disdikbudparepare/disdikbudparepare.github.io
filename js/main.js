@@ -72,11 +72,16 @@ let main = {
         let cek = new dataCek();
         cek.cekDua = true;
         return main.kirimdata(cek);
+    },
+    kirimPak: (pak) =>{
+        let nilai = new dataCek();
+        nilai.nilaiPak = pak;
+        return main.kirimdata(nilai);
     }
 }
 
 class dataCek {
-    constructor(cekDua, namaBerkas, terbaca, urlSkTerakhir, ubahpass, countPesan, pesan, keluar, mendaftar) {
+    constructor(cekDua, namaBerkas, terbaca, urlSkTerakhir, ubahpass, countPesan, pesan, keluar, mendaftar, nilaiPak) {
         this.token = localStorage.getItem('token'),
             this.username = localStorage.getItem('nip'),
             this.urlSkTerakhir = false,
@@ -86,6 +91,7 @@ class dataCek {
             this.keluar = false,
             this.namaBerkas = false,
             this.mendaftar = false,
-            this.cekDua = false
+            this.cekDua = false,
+            this.nilaiPak = false
     }
 }

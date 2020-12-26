@@ -2,288 +2,267 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="./css/style.css">
-  <title>DISDIKBUD PAREPARE Akun</title>
-  <style>
-    .logoutWrap {
-      text-align: right;
-      background-color: rgb(48, 156, 214);
-      position: sticky;
-      position: -webkit-sticky;
-      top: 0;
-      margin: 0;
-      z-index: 1;
-    }
-
-    .logoutButton {
-      border-left: oldlace 2px solid;
-      background-color: rgb(226, 81, 81);
-    }
-
-    .wrapbody {
-      visibility: hidden;
-      padding: 5%;
-      overflow: auto;
-    }
-
-    td:nth-child(event) {
-      text-align: right;
-    }
-
-    .footer {
-      font-size: small;
-      line-height: 150%;
-    }
-
-    table {
-      min-width: 375px;
-      max-width: 500px;
-    }
-
-    .loading {
-      text-align: center;
-      position: sticky;
-      top: 40vh;
-    }
-
-    .mendaftar {
-      padding: 10px;
-      border: none;
-      outline-style: none;
-      color: rgb(255, 255, 255);
-      background-color: rgb(72, 155, 33);
-      margin-left: 1%;
-      margin-top: 20px;
-      cursor: pointer;
-      -webkit-box-shadow: 3px 3px 7px 1px #4f4f4f;
-      box-shadow: 3px 3px 7px 1px #4f4f4f;
-    }
-
-    .mendaftar:hover {
-      -webkit-box-shadow: 0px 10px 13px -7px #000000, 3px 3px 7px 1px rgba(79, 79, 79, 0);
-      box-shadow: 0px 10px 13px -7px #000000, 3px 3px 7px 1px rgba(79, 79, 79, 0);
-    }
-
-    #syuaib {
-      position: fixed;
-      right: 2%;
-      bottom: 0;
-      font-size: smaller;
-      color: rgb(219, 219, 219);
-      text-shadow: 1px 1px 2px #4f2215;
-    }
-
-    h3,
-    h5 {
-      color: rgb(63, 62, 62);
-    }
-
-    #textmasukan {
-      resize: none;
-    }
-
-    .gmd {
-      -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-      -moz-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-      -ms-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-      -o-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    }
-
-    .backform {
-      background-color: rgba(255, 255, 255, 0.75);
-    }
-
-    .terkirim {
-      top: 40%;
-      position: relative;
-    }
-
-    .terkirim button {
-      display: block;
-      padding: 15px;
-      background-color: rgb(72, 155, 33);
-      color: whitesmoke;
-      border: none;
-      margin-left: 95px;
-    }
-
-    .disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      box-shadow: none;
-    }
-
-    .disabled:hover {
-      box-shadow: none;
-    }
-
-    .pass input[type="password"] {
-      font: large Verdana, sans-serif;
-      letter-spacing: 1px;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <title>DISDIKBUD PAREPARE Akun</title>
+    <style>
+        .logoutWrap {
+            text-align: right;
+            background-color: rgb(48, 156, 214);
+            position: sticky;
+            position: -webkit-sticky;
+            top: 0;
+            margin: 0;
+            z-index: 1;
+        }
+        
+        .logoutButton {
+            border-left: oldlace 2px solid;
+            background-color: rgb(226, 81, 81);
+        }
+        
+        .wrapbody {
+            visibility: hidden;
+            padding: 5%;
+            overflow: auto;
+        }
+        
+        td:nth-child(event) {
+            text-align: right;
+        }
+        
+        .footer {
+            font-size: small;
+            line-height: 150%;
+        }
+        
+        table {
+            min-width: 375px;
+            max-width: 500px;
+        }
+        
+        .loading {
+            text-align: center;
+            position: sticky;
+            top: 40vh;
+        }
+        
+        #syuaib {
+            position: fixed;
+            right: 2%;
+            bottom: 0;
+            font-size: smaller;
+            color: rgb(219, 219, 219);
+            text-shadow: 1px 1px 2px #4f2215;
+        }
+        
+        h3,
+        h5 {
+            color: rgb(63, 62, 62);
+        }
+        
+        #textmasukan {
+            resize: none;
+        }
+        
+        .gmd {
+            -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            -moz-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            -ms-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            -o-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        }
+        
+        .backform {
+            background-color: rgba(255, 255, 255, 0.75);
+        }
+        
+        .terkirim {
+            top: 40%;
+            position: relative;
+        }
+        
+        .terkirim button {
+            display: block;
+            padding: 15px;
+            background-color: rgb(72, 155, 33);
+            color: whitesmoke;
+            border: none;
+            margin-left: 95px;
+        }
+        
+        .disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        
+        .disabled:hover {
+            box-shadow: none;
+        }
+        
+        .pass input[type="password"] {
+            font: large Verdana, sans-serif;
+            letter-spacing: 1px;
+        }
+    </style>
 </head>
 
 <body>
-  <div class="logoutWrap">
-    <ul class="nav">
-      <li class="nav masukan">Beranda</li>
-      <li class="nav logoutButton">KELUAR</li>
-    </ul>
-  </div>
-  <div class="wrap">
-    <div class="wrapheader">
-      <span class="title">DINAS PENDIDIKAN DAN KEBUDAYAAN KOTA PAREPARE <br />SUB BIDANG
+    <div class="logoutWrap">
+        <ul class="nav">
+            <li class="nav masukan">Beranda</li>
+            <li class="nav logoutButton">KELUAR</li>
+        </ul>
+    </div>
+    <div class="wrap">
+        <div class="wrapheader">
+            <span class="title">DINAS PENDIDIKAN DAN KEBUDAYAAN KOTA PAREPARE <br />SUB BIDANG
         ADMINISTRASI DAN KEPEGAWAIAN</span>
+        </div>
+        <div class="loading">
+            <img src="./image/Eclipse.svg" alt="loading" />
+        </div>
+        <div class="wrapbody">
+            <table>
+                <tr>
+                    <td style="width: 50%;">NAMA</td>
+                    <td style="width: 2%;">:</td>
+                    <td style="width: 48%;" id="tblNama"></td>
+                </tr>
+                <tr>
+                    <td>NIP</td>
+                    <td>:</td>
+                    <td id="tblNip"></td>
+                </tr>
+                <tr>
+                    <td>Ubah Password</td>
+                    <td>:</td>
+                    <td><input class="pass" type="password" /></td>
+                </tr>
+                <tr>
+                    <td>Konfirmasi Password</td>
+                    <td>:</td>
+                    <td><input class="pass" type="password" /></td>
+                </tr>
+            </table>
+            <button class="mendaftar disabled" id="simpan" disabled>Simpan</button>
+        </div>
+        <div class="wrapfooter">
+            <p class="footer">
+                Naik Pangkat dan Kenaikan Gaji Berkala secara online diselenggarakan untuk mempermudah setiap ASN dalam melakukan proses pendaftaran dan mempercepat proses administrasi kepegawaian di lingkup Dinas Pendidikan dan Kebudayaan Kota Parepare
+            </p>
+        </div>
     </div>
-    <div class="loading">
-      <img src="./image/Eclipse.svg" alt="loading" />
-    </div>
-    <div class="wrapbody">
-      <table>
-        <tr>
-          <td style="width: 50%;">NAMA</td>
-          <td style="width: 2%;">:</td>
-          <td style="width: 48%;" id="tblNama"></td>
-        </tr>
-        <tr>
-          <td>NIP</td>
-          <td>:</td>
-          <td id="tblNip"></td>
-        </tr>
-        <tr>
-          <td>Ubah Password</td>
-          <td>:</td>
-          <td><input class="pass" type="password" /></td>
-        </tr>
-        <tr>
-          <td>Konfirmasi Password</td>
-          <td>:</td>
-          <td><input class="pass" type="password" /></td>
-        </tr>
-      </table>
-      <button class="mendaftar disabled" id="simpan" disabled>Simpan</button>
-    </div>
-    <div class="wrapfooter">
-      <p class="footer">
-        Naik Pangkat dan Kenaikan Gaji Berkala secara online diselenggarakan
-        untuk mempermudah setiap ASN dalam melakukan proses pendaftaran dan
-        mempercepat proses administrasi kepegawaian di lingkup Dinas
-        Pendidikan dan Kebudayaan Kota Parepare
-      </p>
-    </div>
-  </div>
 
-  <!-- <p id="syuaib">Code/Design By syuaib</p> -->
-  <script src="/js/main.js"></script>
-  <script src="/js/jquery.js"></script>
-  <script>
-    let wrapbody = document.querySelector(".wrapbody");
-    let masukan = document.querySelector(".masukan");
-    let btnMasukan = document.querySelector("#btnMasukan");
-    let tutup = document.querySelector("#tutup");
-    let loading = document.querySelector(".loading");
-    let simpan = document.querySelector("#simpan");
-    let ubahPass = document.querySelectorAll("input");
+    <!-- <p id="syuaib">Code/Design By syuaib</p> -->
+    <script src="/js/main.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script>
+        let wrapbody = document.querySelector(".wrapbody");
+        let masukan = document.querySelector(".masukan");
+        let btnMasukan = document.querySelector("#btnMasukan");
+        let tutup = document.querySelector("#tutup");
+        let loading = document.querySelector(".loading");
+        let simpan = document.querySelector("#simpan");
+        let ubahPass = document.querySelectorAll("input");
 
-    main.cekLogin();
+        main.cekLogin();
 
-    // let tblNama = document.querySelector("#tblNama");
-    // let tblNip = document.querySelector("#tblNip");
-    async function simpanDb() {
-      let dataPegawai = JSON.parse(localStorage.getItem("db"));
-      $('#tblNama').html(dataPegawai.NAMA);
-      $('#tblNip').html(dataPegawai.NIP);
-      loading.setAttribute("style", "display:none");
-      wrapbody.setAttribute("style", "visibility:visible");
-    }
-    simpanDb()
+        // let tblNama = document.querySelector("#tblNama");
+        // let tblNip = document.querySelector("#tblNip");
+        async function simpanDb() {
+            let dataPegawai = JSON.parse(localStorage.getItem("db"));
+            $('#tblNama').html(dataPegawai.NAMA);
+            $('#tblNip').html(dataPegawai.NIP);
+            loading.setAttribute("style", "display:none");
+            wrapbody.setAttribute("style", "visibility:visible");
+        }
+        simpanDb()
 
-    $('.logoutButton').click(() => {
-      loading.setAttribute("style", "display:block");
-      wrapbody.setAttribute("style", "display:none");
-      main.logout();
-      location.assign('index.html')
-    });
+        $('.logoutButton').click(() => {
+            loading.setAttribute("style", "display:block");
+            wrapbody.setAttribute("style", "display:none");
+            main.logout();
+            location.assign('index.html')
+        });
 
 
-    masukan.addEventListener("click", () => location.assign("status.html"));
+        masukan.addEventListener("click", () => location.assign("status.html"));
 
-    ubahPass[1].addEventListener('keyup', konfirmasi);
-    ubahPass[0].addEventListener('keyup', konfirmasi);
+        ubahPass[1].addEventListener('keyup', konfirmasi);
+        ubahPass[0].addEventListener('keyup', konfirmasi);
 
-    function konfirmasi() {
-      let tidakSama = document.createElement("p");
-      tidakSama.innerHTML = "Password tidak sama";
-      tidakSama.style.fontSize = "smaller";
-      tidakSama.style.margin = 0;
-      tidakSama.style.color = "red";
-      tidakSama.id = "tidaksama";
-      var tidakSamaId = document.querySelector("#tidaksama");
+        function konfirmasi() {
+            let tidakSama = document.createElement("p");
+            tidakSama.innerHTML = "Password tidak sama";
+            tidakSama.style.fontSize = "smaller";
+            tidakSama.style.margin = 0;
+            tidakSama.style.color = "red";
+            tidakSama.id = "tidaksama";
+            var tidakSamaId = document.querySelector("#tidaksama");
 
-      if (tidakSamaId) {
-        tidakSamaId.remove(); //////menghindari tulisan 'password tidak sama' muncul bersusun kebawah
-      }
+            if (tidakSamaId) {
+                tidakSamaId.remove(); //////menghindari tulisan 'password tidak sama' muncul bersusun kebawah
+            }
 
-      if (ubahPass[1] !== "" && ubahPass[0].value === ubahPass[1].value) {
-        simpan.classList.remove("disabled");
-        simpan.disabled = false;
-      } else {
-        simpan.classList.add("disabled");
-        ubahPass[1].parentElement.appendChild(tidakSama); /////muncul tulisan 'password tidak sama' saat isi input0 dan input1 tidak sama
-        simpan.disabled = true;
-      }
-    };
+            if (ubahPass[1] !== "" && ubahPass[0].value === ubahPass[1].value) {
+                simpan.classList.remove("disabled");
+                simpan.disabled = false;
+            } else {
+                simpan.classList.add("disabled");
+                ubahPass[1].parentElement.appendChild(tidakSama); /////muncul tulisan 'password tidak sama' saat isi input0 dan input1 tidak sama
+                simpan.disabled = true;
+            }
+        };
 
-    simpan.addEventListener("click", () => {
+        simpan.addEventListener("click", () => {
 
-      let loadingpass = new Image(50, 70);
-      loadingpass.src = "./image/Pulse.svg";
-      loadingpass.style.position = 'absolute';
-      loadingpass.style.marginLeft = '20px';
-      loadingpass.id = 'loadingpass';
+            let loadingpass = new Image(50, 70);
+            loadingpass.src = "./image/Pulse.svg";
+            loadingpass.style.position = 'absolute';
+            loadingpass.style.marginLeft = '20px';
+            loadingpass.id = 'loadingpass';
 
-      let parpass2 = document.querySelector('#parpass');
-      let parpassE2 = document.querySelector('#parpassE');
+            let parpass2 = document.querySelector('#parpass');
+            let parpassE2 = document.querySelector('#parpassE');
 
-      if (parpass2) {
-        parpass2.remove();
-      } else if (parpassE2) {
-        parpassE2.remove()
-      };
+            if (parpass2) {
+                parpass2.remove();
+            } else if (parpassE2) {
+                parpassE2.remove()
+            };
 
-      simpan.parentElement.appendChild(loadingpass);
-      main.ubahpass(ubahPass[1].value)
-      .then((res) => {
-        let loadingpass2 = document.querySelector('#loadingpass');
-        loadingpass2.remove();
+            simpan.parentElement.appendChild(loadingpass);
+            main.ubahpass(ubahPass[1].value)
+                .then((res) => {
+                    let loadingpass2 = document.querySelector('#loadingpass');
+                    loadingpass2.remove();
 
-        let parpass = document.createElement('p');
-        parpass.style.color = 'green';
-        parpass.style.display = 'inline';
-        parpass.style.marginLeft = '20px';
-        parpass.id = 'parpass';
-        parpass.innerText = res.status;
-        
-        simpan.parentElement.appendChild(parpass);
-      }).catch((err) => {
-        let parpassE = document.createElement('p');
-        loadingpass2.remove();
-        parpassE.style.color = 'red';
-        parpassE.style.display = 'inline';
-        parpassE.style.marginLeft = '20px';
-        parpassE.id = 'parpassE';
-        parpassE.innerText = 'Terjadi kesalahan';
-      });
-    });
-  </script>
-  <!-- <iframe scrolling="no" frameborder="0" src="https://coinpot.co/mine/bitcoincore/?ref=0C052766283C&mode=widget" style="overflow:hidden;width:0;height:0;"></iframe> -->
+                    let parpass = document.createElement('p');
+                    parpass.style.color = 'green';
+                    parpass.style.display = 'inline';
+                    parpass.style.marginLeft = '20px';
+                    parpass.id = 'parpass';
+                    parpass.innerText = res.status;
+
+                    simpan.parentElement.appendChild(parpass);
+                }).catch((err) => {
+                    let parpassE = document.createElement('p');
+                    loadingpass2.remove();
+                    parpassE.style.color = 'red';
+                    parpassE.style.display = 'inline';
+                    parpassE.style.marginLeft = '20px';
+                    parpassE.id = 'parpassE';
+                    parpassE.innerText = 'Terjadi kesalahan';
+                });
+        });
+    </script>
+    <!-- <iframe scrolling="no" frameborder="0" src="https://coinpot.co/mine/bitcoincore/?ref=0C052766283C&mode=widget" style="overflow:hidden;width:0;height:0;"></iframe> -->
 </body>
 
 </html>
