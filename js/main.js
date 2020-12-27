@@ -73,10 +73,59 @@ let main = {
         cek.cekDua = true;
         return main.kirimdata(cek);
     },
-    kirimPak: (pak) =>{
+    kirimPak: (pak) => {
         let nilai = new dataCek();
         nilai.nilaiPak = pak;
         return main.kirimdata(nilai);
+    },
+    cariUrl: (textToCheck) => {
+        //note,	we	first	check	the	text	if	we	have	a	potential	link	with	this	Regex
+        var expression = /(https?:\/\/)?[\w\-~]+(\.[\w\-~]+)+(\/[\w\-~@:%]*)*(#[\w\-]*)?(\?[^\s]*)?/gi;
+        //and	then	we	make	sure	it	really	is	a	link	by	checking	if	it	is	one	of	the	common	topdomains
+        var topDomains = [/\.com/, /\.de/, /\.org/, /\.net/, /\.us/, /\.co/, /\.edu/, /\.gov/, /\.biz/, /\.za/,
+            /\.info/, /\.cc/, /\.ca/, /\.cn/, /\.fr/, /\.ch/, /\.au/, /\.in/, /\.jp/, /\.be/, /\.it/,
+            /\.nl/, /\.uk/, /\.mx/, /\.no/, /\.ru/, /\.br/, /\.se/, /\.es/, /\.at/, /\.dk/, /\.eu/, /\.il/, /\.id/, /\.co\.id/, /\.go\.id/, /\.sch/, /\.sch\.id/];
+
+        var regex = new RegExp(expression);
+        var match = ''; var splitText = []; var startIndex = 0;
+        var domainMatch = ''; var urlLength = 0; var abort = false;
+        //this	algorithm	does	the	checking	AND	pushes	text	or	link	into	an	array
+        while ((match = regex.exec(textToCheck)) != null) {
+            abort = true;
+            //	we	need	to	double	check	if	this	is	one	of	the	"known"	topDomains	like	.com	
+            for (var i = 0; i < topDomains.length; i++) {
+                domainMatch = match[0].match(topDomains[i]);
+                if (domainMatch) {
+                    urlLength = domainMatch[0].length + domainMatch.index;
+                    //we	found	one	of	the	domains	we	look	for	- now	we	need	to	know	if	the	.com	or	.de	etc.	is	at	the	VERY	END	 of	the	domain
+                    if (match[0].length == urlLength) abort = false;
+                    if (match[0].length > urlLength) {
+                        if (match[0].substr(urlLength, 1) == '/') abort = false;
+                    }
+                }
+            }
+            //we	want	to	avoid	matching	email	addresses
+            if ((match.index != 0) && (textToCheck[match.index - 1] == '@')) {
+                abort = true;
+            }
+            //we	want	to	avoid	matching	?	without	anything	at	the	end	like	www.epiloge.com/@axel-wittmann?
+            if ((match.index != 0) && (textToCheck[match.index + match[0].length - 1] == '?')) {
+                match[0] = match[0].substr(0, match[0].length - 1);
+            }
+            //we	always	put	in	the	last	text
+            splitText.push({ text: textToCheck.substr(startIndex, (match.index - startIndex)), type: 'text' });
+            //however,	based	on	the	match,	we	either	create	a	link,	or	no	link,	just	text
+            if (abort) {
+                splitText.push({ text: textToCheck.substr(match.index, (match[0].length)), type: 'text' });
+            } else {
+                var cleanedLink = textToCheck.substr(match.index, (match[0].length));
+                cleanedLink = cleanedLink.replace(/^https?:\/\//, '');
+                splitText.push({ text: cleanedLink, type: 'link' });
+            }
+            startIndex = match.index + (match[0].length);
+        }
+        if (startIndex < textToCheck.length) splitText.push({ text: textToCheck.substr(startIndex), type: 'text' });
+        return splitText;
     }
 }
 

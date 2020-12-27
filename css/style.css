@@ -30,6 +30,34 @@ body {
     line-height: 150%;
 }
 
+.wrapbody {
+    visibility: hidden;
+    padding: 2%;
+    overflow: auto;
+}
+
+.bilah-kiri, .bilah-kanan{
+    float: left;
+    padding: 2%;
+    min-width: 360px;
+    width: 50%;
+    height: 50vh;
+}
+
+.info-disdik{
+    text-align: center;
+    border-left: rgba(128, 128, 128, 0.582) 2px solid;
+}
+
+#info{
+    overflow: scroll;
+    border-top: 1px solid rgba(111, 162, 255, 0.685);
+    text-align: justify;
+    height: 40vh;
+    padding: 20px;
+    font-size: 14px;
+}
+
 .wrapfooter {
     border-top: whitesmoke 3px solid;
     background-color: rgb(48, 156, 214);
@@ -37,8 +65,31 @@ body {
     color: rgb(255, 255, 255);
     z-index: 2;
     position: relative;
-    top: 20vh;
-    height: 20vh;
+    bottom: 0;
+    overflow: auto;
+}
+
+.img-footer img{
+    width: 70px;
+    margin-top: 15px;
+    margin-right: 50px;
+}
+
+.img-footer{
+    text-align: right;
+    float: left;
+    width: 30vw;
+    
+}
+
+.footer {
+    font-size: 1em;
+    line-height: 150%;
+    float: left;
+    width: 40vw;
+    min-width: 360px;
+    padding-left: 30px;
+    border-left: 1px solid rgba(220, 220, 220, 0.603);
 }
 
 .wrap {
@@ -83,7 +134,7 @@ td {
     font-size: 15px;
     color: #FFFFFF;
     padding: 13px;
-    /* width: 200px; */
+    margin-top: 20px;
     text-align: center;
     transition-duration: 0.4s;
     text-decoration: none;
@@ -154,3 +205,4 @@ td {
 #simpanPak {
     margin: 0;
 }
+

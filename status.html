@@ -19,42 +19,31 @@
             margin: 0;
             z-index: 1;
         }
-        
+
         .logoutButton {
             border-left: oldlace 2px solid;
             background-color: rgb(226, 81, 81);
         }
-        
-        .wrapbody {
-            visibility: hidden;
-            padding: 5%;
-            overflow: auto;
-        }
-        
+
         td {
             text-align: left;
         }
-        
+
         td:nth-child(event) {
             text-align: right;
         }
-        
-        .footer {
-            font-size: small;
-            line-height: 150%;
-        }
-        
+
         table {
             min-width: 375px;
             max-width: 500px;
         }
-        
+
         .loading {
             text-align: center;
             position: sticky;
             top: 40vh;
         }
-        
+
         #syuaib {
             position: fixed;
             right: 2%;
@@ -63,12 +52,12 @@
             color: rgb(219, 219, 219);
             text-shadow: 1px 1px 2px #4f2215;
         }
-        
+
         #boxmasukan {
             resize: none;
             height: 30vh;
         }
-        
+
         .boxmasukan {
             width: 100%;
             position: fixed;
@@ -76,7 +65,7 @@
             display: none;
             z-index: 2;
         }
-        
+
         .wrapMasukan {
             width: 300px;
             margin-left: auto;
@@ -86,12 +75,12 @@
             background-color: rgb(253, 253, 253);
             box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
         }
-        
+
         h3,
         h5 {
             color: rgb(63, 62, 62);
         }
-        
+
         .wrapMasukan button {
             display: block;
             padding: 15px;
@@ -100,14 +89,14 @@
             border: none;
             margin-left: 13px;
         }
-        
+
         #textmasukan {
             height: 200px;
             padding: 10px;
             overflow: scroll;
             text-align: justify;
         }
-        
+
         .gmd {
             -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
             -moz-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
@@ -115,11 +104,11 @@
             -o-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
             box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
         }
-        
+
         .backform {
             background-color: rgba(255, 255, 255, 0.75);
         }
-        
+
         .wrapterkirim {
             width: 100%;
             height: 100%;
@@ -129,12 +118,12 @@
             /* text-align: center; */
             display: none;
         }
-        
+
         .terkirim {
             top: 40%;
             position: relative;
         }
-        
+
         .terkirim button {
             display: block;
             padding: 15px;
@@ -143,13 +132,13 @@
             border: none;
             margin-left: 95px;
         }
-        
+
         .close {
             position: absolute;
             transform: translate(240px, -25px);
             cursor: pointer;
         }
-        
+
         div.countPesan {
             position: absolute;
             background-color: #ff423c;
@@ -192,40 +181,54 @@
     <div class="wrap">
         <div class="wrapheader">
             <span class="title">DINAS PENDIDIKAN DAN KEBUDAYAAN KOTA PAREPARE <br />SUB BIDANG
-        ADMINISTRASI DAN KEPEGAWAIAN</span>
+                ADMINISTRASI DAN KEPEGAWAIAN</span>
         </div>
         <div class="loading">
             <img src="./image/Eclipse.svg" alt="loading" />
         </div>
         <div class="wrapbody">
-            <table>
-                <tr>
-                    <td style="width: 40%;">NAMA</td>
-                    <td style="width: 2%;">:</td>
-                    <td style="width: 58%;" id="tblNama"></td>
-                </tr>
-                <tr>
-                    <td>NIP</td>
-                    <td>:</td>
-                    <td id="tblNip"></td>
-                </tr>
-                <tr>
-                    <td>TMT Pangkat Terakhir</td>
-                    <td>:</td>
-                    <td id="tmt"></td>
-                </tr>
-                <tr>
-                    <td>Status Pendaftaran</td>
-                    <td>:</td>
-                    <td id="statusDaftar"></td>
-                </tr>
-            </table>
-            <button class="mendaftar" id="mendaftarBtn">Mendaftar</button>
+            <div class="bilah-kiri">
+                <table>
+                    <tr>
+                        <td style="width: 50%;">NAMA</td>
+                        <td style="width: 2%;">:</td>
+                        <td style="width: 58%;" id="tblNama"></td>
+                    </tr>
+                    <tr>
+                        <td>NIP</td>
+                        <td>:</td>
+                        <td id="tblNip"></td>
+                    </tr>
+                    <tr>
+                        <td>TMT Pangkat Terakhir</td>
+                        <td>:</td>
+                        <td id="tmt"></td>
+                    </tr>
+                    <tr>
+                        <td>Status Pendaftaran</td>
+                        <td>:</td>
+                        <td id="statusDaftar"></td>
+                    </tr>
+                </table>
+                <button class="mendaftar" id="mendaftarBtn">Mendaftar</button>
+            </div>
+            <div class="bilah-kanan info-disdik">
+                Info DISDIKBUD Kota Parepare
+                <pre id="info">
+                </pre>
+            </div>
         </div>
         <div class="wrapfooter">
-            <p class="footer">
-                Naik Pangkat dan Kenaikan Gaji Berkala secara online diselenggarakan untuk mempermudah setiap ASN dalam melakukan proses pendaftaran dan mempercepat proses administrasi kepegawaian di lingkup Dinas Pendidikan dan Kebudayaan Kota Parepare
-            </p>
+            <div class="img-footer"><img src="/image/Lambang_Kota_Parepare.png"></div>
+            <div class="footer">
+                <p>
+                    Naik Pangkat dan Kenaikan Gaji Berkala secara online diselenggarakan untuk mempermudah setiap ASN
+                    dalam
+                    melakukan proses pendaftaran dan mempercepat proses administrasi kepegawaian di lingkup Dinas
+                    Pendidikan
+                    dan Kebudayaan Kota Parepare
+                </p>
+            </div>
         </div>
     </div>
 
@@ -266,6 +269,16 @@
         main.cekLogin();
 
         let dataPegawai = JSON.parse(localStorage.getItem("db"));
+        let arrUrl = main.cariUrl(dataPegawai.info);
+        arrUrl.forEach((item, index) => {
+            if (item.type == "link") {
+                $('#info').append($('<a></a>').text(item.text).attr('href', 'https:\\' + item.text).attr('target', '_blank'));
+            } else {
+                $('#info').append(item.text);
+            }
+        });
+
+
         $('#tblNama').html(dataPegawai.NAMA);
         $('#tblNip').html(dataPegawai.NIP);
         let tmt = new Date(dataPegawai.TMT_PANGKAT_TERAKHIR);
@@ -273,6 +286,7 @@
         // $('#statusDaftar').html("Belum saatnya")
         loading.setAttribute("style", "display:none");
         wrapbody.setAttribute("style", "visibility:visible");
+
 
         logoutButton.addEventListener("click", keluar);
 
@@ -295,18 +309,32 @@
             setInterval(() => {
                 main.bacaPesan().then(res => {
                     localStorage.setItem('pesan', JSON.stringify(res));
-                    if (JSON.parse(localStorage.getItem("pesan")).statusPesan == "") {
+                    let pesanDb = JSON.parse(localStorage.getItem('pesan'));
+                    if (pesanDb.statusPesan == "") {
                         countPesan.style.display = "block";
-                        textmasukan.text(JSON.parse(localStorage.getItem("pesan")).pesan);
+                        textmasukan.text(pesanDb.pesan);
                     } else {
-                        textmasukan.text(JSON.parse(localStorage.getItem("pesan")).pesan);
+                        textmasukan.text(pesanDb.pesan);
                         countPesan.style.display = "none";
+                    }
+                    console.log(pesanDb.info)
+                    if (pesanDb.info !== dataPegawai.info) {
+                        let arrUrl2 = main.cariUrl(pesanDb.info);
+                        $('#info').html('');
+                        arrUrl2.forEach((item, index) => {
+                            if (item.type == "link") {
+                                $('#info').append($('<a></a>').text(item.text).attr('href', 'https:\\' + item.text).attr('target', '_blank'));
+                            } else {
+                                $('#info').append(item.text);
+                            }
+                        });
+                        let dataPegawai2 = JSON.parse(localStorage.getItem('db'));
+                        dataPegawai2.info = pesanDb.info;
+                        localStorage.setItem('db', JSON.stringify(dataPegawai2));
                     }
                 })
             }, 3000);
         }
-
-
 
         //countPesan.addEventListener('click', ()=>{countPesan.style.display = 'none';})
 
